@@ -1,0 +1,15 @@
+---
+title: "Data Analysis Series"
+listing:
+  contents: posts
+  sort: "date desc"
+  type: default
+  categories: true
+  sort-ui: false
+  filter-ui: false
+page-layout: full
+---
+
+Welcome. This site is the home for an episodic, reproducible data analysis project.
+
+Each post combines narrative, Python code, plots, and links back to the source repository so readers can rerun the analysis themselves.

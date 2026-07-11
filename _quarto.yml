@@ -1,0 +1,36 @@
+project:
+  type: website
+  output-dir: _site
+
+website:
+  title: "Data Analysis Series"
+  description: "An episodic, reproducible data analysis project in Python."
+  site-url: "https://YOUR-GITHUB-USERNAME.github.io/YOUR-REPO-NAME"
+  repo-url: "https://github.com/YOUR-GITHUB-USERNAME/YOUR-REPO-NAME"
+  repo-actions: [source, issue]
+  navbar:
+    right:
+      - text: "Posts"
+        href: posts/index.qmd
+      - text: "About"
+        href: about.qmd
+      - icon: github
+        href: "https://github.com/YOUR-GITHUB-USERNAME/YOUR-REPO-NAME"
+      - icon: linkedin
+        href: "https://www.linkedin.com/in/YOUR-LINKEDIN-SLUG/"
+
+format:
+  html:
+    theme: cosmo
+    toc: true
+    code-fold: true
+    code-tools: true
+    fig-width: 8
+    fig-height: 5
+    df-print: paged
+    embed-resources: false
+
+execute:
+  freeze: auto
+  warning: false
+  message: false

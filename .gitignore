@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.env
+
+# Quarto output
+_site/
+.quarto/
+_freeze/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS/editor
+.DS_Store
+.vscode/
+
+# Data policy: keep directories, avoid accidental large commits
+# Remove these lines if you intentionally want to version data files.
+data/raw/*
+data/processed/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+
+/.quarto/
+**/*.quarto_ipynb

@@ -43,23 +43,19 @@ jobs:
         run: uv run quarto render
 ## end adding
 
-      - name: Render site
-        run: quarto render
-
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: .
-          # ^ we'll set a deploy directory in the next step instead
       - name: Stage built site at artifact root
         run: |
           rm -rf pages-site
           mkdir pages-site
           cp -R _site/. pages-site/
+
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: pages-site
+
+      - name: Verify build output exists
+        run: test -f _site/index.html
 
 
   deploy:

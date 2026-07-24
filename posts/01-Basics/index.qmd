@@ -38,6 +38,7 @@ pdf_cmv_ecocluster_2026.columns
 ```
 
 These columns are as described in our preprint:
+
 * tcr: TCRB CDR3 amino acid sequence, V gene and J gene, delimited by ‘+’
 * hla: the HLA allele the TCR is associated with (via its HLA CO-cluster)
 * hla_cocluster: the name of the HLA CO-cluster the TCR belongs to
@@ -51,7 +52,8 @@ CMV serological label, considering only donors inferred to have the associated H
 * hla_cocluster_auroc_hlaunaware: the AUROC defined by breadth on the HLA-COcluster vs.
 the CMV serological label, considering all 120 holdout donors
 
-The loader method I'm using adds some useful columns, derived from other columns:
+The loader method I'm using (from the cmvividly package) adds some useful columns, derived from other columns:
+
 * hla_class: "ci" or "cii", derived from "hla"
 * cdr3: TCRB CDR3 amino acid sequence
 * vgene: V gene

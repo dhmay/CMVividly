@@ -29,8 +29,19 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Install Python dependencies
-        run: pip install -r requirements.txt
+#      - name: Install Python dependencies
+#        run: pip install -r requirements.txt
+
+## adding
+      - name: Install uv
+        uses: astral-sh/setup-uv@v3
+
+      - name: Sync Python dependencies (uv)
+        run: uv sync
+
+      - name: Render site (uv env)
+        run: uv run quarto render
+## end adding
 
       - name: Render site
         run: quarto render

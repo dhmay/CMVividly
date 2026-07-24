@@ -1,0 +1,146 @@
+---
+title: "Individual HLA-COclusters as CMV biomarkers"
+date: "2026-07-24"
+description: "Investigate the CMV diagnostic signal in HLA-COclusters."
+format:
+    html:
+        toc: true
+number-sections: true
+---
+
+In the manuscript, we evaluated breadth (proportion of repertoire TCRs that are members)
+on each HLA-COcluster as a predictor of CMV status, in holdout repertoires. The
+publicly available CMV ECOcluster has AUROCs associated with each HLA-COcluster,
+describing their ability to classify holdout donors (120 donors from 
+[Emerson Cohort 2](https://clients.adaptivebiotech.com/pub/Emerson-2017-NatGen))
+as CMV+ or CMV-.
+
+Let's see if we can figure out why some HLA-COclusters are "better" than others.
+
+## Setup
+
+Basic imports, load the 2026 CMV ECOcluster.
+
+```{python}
+# basic imports
+import pandas as pd
+from matplotlib import pyplot as plt
+import seaborn as sns
+
+# make plots look nice
+sns.set_context("talk")
+
+# statistics
+from scipy.stats import mannwhitneyu
+
+# load the CMV ECOcluster, downloading if not already downloaded.
+from cmvividly.data.access import load_cmv_ecocluster_2026
+pdf_cmv_ecocluster_2026 = load_cmv_ecocluster_2026()
+pdf_cmv_ecocluster_2026.columns
+
+# make an HLA-COcluster-level dataframe
+hlacocluster_level_cols = [
+    'hla_cocluster', 'hla', 'hla_class',
+       'hla_cocluster_npos_hlamatch',
+       'hla_cocluster_nneg_hlamatch', 'hla_cocluster_auroc_hlaaware',
+       'hla_cocluster_auroc_hlaunaware']
+agg_dict = {"tcr": "count"}
+for col in hlacocluster_level_cols:
+    agg_dict[col] = "first"
+pdf_hla_coclusters = pdf_cmv_ecocluster_2026.groupby("hla_cocluster").agg(agg_dict)
+pdf_hla_coclusters = pdf_hla_coclusters.rename(columns={
+    "tcr": "n_tcrs"})
+```
+
+## HLA-aware AUROC
+
+HLA-COclusters are only relevant for people with their associated HLA alleles.
+Let's look at the AUROCs defined on those people first.
+Those are only defined for about half the HLA-COclusters (the rest didn't 
+have enough HLA-matched samples in holdout):
+
+```{python}
+pdf_hla_coclusters["has_aware_auroc"] = pdf_hla_coclusters.hla_cocluster_auroc_hlaaware.notnull()
+print(pdf_hla_coclusters.has_aware_auroc.value_counts())
+```
+
+Let's see the distribution of AUROCs that are present:
+
+```{python}
+f, ax = plt.subplots()
+sns.histplot(pdf_hla_coclusters.hla_cocluster_auroc_hlaaware, ax=ax)
+f.set_size_inches(6, 2)
+ax.set_title("HLA-COcluster HLA-aware AUROCs")
+```
+
+That's quite a range. They're mostly very good, but there are a few lousy ones.
+
+Do they differ by HLA class?
+
+```{python}
+f, ax = plt.subplots()
+sns.boxplot(data=pdf_hla_coclusters,
+            y="hla_cocluster_auroc_hlaaware",
+            x="hla_class", ax=ax)
+f.set_size_inches(6, 4)
+ax.set_title("HLA-COcluster HLA-aware AUROCs by HLA class")
+ax.set_ylabel("HLA-aware AUROC")
+
+pdf_hla_coclusters_with_auroc = pdf_hla_coclusters[pdf_hla_coclusters.hla_cocluster_auroc_hlaaware.notnull()]
+mwu_p = mannwhitneyu(pdf_hla_coclusters_with_auroc[pdf_hla_coclusters_with_auroc.hla_class == "ci"].hla_cocluster_auroc_hlaaware,
+                     pdf_hla_coclusters_with_auroc[pdf_hla_coclusters_with_auroc.hla_class == "cii"].hla_cocluster_auroc_hlaaware,
+                     alternative="two-sided").pvalue
+mean_higher_class = "Class II" if pdf_hla_coclusters_with_auroc[pdf_hla_coclusters_with_auroc.hla_class == "cii"].hla_cocluster_auroc_hlaaware.mean() > pdf_hla_coclusters[pdf_hla_coclusters.hla_class == "ci"].hla_cocluster_auroc_hlaaware.mean() else "Class I"
+print(f"2-sided Mann-Whitney U test p-value: {mwu_p:.3e}. Mean HLA-aware AUROC is higher for {mean_higher_class}.")
+```
+
+Why, yes, they do! The AUROCs are (barely) significantly higher for HLA-COclusters
+associated with Class II alleles than for Class I. Let's look at the worst ones:
+
+```{python}
+pdf_hla_coclusters.sort_values("hla_cocluster_auroc_hlaaware")[["hla_cocluster", "hla_cocluster_auroc_hlaaware",
+                                                               ]].head(5)
+```
+
+#### Relationship with HLA-COcluster TCR count
+
+HLA-COclusters vary widely in cardinality. Does the number of TCRs in an HLA-COcluster correlate
+with its AUROC?
+
+```{python}
+f, ax = plt.subplots()
+sns.scatterplot(x="n_tcrs", y="hla_cocluster_auroc_hlaaware",
+                data=pdf_hla_coclusters, hue="hla_class")
+ax.set_title("HLA-COcluster HLA-aware AUROC vs.\nTCRs in the HLA-COcluster")
+ax.set_ylabel("HLA-aware AUROC")
+ax.set_xlabel("TCRs in HLA-COcluster")
+```
+
+It sure does! The biggest HLA-Coclusters (all Class II) all look stellar. The
+worst ones are mostly small (except one with ~1000 TCRs), though most small ones
+are also very good. And, as we saw in the [Basics post](../01-Basics/index.html),
+Class II-associated HLA-COclusters tend to be larger than Class I. So, that's a
+*plausible* explanation for the HLA class difference in AUROC.
+
+Perhaps some of those small HLA-COclusters are of low quality, i.e., not very CMV-specific. 
+Or perhaps they're high-quality but suffer from a lot of dropout, i.e., in many CMV+
+donors none of the small number of TCRs happens to be in the repertoire, by chance. 
+Bigger HLA-COclusters means more shots on goal. That's why the general-purpose
+ECOcluster breadth metric we used in the manuscript weights HLA-COclusters by cardinality.
+
+#### HLA-unaware AUROC
+
+We also calculated an HLA-unaware AUROC for every HLA-COcluster. We expect those to be
+full of noise, because they include many people without the associated HLA allele.
+But are some of them good, anyway?
+
+```{python}
+f, ax = plt.subplots()
+sns.boxplot(x="has_aware_auroc", y="hla_cocluster_auroc_hlaunaware", data=pdf_hla_coclusters, ax=ax)
+ax.set_title("HLA-COcluster HLA-unaware AUROCs\nby presence of HLA-aware AUROC")
+ax.set_ylabel("HLA-unaware AUROC")
+```
+Not really, no! And there are some high-ish HLA-unaware AUROCs, but they're all
+on HLA-COclusters that had enough samples in holdout to evaluate HLA-aware. That makes sense!
+If there aren't enough samples in holdout to evaluate HLA-aware, we're looking at
+a rare allele whose HLA-unaware AUROC will be swamped by noise.

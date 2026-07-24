@@ -5,119 +5,25 @@
 
 Exploring public T-cell receptors (TCRs) that respond to Cytomegalorvirus.
 
-## What is included
+I'm a lead author of the ["ECOclusters" preprint](https://www.biorxiv.org/content/10.1101/2024.03.26.583354).
+That work discovers the public T-cell responses to viruses, bacteria, etc., by finding groups
+of T-cell receptors (TCRs) that tend to occur in the same people.
 
-- A Quarto website with a blog-style post listing
-- One starter post in `posts/001-example/index.qmd`
-- One exploratory Jupyter notebook in `notebooks/001-example-exploration.ipynb`
-- Shared Python code in `src/`
-- A starter data generation script in `download_data.py`
-- GitHub Pages publishing workflow in `.github/workflows/publish.yml`
-- Python environment files for `uv`, `pip`, or Conda
-- A devcontainer for GitHub Codespaces or VS Code Dev Containers
+The Cytomegalovirus (CMV) ECOcluster is publicly available. Here, I'm doing public data exploration of the CMV ECOcluster to help [the AIRR community](https://www.antibodysociety.org/the-airr-community/)
+and others make the best use of this new public resource ([more detail](about.qmd)). I'll add updates here, publish them to GitHub Pages, and
+publicize them on my [LinkedIn](https://www.linkedin.com/in/damonhmay). 
 
-## Repository layout
+So, those TCRs... let's see 'em, vividly.
 
-```text
-.
-├── posts/                  # Published Quarto posts
-│   └── 001-example/
-│       └── index.qmd
-├── notebooks/              # Exploratory notebooks
-├── src/                    # Reusable project code
-├── data/
-│   ├── raw/                # Raw data, usually not committed
-│   └── processed/          # Processed data, usually not committed
-├── figures/                # Optional exported figures
-├── _quarto.yml             # Quarto website config
-├── download_data.py        # Replace with real data download logic
-├── pyproject.toml          # Python dependencies for uv
-├── requirements.txt        # Python dependencies for pip/GitHub Actions
-└── environment.yml         # Python dependencies for Conda
-```
+## Replicating my environment and running my code
 
-## Local setup with uv
+I did package management with [uv](https://docs.astral.sh/uv/), so you should be able to:
 
-Install Quarto first: <https://quarto.org/docs/get-started/>
+1. Install Python (e.g., 3.12.x, such as 3.12.13).
+2. Install **uv** (e.g., curl ... | sh or your preferred installer method).
+3. Clone this repo.
+4. `cd` to the repo root.
+5. Create/sync the environment and install dependencies: `uv sync`
 
-Then run:
-
-```bash
-uv sync
-uv run python download_data.py
-uv run quarto preview
-```
-
-## Local setup with pip
-
-```bash
-python -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-python download_data.py
-quarto preview
-```
-
-On Windows PowerShell, activate the environment with:
-
-```powershell
-.venv\Scripts\Activate.ps1
-```
-
-## Local setup with Conda
-
-```bash
-conda env create -f environment.yml
-conda activate data-analysis-series
-python download_data.py
-quarto preview
-```
-
-## Render the site
-
-```bash
-quarto render
-```
-
-The rendered website will appear in `_site/`.
-
-## Publish to GitHub Pages
-
-1. Create a new public GitHub repository.
-2. Copy these files into it.
-3. Replace placeholder values in `_quarto.yml`:
-   - `YOUR-GITHUB-USERNAME`
-   - `YOUR-REPO-NAME`
-   - `YOUR-LINKEDIN-SLUG`
-4. Push to the `main` branch.
-5. In GitHub, go to **Settings → Pages**.
-6. Under **Build and deployment**, set the source to **GitHub Actions**.
-7. Push another commit or manually run the `Publish Quarto site` workflow.
-
-## Suggested workflow for each episode
-
-1. Explore in `notebooks/`.
-2. Move reusable loading, cleaning, or plotting code into `src/`.
-3. Write the polished narrative in a new folder under `posts/`.
-4. Render locally with `quarto preview`.
-5. Push to GitHub.
-6. Share the published post on LinkedIn.
-
-## Data policy
-
-The template ignores files in `data/raw/` and `data/processed/` by default to avoid accidentally committing large or restricted data.
-
-For public reproducibility, prefer one of these approaches:
-
-- commit a small sample dataset,
-- write a download script that fetches the public data,
-- document the exact source URL and access date,
-- or use GitHub Releases / external storage for large files.
-
-## Next edits to make
-
-- Pick your real public dataset.
-- Replace `download_data.py` with a real downloader.
-- Replace the starter post with your first analysis.
-- Update the site title and About page.
-- Add your LinkedIn URL in `_quarto.yml`.
+The code used by my Quarto posts is stored in `src/python`, so if you put that directory on your PYTHONPATH you should be able to
+do things like I'm doing in that Python environment (e.g., via `uv run jupyter lab`).

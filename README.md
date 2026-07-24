@@ -1,7 +1,6 @@
-# CMVividly
-
 <p align="center">
-    <img src="https://github.com/dhmay/CMVividly/blob/main/resources/cmvividly_logo.png" width="300">
+    <img src="https://github.com/dhmay/CMVividly/blob/main/resources/cmvividly_logo.png" width="300"
+        alt="CMVividly">
 </p>
 
 Exploring public T-cell receptors (TCRs) that respond to Cytomegalorvirus.

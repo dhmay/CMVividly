@@ -49,7 +49,18 @@ jobs:
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: _site
+          path: .
+          # ^ we'll set a deploy directory in the next step instead
+      - name: Stage built site at artifact root
+        run: |
+          rm -rf pages-site
+          mkdir pages-site
+          cp -R _site/. pages-site/
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: pages-site
+
 
   deploy:
     environment:

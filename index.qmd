@@ -19,7 +19,7 @@ of T-cell receptors (TCRs) that tend to occur in the same people. For more backg
 
 The Cytomegalovirus (CMV) ECOcluster is publicly [available](https://www.biorxiv.org/content/10.1101/2024.03.26.583354v3.supplementary-material). Here, I'm doing public data exploration of the CMV ECOcluster to help [the AIRR community](https://www.antibodysociety.org/the-airr-community/)
 and others make the best use of this new public resource. I'll post updates here and publicize them on my [LinkedIn](https://www.linkedin.com/in/damonhmay).
-I've done my best to make all the code here easily rerunnable (check ou the repo).
+I've done my best to make all the code here easily rerunnable (check ou the repo). 
 
 So, those TCRs... let's see 'em, vividly.
 

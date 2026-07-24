@@ -1,44 +1,94 @@
 ---
-title: "1. CMV ECOcluster basics"
+title: "CMV ECOcluster basics"
 date: "2026-07-24"
-description: "Download the 2026 CMV ECOcluster and take a very basic look at it."
+description: "Download the 2026 CMV ECOcluster and take a basic look at it."
+format:
+    html:
+        toc: true
+number-sections: true
 ---
 
-## What we're doing here
-
 1. Download the CMV ECOcluster (using code from this repo)
-2. Take a very basic look at it.
+2. Take a basic look at it.
 
 ## Setup (basic imports)
+For data manipulation and plotting.
 
 ```{python}
 # basic imports
 import pandas as pd
 from matplotlib import pyplot as plt
 import seaborn as sns
+
 # make plots look nice
 sns.set_context("talk")
+
+# statistics
+from scipy.stats import mannwhitneyu
 ```
 
 ## Load the 2026 CMV ECOcluster
-This loader method adds some useful columns to the dataframe, derived from other columns:
-hla_class, cdr3, vgene, jgene.
+
+Load the dataset and print the columns: 
 ```{python}
 # import to load the CMV ECOcluster, downloading if not already downloaded.
 from cmvividly.data.access import load_cmv_ecocluster_2026
 pdf_cmv_ecocluster_2026 = load_cmv_ecocluster_2026()
+pdf_cmv_ecocluster_2026.columns
 ```
+
+These columns are as described in our preprint:
+* tcr: TCRB CDR3 amino acid sequence, V gene and J gene, delimited by ‘+’
+* hla: the HLA allele the TCR is associated with (via its HLA CO-cluster)
+* hla_cocluster: the name of the HLA CO-cluster the TCR belongs to
+* tcr_pgen: the OLGA generation probability of the TCR
+* hla_cocluster_npos_hlamatch: the number of positive-label samples in the holdout CMV-
+labeled dataset (out of 120) that are inferred to have the associated HLA allele
+* hla_cocluster_nneg_hlamatch: the number of negative-label samples in the holdout CMV-
+labeled dataset (out of 120) that are inferred to have the associated HLA allele
+* hla_cocluster_auroc_hlaaware: the AUROC defined by breadth on the HLA-COcluster vs. the
+CMV serological label, considering only donors inferred to have the associated HLA allele
+* hla_cocluster_auroc_hlaunaware: the AUROC defined by breadth on the HLA-COcluster vs.
+the CMV serological label, considering all 120 holdout donors
+
+The loader method I'm using adds some useful columns, derived from other columns:
+* hla_class: "ci" or "cii", derived from "hla"
+* cdr3: TCRB CDR3 amino acid sequence
+* vgene: V gene
+* jgene: J gene
+* log10_tcr_pgen_eps: log10(tcr_pgen + 1e-50). The 1e-50 is to avoid log10(0)
+
 Look at the first few rows:
 ```{python}
 pdf_cmv_ecocluster_2026.head()
 ```
 
-## Take a very basic look at it
+## Take a basic look
 ```{python}
 n_tcrs = len(pdf_cmv_ecocluster_2026)
 n_hla_coclusters = len(set(pdf_cmv_ecocluster_2026["hla"]))
 n_hlas = len(set(pdf_cmv_ecocluster_2026["hla"]))
 print(f"TCRs: {n_tcrs}. HLA-COclusters: {n_hla_coclusters}. HLAs: {n_hlas}.")
+```
+There are 91 HLA-COclusters associated with 81 HLA alleles, so there are some multiples. 
+
+### Build a dataframe with one row per HLA-COcluster
+```{python}
+hlacocluster_level_cols = [
+    'hla_cocluster', 'hla', 'hla_class',
+       'hla_cocluster_npos_hlamatch',
+       'hla_cocluster_nneg_hlamatch', 'hla_cocluster_auroc_hlaaware',
+       'hla_cocluster_auroc_hlaunaware']
+agg_dict = {"tcr": "count"}
+for col in hlacocluster_level_cols:
+    agg_dict[col] = "first"
+pdf_hla_coclusters = pdf_cmv_ecocluster_2026.groupby("hla_cocluster").agg(agg_dict)
+pdf_hla_coclusters = pdf_hla_coclusters.rename(columns={
+    "tcr": "n_tcrs"})
+# make n_tcrs the second column, after hla_cocluster, and before the other columns
+pdf_hla_coclusters = pdf_hla_coclusters[["n_tcrs"] + hlacocluster_level_cols]
+print(f"Rows for {len(pdf_hla_coclusters)} HLA-COclusters")
+pdf_hla_coclusters.head()
 ```
 
 ### Break things down by HLA class
@@ -51,9 +101,8 @@ ax.set_xlabel("HLA class")
 f.set_size_inches(4, 3)
 pdf_cmv_ecocluster_2026.hla_class.value_counts()
 ```
-HLA alleles
+HLA-COclusters
 ```{python}
-pdf_hla_coclusters = pdf_cmv_ecocluster_2026.drop_duplicates("hla_cocluster")
 f, ax = plt.subplots()
 sns.barplot(pdf_hla_coclusters.hla_class.value_counts(), ax=ax)
 ax.set_title("HLA-COclusters associated with\neach HLA class")
@@ -61,3 +110,88 @@ ax.set_xlabel("HLA class")
 f.set_size_inches(4, 3)
 pdf_hla_coclusters.hla_class.value_counts()
 ```
+
+### Look at the number of TCRs per HLA-COcluster
+
+```{python}
+f, ax = plt.subplots()
+sns.histplot(pdf_hla_coclusters.n_tcrs, stat="count", ax=ax)
+ax.set_title("TCRs per HLA-COcluster")
+ax.set_xlabel("TCRs")
+pdf_hla_coclusters.n_tcrs.describe()
+```
+
+It varies enormously, from 14 to 6,562! Do HLA-COcluster sizes vary by HLA class?
+
+```{python}
+f, ax = plt.subplots()
+sns.boxplot(data=pdf_hla_coclusters,
+            y="n_tcrs", x="hla_class", ax=ax)
+ax.set_title("TCRs per HLA-COcluster, by HLA class")
+ax.set_xlabel("TCRs")
+pdf_hla_coclusters.n_tcrs.describe()
+mwu_p = mannwhitneyu(pdf_hla_coclusters[pdf_hla_coclusters.hla_class == "ci"].n_tcrs,
+             pdf_hla_coclusters[pdf_hla_coclusters.hla_class == "cii"].n_tcrs,
+             alternative="two-sided").pvalue
+class_is_higher = pdf_hla_coclusters[pdf_hla_coclusters.hla_class == "ci"].n_tcrs.mean() > pdf_hla_coclusters[pdf_hla_coclusters.hla_class == "cii"].n_tcrs.mean()
+print(f"Mean TCRs per HLA-COcluster is higher for {'Class I' if class_is_higher else 'Class II'}. 2-sided Mann-Whitney U test p-value: {mwu_p:.3e}.")
+```
+
+Yes, Class II-associated HLA-COclusters are starkly and significantly bigger than Class I.
+
+### Which HLA alleles have more than one HLA-COcluster? How many?
+
+```{python}
+pdf_coclusters_per_hla = pdf_hla_coclusters.hla.value_counts().reset_index()
+pdf_coclusters_per_hla.columns = ["hla", "n_hla_coclusters"]
+pdf_coclusters_per_hla_multiple = pdf_coclusters_per_hla[
+    pdf_coclusters_per_hla.n_hla_coclusters > 1]
+hlas_with_multiple_coclusters = set(pdf_coclusters_per_hla_multiple.hla)
+pdf_coclusters_per_hla_multiple
+```
+Interesting: it's almost all Class I alleles, even though there are both more
+HLA-COclusters and more TCRs associated with Class II alleles. That suggests more
+population substructure w.r.t. Class I. Maybe there's more
+differentiation of the CD8 response by infection phase than there is in CD4?
+
+### Take a look at TCR generation probability (pGen)
+
+As calculated by OLGA. 
+
+Two TCRs have dramatically lower pGen than the rest. Let's take those out for plotting:
+
+```{python}
+n_verylow_pgens = sum(pdf_cmv_ecocluster_2026.tcr_pgen < 1e-20)
+print(f"TCRs with very low pGen (< 1e-20): {n_verylow_pgens}")
+pdf_notlow_pgen = pdf_cmv_ecocluster_2026[pdf_cmv_ecocluster_2026.tcr_pgen >= 1e-20]
+print(f"Plotting on TCRs with pGen >= 1e-20: {len(pdf_notlow_pgen)} of {len(pdf_cmv_ecocluster_2026)} TCRs")
+```
+
+Look at the distribution of pGen.
+```{python}
+f, ax = plt.subplots()
+sns.histplot(pdf_notlow_pgen.log10_tcr_pgen_eps, stat="count", ax=ax)
+f.set_size_inches(6, 3)
+ax.set_title("Distribution of log10(pGen) (pGen >= 1e-20)")
+pdf_cmv_ecocluster_2026.tcr_pgen.describe()
+```
+That's more meaningful when placed in context. As described in the manuscript, it's
+notably narrower, with a higher median, then randomly selected TCRs from a large number
+of repertoires.
+
+Does it differ by HLA class? Plot and test.
+
+```{python}
+f, ax = plt.subplots()
+sns.boxplot(x="hla_class", y="log10_tcr_pgen_eps", data=pdf_notlow_pgen, ax=ax)
+ax.set_title("Distribution of log10(pGen)\nby HLA class (pGen >= 1e-20)")
+f.set_size_inches(4, 3)
+
+mwu_p = mannwhitneyu(pdf_cmv_ecocluster_2026[pdf_cmv_ecocluster_2026.hla_class == "ci"].tcr_pgen,
+              pdf_cmv_ecocluster_2026[pdf_cmv_ecocluster_2026.hla_class == "cii"].tcr_pgen,
+              alternative="two-sided").pvalue
+class_ii_is_higher = pdf_cmv_ecocluster_2026[pdf_cmv_ecocluster_2026.hla_class == "cii"].tcr_pgen.mean() > pdf_cmv_ecocluster_2026[pdf_cmv_ecocluster_2026.hla_class == "ci"].tcr_pgen.mean()
+higher_class = "Class II" if class_ii_is_higher else "Class I"
+print(f"2-sided Mann-Whitney U test p-value: {mwu_p:.3e}. Mean pGen is higher for {higher_class}.")
+```
+The means aren't *very* different, but Class I mean is significantly higher.

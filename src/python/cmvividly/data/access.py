@@ -34,6 +34,7 @@ def postprocess_cmv_ecocluster(df: pd.DataFrame) -> pd.DataFrame:
     Post-process a CMV ECOcluster DataFrame (either 2026 or 2024):
     * add hla_class column with values 'ci' or 'cii'
     * add "cdr3", "vgene" and "jgene" columns by splitting the "tcr" column on "+"
+    * add "log10_pgen_eps" column by computing log10(pgen + 1e-50) to avoid log(0)
     Args:
         df: A pandas DataFrame containing the CMV ECOcluster data. 
     Returns:
@@ -43,8 +44,10 @@ def postprocess_cmv_ecocluster(df: pd.DataFrame) -> pd.DataFrame:
     df["hla_class"] = df["hla"].apply(
         lambda x: "cii" if x.startswith("D") else "ci")
     df[["cdr3", "vgene", "jgene"]] = df["tcr"].str.split("+", expand=True)
-    # rearrange the columns: tcr, cdr3, vgene, jgene, hla, hla_class, and the rest
-    first_cols = ["tcr", "hla_cocluster", "hla", "cdr3", "vgene", "jgene", "hla_class"]
+    import numpy as np
+    df["log10_tcr_pgen_eps"] = (df["tcr_pgen"] + 1e-50).apply(lambda x: np.log10(x))
+    # rearrange the columns: tcr, cdr3, vgene, jgene, hla, hla_class, tcr_pgen, log10_tcr_pgen_eps and the rest
+    first_cols = ["tcr", "cdr3", "vgene", "jgene", "hla", "hla_class", "tcr_pgen", "log10_tcr_pgen_eps"]
     cols = first_cols + [c for c in df.columns if c not in first_cols]
     return df[cols]
 

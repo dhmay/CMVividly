@@ -27,6 +27,10 @@ format:
   html:
     theme: cosmo
     toc: true
+    toc-title: "On this page"
+    toc-depth: 4
+    toc-location: right
+    number-sections: true
     code-fold: true
     code-tools: true
     fig-width: 8

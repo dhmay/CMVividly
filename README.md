@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="https://github.com/dhmay/CMVividly/blob/main/resources/cmvividly_logo.png" width="300"
+    <img src="https://github.com/dhmay/CMVividly/blob/main/resources/cmvividly_logo.png"
         alt="CMVividly">
 </p>
 

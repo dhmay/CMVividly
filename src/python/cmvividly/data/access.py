@@ -31,8 +31,9 @@ def load_tsv_pandas(tsv_path: Path) -> pd.DataFrame:
 
 def postprocess_cmv_ecocluster(df: pd.DataFrame) -> pd.DataFrame:
     """
-    Post-process the CMV ECOcluster DataFrame:
-    add hla_class column with values 'ci' or 'cii'
+    Post-process a CMV ECOcluster DataFrame (either 2026 or 2024):
+    * add hla_class column with values 'ci' or 'cii'
+    * add "cdr3", "vgene" and "jgene" columns by splitting the "tcr" column on "+"
     Args:
         df: A pandas DataFrame containing the CMV ECOcluster data. 
     Returns:
@@ -41,7 +42,11 @@ def postprocess_cmv_ecocluster(df: pd.DataFrame) -> pd.DataFrame:
     df = df.copy()
     df["hla_class"] = df["hla"].apply(
         lambda x: "cii" if x.startswith("D") else "ci")
-    return df
+    df[["cdr3", "vgene", "jgene"]] = df["tcr"].str.split("+", expand=True)
+    # rearrange the columns: tcr, cdr3, vgene, jgene, hla, hla_class, and the rest
+    first_cols = ["tcr", "hla_cocluster", "hla", "cdr3", "vgene", "jgene", "hla_class"]
+    cols = first_cols + [c for c in df.columns if c not in first_cols]
+    return df[cols]
 
 def load_cmv_ecocluster_2026(overwrite: bool = False,
                              timeout_seconds: int = 60) -> pd.DataFrame:

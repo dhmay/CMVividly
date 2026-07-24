@@ -3,21 +3,25 @@ project:
   output-dir: _site
 
 website:
-  title: "Data Analysis Series"
-  description: "An episodic, reproducible data analysis project in Python."
-  site-url: "https://YOUR-GITHUB-USERNAME.github.io/YOUR-REPO-NAME"
-  repo-url: "https://github.com/YOUR-GITHUB-USERNAME/YOUR-REPO-NAME"
+  title: "CMVividly"
+  description: "Exploring the public T-cell response to Cytomegalorvirus."
+  site-url: "https://dhmay.github.io/CMVividly"
+  repo-url: "https://github.com/dhmay/CMVividly"
   repo-actions: [source, issue]
   navbar:
+    logo: resources/cmvividly_logo.png
     right:
       - text: "Posts"
         href: posts/index.qmd
       - text: "About"
         href: about.qmd
       - icon: github
-        href: "https://github.com/YOUR-GITHUB-USERNAME/YOUR-REPO-NAME"
+        href: "https://github.com/dhmay/CMVividly"
       - icon: linkedin
-        href: "https://www.linkedin.com/in/YOUR-LINKEDIN-SLUG/"
+        href: "https://www.linkedin.com/in/damonhmay/"
+      - icon: mortarboard-fill
+        href: "https://scholar.google.com/citations?user=bDGK4S4AAAAJ"
+        aria-label: "Google Scholar"
 
 format:
   html:

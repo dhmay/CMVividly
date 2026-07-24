@@ -1,5 +1,4 @@
 ---
-title: "Data Analysis Series"
 listing:
   contents: posts
   sort: "date desc"
@@ -10,6 +9,11 @@ listing:
 page-layout: full
 ---
 
-Welcome. This site is the home for an episodic, reproducible data analysis project.
+<img src="resources/cmvividly_logo.png" alt="CMVividly" style="display: block; margin: 0 auto" />
 
-Each post combines narrative, Python code, plots, and links back to the source repository so readers can rerun the analysis themselves.
+Welcome! I'm Damon May, a lead author of the ["ECOclusters" preprint](https://www.biorxiv.org/content/10.1101/2024.03.26.583354).
+That work discovers the public T-cell responses to viruses, bacteria, etc., by finding groups
+of T-cell receptors (TCRs) that tend to occur in the same people.
+
+The Cytomegalovirus (CMV) ECOcluster is publicly available. Here, I'm doing public data exploration of the CMV ECOcluster to help [the AIRR community](https://www.antibodysociety.org/the-airr-community/)
+and others make the best use of this new public resource ([more detail](about.qmd)). I'll post updates here and publicize them on my [LinkedIn](https://www.linkedin.com/in/damonhmay).

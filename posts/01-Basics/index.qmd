@@ -1,0 +1,63 @@
+---
+title: "1. CMV ECOcluster basics"
+date: "2026-07-24"
+description: "Download the 2026 CMV ECOcluster and take a very basic look at it."
+---
+
+## What we're doing here
+
+1. Download the CMV ECOcluster (using code from this repo)
+2. Take a very basic look at it.
+
+## Setup (basic imports)
+
+```{python}
+# basic imports
+import pandas as pd
+from matplotlib import pyplot as plt
+import seaborn as sns
+# make plots look nice
+sns.set_context("talk")
+```
+
+## Load the 2026 CMV ECOcluster
+This loader method adds some useful columns to the dataframe, derived from other columns:
+hla_class, cdr3, vgene, jgene.
+```{python}
+# import to load the CMV ECOcluster, downloading if not already downloaded.
+from cmvividly.data.access import load_cmv_ecocluster_2026
+pdf_cmv_ecocluster_2026 = load_cmv_ecocluster_2026()
+```
+Look at the first few rows:
+```{python}
+pdf_cmv_ecocluster_2026.head()
+```
+
+## Take a very basic look at it
+```{python}
+n_tcrs = len(pdf_cmv_ecocluster_2026)
+n_hla_coclusters = len(set(pdf_cmv_ecocluster_2026["hla"]))
+n_hlas = len(set(pdf_cmv_ecocluster_2026["hla"]))
+print(f"TCRs: {n_tcrs}. HLA-COclusters: {n_hla_coclusters}. HLAs: {n_hlas}.")
+```
+
+### Break things down by HLA class
+TCRs
+```{python}
+f, ax = plt.subplots()
+sns.barplot(pdf_cmv_ecocluster_2026.hla_class.value_counts(), ax=ax)
+ax.set_title("TCRs associated with\neach HLA class")
+ax.set_xlabel("HLA class")
+f.set_size_inches(4, 3)
+pdf_cmv_ecocluster_2026.hla_class.value_counts()
+```
+HLA alleles
+```{python}
+pdf_hla_coclusters = pdf_cmv_ecocluster_2026.drop_duplicates("hla_cocluster")
+f, ax = plt.subplots()
+sns.barplot(pdf_hla_coclusters.hla_class.value_counts(), ax=ax)
+ax.set_title("HLA-COclusters associated with\neach HLA class")
+ax.set_xlabel("HLA class")
+f.set_size_inches(4, 3)
+pdf_hla_coclusters.hla_class.value_counts()
+```

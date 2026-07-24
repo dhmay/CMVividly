@@ -1,6 +1,10 @@
-# Data Analysis Series
+# CMVividly
 
-A starter repository for an episodic, reproducible Python data analysis project published with Quarto.
+<p align="center">
+    <img src="https://github.com/dhmay/CMVividly/blob/main/resources/cmvividly_logo.png" width="300">
+</p>
+
+Exploring public T-cell receptors (TCRs) that respond to Cytomegalorvirus.
 
 ## What is included
 

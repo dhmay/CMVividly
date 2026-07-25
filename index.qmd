@@ -12,15 +12,16 @@ number-sections: False
 
 <img src="resources/cmvividly_logo.png" alt="CMVividly" style="display: block; margin: 0 auto" />
 
-Welcome! I'm Damon May, a lead author of the ["ECOclusters" preprint](https://www.biorxiv.org/content/10.1101/2024.03.26.583354).
-That work discovers the public T-cell responses to viruses, bacteria, etc., by finding groups
-of T-cell receptors (TCRs) that tend to occur in the same people. It was all made possible
-by training on an enormous pile of >30K TCR repertoires.
-For more background, check out [About](about.html) and the [GitHub repo](https://github.com/dhmay/CMVividly).
+Welcome! I'm Damon May, a lead author of a [preprint](https://www.biorxiv.org/content/10.1101/2024.03.26.583354)
+describing "ECOclusters": groups of T-cell receptors (TCRs) that represent humanity's collective
+T-cell responses to viruses, bacteria, etc. ECOclusters are groups of T-cell receptors
+(TCRs) that tend to occur in the same people: people who were exposed to the immune
+exposure to which the TCRs respond. We built ECOclusters 
+by training on an enormous pile of >30K TCR repertoires. For more background,
+check out [About](about.html) and the [GitHub repo](https://github.com/dhmay/CMVividly).
 
-
-The "CMV ECOcluster" is our compilation of humanity's
-collective public TCR response to Cytomegalovirus (CMV): 52,447 TCRs, each associated
+The "CMV ECOcluster" is our compilation TCRs responding to Cytomegalovirus (CMV):
+52,447 TCRs, each associated
 with the HLA allele that presents the CMV peptide it binds ([available here](https://www.biorxiv.org/content/10.1101/2024.03.26.583354v3.supplementary-material)). 
 Here, I'm exploring the CMV ECOcluster to help [the AIRR community](https://www.antibodysociety.org/the-airr-community/)
 and others make good use of this new resource. I'll post updates here and link them on my [LinkedIn](https://www.linkedin.com/in/damonhmay).

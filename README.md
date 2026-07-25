@@ -5,9 +5,9 @@
 
 Exploring public T-cell receptors (TCRs) that respond to Cytomegalorvirus.
 
-I'm a lead author of the ["ECOclusters" preprint](https://www.biorxiv.org/content/10.1101/2024.03.26.583354).
-That work discovers the public T-cell responses to viruses, bacteria, etc., by finding groups
-of T-cell receptors (TCRs) that tend to occur in the same people.
+I'm a lead author of a [preprint](https://www.biorxiv.org/content/10.1101/2024.03.26.583354) describing "ECOclusters":
+groups of T-cell receptors (TCRs) that represent humanity's collective T-cell responses to viruses, bacteria, etc. We
+constructed ECOclusters by finding groups of T-cell receptors (TCRs) that tend to occur in the same people, across >30,000 people.
 
 The “CMV ECOcluster” is our compilation of humanity’s collective public TCR response to Cytomegalovirus (CMV): 52,447 TCRs, each associated with the HLA allele that presents the CMV peptide it binds ([available here](https://www.biorxiv.org/content/10.1101/2024.03.26.583354v3.supplementary-material)). Here, I'm exploring the CMV ECOcluster to help [the AIRR community](https://www.antibodysociety.org/the-airr-community/)
 and others make the best use of this new public resource ([more details here](about.qmd)). I'll add updates here, publish them to [GitHub Pages](https://dhmay.github.io/CMVividly/), and

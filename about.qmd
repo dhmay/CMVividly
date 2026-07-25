@@ -4,25 +4,25 @@ page-layout: full
 ---
 
 I'm Damon May, a lead author of the July bioRxiv preprint 
-["Immune signatures of common exposures through co-occurrence of T-cell receptors in tens of thousands of donors"](https://www.biorxiv.org/content/10.1101/2024.03.26.583354).
+["Immune signatures of common exposures through co-occurrence of T-cell receptors in tens of thousands of donors"](https://www.biorxiv.org/content/10.1101/2024.03.26.583354){target="_blank" rel="noopener noreferrer"}.
 That work discovers the public T-cell responses to viruses, bacteria, etc., by finding groups
 of T-cell receptors (TCRs) that tend to occur in the same people. We call those TCR clusters *ECOclusters*.
-I wrote a pretty good [backgrounder](https://globalforum.diaglobal.org/issue/january-2025/ecoclusters-a-t-cell-biomarker-catalog-of-humanitys-shared-responses-to-disease/) on this stuff for DIA Global Forum in 2025.
+I wrote a pretty good [backgrounder](https://globalforum.diaglobal.org/issue/january-2025/ecoclusters-a-t-cell-biomarker-catalog-of-humanitys-shared-responses-to-disease/){target="_blank" rel="noopener noreferrer"} on this stuff for DIA Global Forum in 2025.
 
 In July 2026, we made a major update to the preprint (v3). More samples, new methods,
 better ECOclusters. The preprint makes a dramatically
-updated "CMV ECOcluster" available as [supplemental data](https://www.biorxiv.org/content/10.1101/2024.05.08.593237v1.supplementary-material). 
+updated "CMV ECOcluster" available as [supplemental data](https://www.biorxiv.org/content/10.1101/2024.05.08.593237v1.supplementary-material){target="_blank" rel="noopener noreferrer"}. 
 This group of TCRs represents humanity's collective, public response to Cytomegalovirus,
 a chronic virus that dramatically reshapes the T-cell repertoire. More formally, the CMV ECOcluster defines a sensitive,
 specific and quantitatively useful biomarker of CMV infection (much more detail in the preprint).
 
-Here, I'm doing public data exploration of the CMV ECOcluster to help [the AIRR community](https://www.antibodysociety.org/the-airr-community/)
+Here, I'm doing public data exploration of the CMV ECOcluster to help [the AIRR community](https://www.antibodysociety.org/the-airr-community/){target="_blank" rel="noopener noreferrer"}
 and others make the best use of this new public resource. I'll post updates when I have
 new analysis to share here and publicize them on my [LinkedIn](https://www.linkedin.com/in/damonhmay).
 
 ## To reproduce these posts
 
-Clone [the CMVividly github repo](https://github.com/dhmay/CMVividly) and install python and uv.
+Clone [the CMVividly github repo](https://github.com/dhmay/CMVividly){target="_blank" rel="noopener noreferrer"} and install python and uv.
 
 From the repository root:
 

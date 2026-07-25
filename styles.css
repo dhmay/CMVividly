@@ -94,3 +94,17 @@ pre {
   padding: 1rem;
 }
 
+/* 9) Homepage posts listing: light grey section background, white cards */
+#listing-listing {
+  background: #f3f4f6;
+  border-radius: 18px;
+  padding: 1rem;
+}
+
+#listing-listing .quarto-post {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 14px;
+  padding: 1rem;
+}
+

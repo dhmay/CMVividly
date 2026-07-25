@@ -10,7 +10,7 @@ That work discovers the public T-cell responses to viruses, bacteria, etc., by f
 of T-cell receptors (TCRs) that tend to occur in the same people.
 
 The Cytomegalovirus (CMV) ECOcluster is publicly available. Here, I'm doing public data exploration of the CMV ECOcluster to help [the AIRR community](https://www.antibodysociety.org/the-airr-community/)
-and others make the best use of this new public resource ([more detail](about.qmd)). I'll add updates here, publish them to GitHub Pages, and
+and others make the best use of this new public resource ([more detail](about.qmd)). I'll add updates here, publish them to [GitHub Pages](https://dhmay.github.io/CMVividly/), and
 publicize them on my [LinkedIn](https://www.linkedin.com/in/damonhmay). 
 
 So, those TCRs... let's see 'em, vividly.

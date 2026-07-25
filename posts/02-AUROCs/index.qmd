@@ -39,17 +39,8 @@ pdf_cmv_ecocluster_2026 = load_cmv_ecocluster_2026()
 pdf_cmv_ecocluster_2026.columns
 
 # make an HLA-COcluster-level dataframe
-hlacocluster_level_cols = [
-    'hla_cocluster', 'hla', 'hla_class',
-       'hla_cocluster_npos_hlamatch',
-       'hla_cocluster_nneg_hlamatch', 'hla_cocluster_auroc_hlaaware',
-       'hla_cocluster_auroc_hlaunaware']
-agg_dict = {"tcr": "count"}
-for col in hlacocluster_level_cols:
-    agg_dict[col] = "first"
-pdf_hla_coclusters = pdf_cmv_ecocluster_2026.groupby("hla_cocluster").agg(agg_dict)
-pdf_hla_coclusters = pdf_hla_coclusters.rename(columns={
-    "tcr": "n_tcrs"})
+from cmvividly.data.manipulation import extract_hlacoclusters_pdf
+pdf_hla_coclusters = extract_hlacoclusters_pdf(pdf_cmv_ecocluster_2026)
 ```
 
 ## HLA-aware AUROC
@@ -119,11 +110,13 @@ ax.set_xlabel("TCRs in HLA-COcluster")
 It sure does! The biggest HLA-Coclusters (all Class II) all look stellar. The
 worst ones are mostly small (except one with ~1000 TCRs), though most small ones
 are also very good. And, as we saw in the [Basics post](../01-Basics/index.html),
-Class II-associated HLA-COclusters tend to be larger than Class I. So, that's a
-*plausible* explanation for the HLA class difference in AUROC.
+Class II-associated HLA-COclusters tend to be larger than Class I. 
+So, it seems plausible that some of
+the CMV HLA-COclusters don't perform well as diagnostics *because*
+they have too few TCRs.
 
 Perhaps some of those small HLA-COclusters are of low quality, i.e., not very CMV-specific. 
-Or perhaps they're high-quality but suffer from a lot of dropout, i.e., in many CMV+
+They could also be high-quality but suffer from a lot of dropout, i.e., in many CMV+
 donors none of the small number of TCRs happens to be in the repertoire, by chance. 
 Bigger HLA-COclusters means more shots on goal. That's why the general-purpose
 ECOcluster breadth metric we used in the manuscript weights HLA-COclusters by cardinality.
@@ -144,3 +137,4 @@ Not really, no! And there are some high-ish HLA-unaware AUROCs, but they're all
 on HLA-COclusters that had enough samples in holdout to evaluate HLA-aware. That makes sense!
 If there aren't enough samples in holdout to evaluate HLA-aware, we're looking at
 a rare allele whose HLA-unaware AUROC will be swamped by noise.
+

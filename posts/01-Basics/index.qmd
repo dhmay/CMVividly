@@ -34,31 +34,65 @@ Load the dataset and print the columns:
 # import to load the CMV ECOcluster, downloading if not already downloaded.
 from cmvividly.data.access import load_cmv_ecocluster_2026
 pdf_cmv_ecocluster_2026 = load_cmv_ecocluster_2026()
-pdf_cmv_ecocluster_2026.columns
+list(pdf_cmv_ecocluster_2026.columns)
 ```
 
 These columns are as described in our preprint:
 
-* tcr: TCRB CDR3 amino acid sequence, V gene and J gene, delimited by ‘+’
-* hla: the HLA allele the TCR is associated with (via its HLA CO-cluster)
-* hla_cocluster: the name of the HLA CO-cluster the TCR belongs to
-* tcr_pgen: the OLGA generation probability of the TCR
-* hla_cocluster_npos_hlamatch: the number of positive-label samples in the holdout CMV-
-labeled dataset (out of 120) that are inferred to have the associated HLA allele
-* hla_cocluster_nneg_hlamatch: the number of negative-label samples in the holdout CMV-
-labeled dataset (out of 120) that are inferred to have the associated HLA allele
-* hla_cocluster_auroc_hlaaware: the AUROC defined by breadth on the HLA-COcluster vs. the
-CMV serological label, considering only donors inferred to have the associated HLA allele
-* hla_cocluster_auroc_hlaunaware: the AUROC defined by breadth on the HLA-COcluster vs.
-the CMV serological label, considering all 120 holdout donors
+<style>
+.cmv-columns-table {
+    border-collapse: collapse;
+}
+
+.cmv-columns-table th,
+.cmv-columns-table td {
+    border: 1px solid #999;
+    padding: 0.35rem 0.5rem;
+}
+
+.cmv-columns-table th:first-child,
+.cmv-columns-table td:first-child {
+    width: 1%;
+    white-space: nowrap;
+}
+</style>
+
+<table class="cmv-columns-table">
+    <thead>
+        <tr>
+            <th style="width: 1%; white-space: nowrap;">column</th>
+            <th>description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr><td style="white-space: nowrap;">tcr</td><td>TCRB CDR3 amino acid sequence, V gene and J gene, delimited by '+' </td></tr>
+        <tr><td style="white-space: nowrap;">hla</td><td>the HLA allele the TCR is associated with (via its HLA CO-cluster)</td></tr>
+        <tr><td style="white-space: nowrap;">hla_cocluster</td><td>the name of the HLA CO-cluster the TCR belongs to</td></tr>
+        <tr><td style="white-space: nowrap;">tcr_pgen</td><td>the OLGA generation probability of the TCR</td></tr>
+        <tr><td style="white-space: nowrap;">hla_cocluster_npos_hlamatch</td><td>the number of positive-label samples in the holdout CMV-labeled dataset (out of 120) that are inferred to have the associated HLA allele</td></tr>
+        <tr><td style="white-space: nowrap;">hla_cocluster_nneg_hlamatch</td><td>the number of negative-label samples in the holdout CMV-labeled dataset (out of 120) that are inferred to have the associated HLA allele</td></tr>
+        <tr><td style="white-space: nowrap;">hla_cocluster_auroc_hlaaware</td><td>the AUROC defined by breadth on the HLA-COcluster vs. the CMV serological label, considering only donors inferred to have the associated HLA allele</td></tr>
+        <tr><td style="white-space: nowrap;">hla_cocluster_auroc_hlaunaware</td><td>the AUROC defined by breadth on the HLA-COcluster vs. the CMV serological label, considering all 120 holdout donors</td></tr>
+    </tbody>
+</table>
 
 The loader method I'm using (from the cmvividly package) adds some useful columns, derived from other columns:
 
-* hla_class: "ci" or "cii", derived from "hla"
-* cdr3: TCRB CDR3 amino acid sequence
-* vgene: V gene
-* jgene: J gene
-* log10_tcr_pgen_eps: log10(tcr_pgen + 1e-50). The 1e-50 is to avoid log10(0)
+<table class="cmv-columns-table">
+    <thead>
+        <tr>
+            <th style="width: 1%; white-space: nowrap;">column</th>
+            <th>description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr><td style="white-space: nowrap;">hla_class</td><td>"ci" or "cii", derived from "hla"</td></tr>
+        <tr><td style="white-space: nowrap;">cdr3</td><td>TCRB CDR3 amino acid sequence</td></tr>
+        <tr><td style="white-space: nowrap;">vgene</td><td>V gene</td></tr>
+        <tr><td style="white-space: nowrap;">jgene</td><td>J gene</td></tr>
+        <tr><td style="white-space: nowrap;">log10_tcr_pgen_eps</td><td>log10(tcr_pgen + 1e-50). The 1e-50 is to avoid log10(0)</td></tr>
+    </tbody>
+</table>
 
 Look at the first few rows:
 ```{python}
@@ -76,19 +110,8 @@ There are 91 HLA-COclusters associated with 81 HLA alleles, so there are some mu
 
 ### Build a dataframe with one row per HLA-COcluster
 ```{python}
-hlacocluster_level_cols = [
-    'hla_cocluster', 'hla', 'hla_class',
-       'hla_cocluster_npos_hlamatch',
-       'hla_cocluster_nneg_hlamatch', 'hla_cocluster_auroc_hlaaware',
-       'hla_cocluster_auroc_hlaunaware']
-agg_dict = {"tcr": "count"}
-for col in hlacocluster_level_cols:
-    agg_dict[col] = "first"
-pdf_hla_coclusters = pdf_cmv_ecocluster_2026.groupby("hla_cocluster").agg(agg_dict)
-pdf_hla_coclusters = pdf_hla_coclusters.rename(columns={
-    "tcr": "n_tcrs"})
-# make n_tcrs the second column, after hla_cocluster, and before the other columns
-pdf_hla_coclusters = pdf_hla_coclusters[["n_tcrs"] + hlacocluster_level_cols]
+from cmvividly.data.manipulation import extract_hlacoclusters_pdf
+pdf_hla_coclusters = extract_hlacoclusters_pdf(pdf_cmv_ecocluster_2026)
 print(f"Rows for {len(pdf_hla_coclusters)} HLA-COclusters")
 pdf_hla_coclusters.head()
 ```

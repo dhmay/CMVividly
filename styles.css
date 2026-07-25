@@ -1,0 +1,96 @@
+/* ====== Modern scientist site accents on a white canvas ====== */
+:root{
+  --accent: #1f7a8c;       /* teal-blue */
+  --accent-2:#155e69;
+  --nav-border: rgba(31, 122, 140, 0.25);
+  --text: #0b2540;
+  --muted: rgba(11, 37, 64, 0.68);
+  --border: rgba(11, 37, 64, 0.14);
+  --code-border: rgba(31, 122, 140, 0.22);
+}
+
+/* 1) Force white canvas */
+body, .quarto-container, main, article {
+  background: #ffffff !important;
+}
+
+/* 2) Typography hierarchy */
+h1 { color: var(--text); font-weight: 800; letter-spacing: -0.02em; }
+h2 { color: var(--text); font-weight: 780; letter-spacing: -0.01em; }
+h3, h4, h5, h6 { color: var(--text); font-weight: 700; }
+
+p, li {
+  color: var(--text);
+}
+
+/* 3) Section spacing + subtle separators (modern rhythm) */
+section.level1, section.level2, section.level3 {
+  padding-top: 0.25rem;
+}
+
+.quarto-section, .quarto-section::before {
+  border-top: 1px solid transparent;
+}
+
+/* 4) Links: accent + clean hover */
+a { color: var(--accent); text-underline-offset: 3px; }
+a:hover { color: var(--accent-2); }
+
+/* 5) TOC: cleaner and more modern active state */
+.tocify ul {
+  border-left: 1px solid rgba(0,0,0,0.08);
+  padding-left: 0.75rem;
+  margin-left: 0.25rem;
+}
+
+.nav.nav-pills .nav-link.active,
+.nav a.active {
+  background: rgba(31, 122, 140, 0.10) !important;
+  color: var(--text) !important;
+  border-left: 3px solid var(--accent);
+  padding-left: 0.6rem;
+  margin-left: -0.6rem;
+}
+
+/* 6) Callouts: subtle tint + left bar */
+.callout {
+  border: 1px solid var(--border) !important;
+  border-left: 5px solid var(--accent) !important;
+  border-radius: 12px;
+  overflow: hidden;
+  background: rgba(31, 122, 140, 0.03);
+}
+
+.callout .callout-header {
+  border-bottom: 1px solid rgba(31, 122, 140, 0.18) !important;
+  background: rgba(31, 122, 140, 0.06) !important;
+}
+
+/* 7) Code blocks: modern container with accent border */
+pre, code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+               "Liberation Mono", "Courier New", monospace;
+}
+
+pre {
+  border: 1px solid var(--code-border);
+  border-radius: 12px;
+  background: rgba(0,0,0,0.02);
+  box-shadow: 0 1px 0 rgba(0,0,0,0.03);
+}
+
+/* inline code */
+:not(pre) > code {
+  background: rgba(31, 122, 140, 0.08);
+  border: 1px solid rgba(31, 122, 140, 0.18);
+  border-radius: 8px;
+  padding: 0.1em 0.35em;
+}
+
+/* 8) Content cards / posts list items (if present) */
+.listing-item, .card, .quarto-listing {
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 14px;
+  padding: 1rem;
+}
+

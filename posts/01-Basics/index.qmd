@@ -8,11 +8,13 @@ format:
 number-sections: true
 ---
 
-1. Download the CMV ECOcluster (using code from this repo)
-2. Take a basic look at it.
+Download the CMV ECOcluster (using code from this repo), explain the columns.
+Break it down by HLA-COcluster, by HLA allele and by HLA class. 
+Look at HLA alleles that have more than one HLA-COcluster. Have a look at
+TCR generation probability.
 
-## Setup (basic imports)
-For data manipulation and plotting.
+## Setup
+Simple imports for data manipulation and plotting.
 
 ```{python}
 # basic imports
@@ -102,7 +104,7 @@ pdf_cmv_ecocluster_2026.head()
 ## Take a basic look
 ```{python}
 n_tcrs = len(pdf_cmv_ecocluster_2026)
-n_hla_coclusters = len(set(pdf_cmv_ecocluster_2026["hla"]))
+n_hla_coclusters = len(set(pdf_cmv_ecocluster_2026["hla_cocluster"]))
 n_hlas = len(set(pdf_cmv_ecocluster_2026["hla"]))
 print(f"TCRs: {n_tcrs}. HLA-COclusters: {n_hla_coclusters}. HLAs: {n_hlas}.")
 ```

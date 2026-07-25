@@ -19,10 +19,13 @@ by training on an enormous pile of >30K TCR repertoires.
 For more background, check out [About](about.html) and the [GitHub repo](https://github.com/dhmay/CMVividly).
 
 
-The Cytomegalovirus (CMV) ECOcluster is publicly [available](https://www.biorxiv.org/content/10.1101/2024.03.26.583354v3.supplementary-material). Here, I'm doing public data exploration of the CMV ECOcluster to help [the AIRR community](https://www.antibodysociety.org/the-airr-community/)
-and others make the best use of this new public resource. I'll post updates here and publicize them on my [LinkedIn](https://www.linkedin.com/in/damonhmay).
-I've done my best to make all the code here easily rerunnable (check ou the repo). 
+The "CMV ECOcluster" is our compilation of humanity's
+collective public TCR response to Cytomegalovirus (CMV): 52,447 TCRs, each associated
+with the HLA allele that presents the CMV peptide it binds ([available here](https://www.biorxiv.org/content/10.1101/2024.03.26.583354v3.supplementary-material)). 
+Here, I'm exploring the CMV ECOcluster to help [the AIRR community](https://www.antibodysociety.org/the-airr-community/)
+and others make good use of this new resource. I'll post updates here and link them on my [LinkedIn](https://www.linkedin.com/in/damonhmay).
+All the code here should be easily runnable by anyone (check out the repo). 
 
-So, those TCRs: let's **see 'em, vividly**.
+So, those 52,447 TCRs: let's **see 'em, vividly**.
 
 ## Posts

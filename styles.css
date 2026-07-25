@@ -108,3 +108,40 @@ pre {
   padding: 1rem;
 }
 
+/* 10) Homepage custom sidebar menu: replace the default TOC with post links */
+body.home-posts-sidebar #TOC {
+  display: none !important;
+}
+
+body.home-posts-sidebar #posts-sidebar-menu {
+  margin-top: 0.5rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+body.home-posts-sidebar #posts-sidebar-menu h5 {
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+body.home-posts-sidebar #posts-sidebar-menu ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+body.home-posts-sidebar #posts-sidebar-menu li + li {
+  margin-top: 0.35rem;
+}
+
+body.home-posts-sidebar #posts-sidebar-menu a {
+  color: var(--text);
+  text-decoration: none;
+}
+
+body.home-posts-sidebar #posts-sidebar-menu a:hover {
+  color: var(--accent-2);
+  text-decoration: underline;
+}
+

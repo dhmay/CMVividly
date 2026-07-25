@@ -3,11 +3,53 @@ listing:
   contents: posts/*/index.qmd
   sort: "date desc"
   type: default
-  categories: true
+  categories: false
   sort-ui: false
   filter-ui: false
 page-layout: full
 number-sections: False
+format:
+  html:
+    body-classes: home-posts-sidebar
+    include-in-header:
+      text: |
+        <script>
+        document.addEventListener("DOMContentLoaded", () => {
+          const sidebar = document.querySelector("#quarto-margin-sidebar");
+          if (!sidebar || document.getElementById("posts-sidebar-menu")) return;
+
+          const links = Array.from(document.querySelectorAll("#listing-listing .listing-title a"))
+            .map((link) => ({
+              href: link.getAttribute("href"),
+              title: link.textContent.trim(),
+            }))
+            .filter((item) => item.href && item.title);
+
+          if (!links.length) return;
+
+          const menu = document.createElement("nav");
+          menu.id = "posts-sidebar-menu";
+          menu.className = "posts-sidebar-menu";
+          menu.setAttribute("aria-label", "Posts");
+
+          const heading = document.createElement("h5");
+          heading.textContent = "Posts";
+          menu.appendChild(heading);
+
+          const list = document.createElement("ul");
+          links.forEach(({ href, title }) => {
+            const item = document.createElement("li");
+            const anchor = document.createElement("a");
+            anchor.href = href;
+            anchor.textContent = title;
+            item.appendChild(anchor);
+            list.appendChild(item);
+          });
+
+          menu.appendChild(list);
+          sidebar.appendChild(menu);
+        });
+        </script>
 ---
 
 <img src="resources/cmvividly_logo.png" alt="CMVividly" style="display: block; margin: 0 auto" />

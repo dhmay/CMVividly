@@ -14,7 +14,7 @@ def extract_hlacoclusters_pdf(pdf_cmv_ecocluster: pd.DataFrame) -> pd.DataFrame:
         pd.DataFrame: _description_
     """
     hlacocluster_level_cols = [
-        'hla_cocluster', 'hla', 'hla_class',
+        'hla', 'hla_class',
         'hla_cocluster_npos_hlamatch',
         'hla_cocluster_nneg_hlamatch',
         'hla_cocluster_auroc_hlaaware',
@@ -27,9 +27,9 @@ def extract_hlacoclusters_pdf(pdf_cmv_ecocluster: pd.DataFrame) -> pd.DataFrame:
     agg_dict = {"tcr": "count"}
     for col in hlacocluster_level_cols:
         agg_dict[col] = "first"
-    pdf_hla_coclusters = pdf_cmv_ecocluster.groupby("hla_cocluster").agg(agg_dict)
+    pdf_hla_coclusters = pdf_cmv_ecocluster.groupby("hla_cocluster").agg(agg_dict).reset_index()
     pdf_hla_coclusters = pdf_hla_coclusters.rename(columns={
         "tcr": "n_tcrs"})
     # make n_tcrs the second column, after hla_cocluster, and before the other columns
-    pdf_hla_coclusters = pdf_hla_coclusters[["n_tcrs"] + hlacocluster_level_cols]
+    pdf_hla_coclusters = pdf_hla_coclusters[["hla_cocluster", "n_tcrs"] + hlacocluster_level_cols]
     return pdf_hla_coclusters

@@ -20,6 +20,10 @@ import seaborn as sns
 # make plots look nice
 sns.set_context("talk")
 
+# make tables look nice and be interactive
+import itables
+itables.init_notebook_mode()
+
 # statistics
 from scipy.stats import mannwhitneyu
 ```
@@ -91,9 +95,10 @@ The loader method I'm using (from the cmvividly package) adds some useful column
     </tbody>
 </table>
 
-Look at the first few rows:
+Here's an interactive table with a few hundred rows from the CMV ECOcluster, one row per TCR. 
+You can sort on the columns and search for values:
 ```{python}
-pdf_cmv_ecocluster_2026.head()
+pdf_cmv_ecocluster_2026
 ```
 
 ## Take a basic look
@@ -106,11 +111,13 @@ print(f"TCRs: {n_tcrs}. HLA-COclusters: {n_hla_coclusters}. HLAs: {n_hlas}.")
 There are 91 HLA-COclusters associated with 81 HLA alleles, so there are some multiples. 
 
 ### Build a dataframe with one row per HLA-COcluster
+
+Here's an interactive table with one row per HLA-COcluster:
 ```{python}
 from cmvividly.data.manipulation import extract_hlacoclusters_pdf
 pdf_hla_coclusters = extract_hlacoclusters_pdf(pdf_cmv_ecocluster_2026)
 print(f"Rows for {len(pdf_hla_coclusters)} HLA-COclusters")
-pdf_hla_coclusters.head()
+pdf_hla_coclusters
 ```
 
 ### Break things down by HLA class

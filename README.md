@@ -30,10 +30,11 @@ do things like I'm doing in that Python environment (e.g., via `uv run jupyter l
 
 ## Running my code with GitHub Codespaces
 
-This repository includes a [.devcontainer](.devcontainer) configuration, so you can open it directly in GitHub Codespaces.
+This repository includes a [.devcontainer](.devcontainer) configuration, so you can open it with GitHub Codespaces
+and work with the `cmvividly` package and all its dependencies:
 
-1. In GitHub, choose **Code** -> **Codespaces** -> **Create codespace on main**.
+1. In this github repo, choose **Code** -> **Codespaces** -> **Create codespace on main**.
 2. Wait for the container to build and for `uv sync --all-groups` to finish.
-3. Open a terminal or notebook and use the preinstalled Python, Quarto, and package environment.
+3. Open a terminal or notebook and use the preinstalled Python and package environment.
 
-The first startup may take a few minutes because it installs the project dependencies and Quarto inside the container.
+The first startup may take a few minutes because it installs the project dependencies inside the container.

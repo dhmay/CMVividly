@@ -8,6 +8,10 @@ format:
 number-sections: true
 ---
 
+HLA-COclusters are subclusters of ECOclusters that are each associated
+with a single HLA-allele. ECOclusters are built by clustering the
+HLA-COclusters, by breadth correlation in repertoires, across HLA alleles.
+
 In the manuscript, we evaluated breadth (proportion of repertoire TCRs that are members)
 on each HLA-COcluster as a predictor of CMV status, in holdout repertoires. The
 publicly available CMV ECOcluster has AUROCs associated with each HLA-COcluster,

@@ -15,7 +15,7 @@ publicize them on my [LinkedIn](https://www.linkedin.com/in/damonhmay).
 
 So, those 52,447 CMV TCRs: let's **see 'em, vividly**.
 
-## Replicating my environment and running my code
+## Replicating my environment and running my code locally
 
 I did package management with [uv](https://docs.astral.sh/uv/), so you should be able to:
 
@@ -27,3 +27,13 @@ I did package management with [uv](https://docs.astral.sh/uv/), so you should be
 
 The code used by my Quarto posts is stored in `src/python`, so if you put that directory on your PYTHONPATH you should be able to
 do things like I'm doing in that Python environment (e.g., via `uv run jupyter lab`).
+
+## Running my code with GitHub Codespaces
+
+This repository includes a [.devcontainer](.devcontainer) configuration, so you can open it directly in GitHub Codespaces.
+
+1. In GitHub, choose **Code** -> **Codespaces** -> **Create codespace on main**.
+2. Wait for the container to build and for `uv sync --all-groups` to finish.
+3. Open a terminal or notebook and use the preinstalled Python, Quarto, and package environment.
+
+The first startup may take a few minutes because it installs the project dependencies and Quarto inside the container.

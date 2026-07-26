@@ -387,14 +387,19 @@ dependencies = [
     { name = "ipykernel" },
     { name = "itables" },
     { name = "jupyter" },
+    { name = "jupyter-copilot" },
     { name = "jupyterlab" },
+    { name = "jupyterlab-extensions" },
     { name = "matplotlib" },
+    { name = "nodeenv" },
     { name = "numpy", version = "2.4.6", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.12'" },
     { name = "numpy", version = "2.5.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.12'" },
     { name = "pandas" },
+    { name = "pip" },
     { name = "plotly" },
     { name = "polars" },
     { name = "pyarrow" },
+    { name = "pyright" },
     { name = "python-dotenv" },
     { name = "requests" },
     { name = "scikit-learn" },
@@ -417,13 +422,18 @@ requires-dist = [
     { name = "ipykernel", specifier = ">=6.29" },
     { name = "itables", specifier = ">=2.9.1" },
     { name = "jupyter", specifier = ">=1.1.1" },
+    { name = "jupyter-copilot", specifier = "==0.1.5" },
     { name = "jupyterlab", specifier = ">=4.0" },
+    { name = "jupyterlab-extensions", specifier = "==0.0.1" },
     { name = "matplotlib", specifier = ">=3.8" },
+    { name = "nodeenv", specifier = "==1.10.0" },
     { name = "numpy", specifier = ">=2.4.6" },
     { name = "pandas", specifier = ">=2.2" },
+    { name = "pip", specifier = "==25.0.1" },
     { name = "plotly", specifier = ">=6.9.0" },
     { name = "polars", specifier = ">=1.42.1" },
     { name = "pyarrow", specifier = ">=25.0.0" },
+    { name = "pyright", specifier = "==1.1.411" },
     { name = "python-dotenv", specifier = ">=1.2.2" },
     { name = "requests", specifier = ">=2.34.2" },
     { name = "scikit-learn", specifier = ">=1.9.0" },
@@ -1076,6 +1086,18 @@ wheels = [
 ]
 
 [[package]]
+name = "jupyter-copilot"
+version = "0.1.5"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "jupyter-server" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/eb/46/36fe385dfdf3be45e6e3c3b628773d435451267b7e8dfd5079539b0627ed/jupyter_copilot-0.1.5.tar.gz", hash = "sha256:b6c462be303b1b22d8698c2cd070c719c51cf3ea2960d515d5d108c3a82a521f", size = 5612220, upload-time = "2025-07-31T04:11:38.829Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/d9/76/557b3890e226a0ae6880f8dcdf8c29514c9aa1b86d6d83dd98edca7e9348/jupyter_copilot-0.1.5-py3-none-any.whl", hash = "sha256:caa694aae2f13cec45ca7b9a2405603e8c7a504fe43d0fa8cb90b7c6b7297963", size = 9689023, upload-time = "2025-07-31T04:11:03.646Z" },
+]
+
+[[package]]
 name = "jupyter-core"
 version = "5.9.1"
 source = { registry = "https://pypi.org/simple" }
@@ -1184,6 +1206,15 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/bc/2a/d6af53bfd45a43a5bfe7e40ba47ee7a8921a807daf4bb708e3a295bbb54d/jupyterlab-4.6.1.tar.gz", hash = "sha256:75315982ed28427edaa62bb85eadb5105e4043a757643c910efd787fe6ed0837", size = 28179125, upload-time = "2026-06-29T12:48:45.402Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/5a/81/90ac6cc31d248e83a0d1eab343a5e6e68bc783d3f74fbe61640f42a61da4/jupyterlab-4.6.1-py3-none-any.whl", hash = "sha256:85a58546c831f3dce6cf919468c26874c9065e99c42279fb4abb8e1b552a98bb", size = 17164660, upload-time = "2026-06-29T12:48:41.21Z" },
+]
+
+[[package]]
+name = "jupyterlab-extensions"
+version = "0.0.1"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/bc/a3/15ac7319681de0125be5f9e66b1dc9fc30125255800cce3a12339e6f80df/jupyterlab-extensions-0.0.1.tar.gz", hash = "sha256:6baa8cb96d7d19d82da555b8f99e98ee0c48fd5301e24dcd5d3c1973022ff131", size = 753, upload-time = "2021-01-14T08:06:11.685Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/80/b4/9d94017cbf77eace7058b512d4a5e5131d527137d275492627d03cf77fb9/jupyterlab_extensions-0.0.1-py3-none-any.whl", hash = "sha256:f4804fa449c2069d06798e0703e015aa59352c153c61e65fa1573820e57a4a4b", size = 1124, upload-time = "2021-01-14T08:06:10.331Z" },
 ]
 
 [[package]]
@@ -1643,6 +1674,15 @@ wheels = [
 ]
 
 [[package]]
+name = "nodeenv"
+version = "1.10.0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/24/bf/d1bda4f6168e0b2e9e5958945e01910052158313224ada5ce1fb2e1113b8/nodeenv-1.10.0.tar.gz", hash = "sha256:996c191ad80897d076bdfba80a41994c2b47c68e224c542b48feba42ba00f8bb", size = 55611, upload-time = "2025-12-20T14:08:54.006Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/88/b2/d0896bdcdc8d28a7fc5717c305f1a861c26e18c05047949fb371034d98bd/nodeenv-1.10.0-py2.py3-none-any.whl", hash = "sha256:5bb13e3eed2923615535339b3c620e76779af4cb4c6a90deccc9e36b274d3827", size = 23438, upload-time = "2025-12-20T14:08:52.782Z" },
+]
+
+[[package]]
 name = "notebook"
 version = "7.6.0"
 source = { registry = "https://pypi.org/simple" }
@@ -2022,6 +2062,15 @@ wheels = [
 ]
 
 [[package]]
+name = "pip"
+version = "25.0.1"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/70/53/b309b4a497b09655cb7e07088966881a57d082f48ac3cb54ea729fd2c6cf/pip-25.0.1.tar.gz", hash = "sha256:88f96547ea48b940a3a385494e181e29fb8637898f88d88737c5049780f196ea", size = 1950850, upload-time = "2025-02-09T17:14:04.423Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/c9/bc/b7db44f5f39f9d0494071bddae6880eb645970366d0a200022a1a93d57f5/pip-25.0.1-py3-none-any.whl", hash = "sha256:c46efd13b6aa8279f33f2864459c8ce587ea6a1a59ee20de055868d8f7688f7f", size = 1841526, upload-time = "2025-02-09T17:14:01.463Z" },
+]
+
+[[package]]
 name = "platformdirs"
 version = "4.10.0"
 source = { registry = "https://pypi.org/simple" }
@@ -2215,6 +2264,19 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/f3/91/9c6ee907786a473bf81c5f53cf703ba0957b23ab84c264080fb5a450416f/pyparsing-3.3.2.tar.gz", hash = "sha256:c777f4d763f140633dcb6d8a3eda953bf7a214dc4eff598413c070bcdc117cbc", size = 6851574, upload-time = "2026-01-21T03:57:59.36Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/10/bd/c038d7cc38edc1aa5bf91ab8068b63d4308c66c4c8bb3cbba7dfbc049f9c/pyparsing-3.3.2-py3-none-any.whl", hash = "sha256:850ba148bd908d7e2411587e247a1e4f0327839c40e2e5e6d05a007ecc69911d", size = 122781, upload-time = "2026-01-21T03:57:55.912Z" },
+]
+
+[[package]]
+name = "pyright"
+version = "1.1.411"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "nodeenv" },
+    { name = "typing-extensions" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/7e/ab/265f7dc69d28113ebba19092e57b075f41543b2ed048429c5f56e2b88eac/pyright-1.1.411.tar.gz", hash = "sha256:d885a0551f2e763b089a02702174e7f4ba77548cddabc972ab86d1f7f1b0f998", size = 4112861, upload-time = "2026-06-25T02:14:06.37Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/0a/49/385be530a6a5b78d1cbcd5c2e38debc8959a2fc6bdb716f4e581002979fc/pyright-1.1.411-py3-none-any.whl", hash = "sha256:dc7c72a8e2700c55baa127554040e067041ea53ccfd50bf96308cc4291c7d5d9", size = 6181526, upload-time = "2026-06-25T02:14:04.691Z" },
 ]
 
 [[package]]

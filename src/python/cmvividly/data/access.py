@@ -1,7 +1,7 @@
 from pathlib import Path
 import pandas as pd
 
-from cmvividly.data.hamming1_pairs import find_cdr3_hamming1_pairs
+#from cmvividly.data.hamming1_pairs import find_cdr3_hamming1_pairs
 
 # Walk up the directory tree to find the project root
 PROJECT_ROOT = Path(__file__).resolve().parents[4]
@@ -61,28 +61,30 @@ def load_cmv_ecocluster_2024(overwrite: bool = False,
     pdf_postprocessed = postprocess_cmv_ecocluster(pdf_raw)
     return pdf_postprocessed
 
-def load_cmv_ecocluster_2026_cdr3_hamming1_pairs(
-        overwrite: bool = False,
-        timeout_seconds: int = 60) -> pd.DataFrame:
-    """
-    Load the 2026 CMV ECOcluster and find
-    all Hamming-1 CDR3 pairs into a pandas DataFrame.
-    If the file already exists and overwite is False,
-    just load the file.
 
-    Args:
-        overwrite: If True, re-download the file even if it already exists.
-        timeout_seconds: Timeout for the download request in seconds.
-    Returns:
-        A pandas DataFrame containing the 2026 CMV ECOcluster CDR3 Hamming-1 pairs.
-    """
-    if not overwrite and CMV_ECOCLUSTER_2026_CDR3_HAMMING1_PAIRS_TSV_PATH.exists():
-        return load_tsv_pandas(CMV_ECOCLUSTER_2026_CDR3_HAMMING1_PAIRS_TSV_PATH)
-    pdf_cmv_ecocluster = load_cmv_ecocluster_2026(overwrite=overwrite, timeout_seconds=timeout_seconds)
-    pdf_hamming1_pairs = find_cdr3_hamming1_pairs(pdf_cmv_ecocluster)
-    pdf_hamming1_pairs.to_csv(CMV_ECOCLUSTER_2026_CDR3_HAMMING1_PAIRS_TSV_PATH, sep="\t", index=False,
-                              mode="w", header=True)
-    return pdf_hamming1_pairs
+if False:
+    def load_cmv_ecocluster_2026_cdr3_hamming1_pairs(
+            overwrite: bool = False,
+            timeout_seconds: int = 60) -> pd.DataFrame:
+        """
+        Load the 2026 CMV ECOcluster and find
+        all Hamming-1 CDR3 pairs into a pandas DataFrame.
+        If the file already exists and overwite is False,
+        just load the file.
+
+        Args:
+            overwrite: If True, re-download the file even if it already exists.
+            timeout_seconds: Timeout for the download request in seconds.
+        Returns:
+            A pandas DataFrame containing the 2026 CMV ECOcluster CDR3 Hamming-1 pairs.
+        """
+        if not overwrite and CMV_ECOCLUSTER_2026_CDR3_HAMMING1_PAIRS_TSV_PATH.exists():
+            return load_tsv_pandas(CMV_ECOCLUSTER_2026_CDR3_HAMMING1_PAIRS_TSV_PATH)
+        pdf_cmv_ecocluster = load_cmv_ecocluster_2026(overwrite=overwrite, timeout_seconds=timeout_seconds)
+        pdf_hamming1_pairs = find_cdr3_hamming1_pairs(pdf_cmv_ecocluster)
+        pdf_hamming1_pairs.to_csv(CMV_ECOCLUSTER_2026_CDR3_HAMMING1_PAIRS_TSV_PATH, sep="\t", index=False,
+                                mode="w", header=True)
+        return pdf_hamming1_pairs
 
 def load_tsv_pandas(tsv_path: Path) -> pd.DataFrame:
     """

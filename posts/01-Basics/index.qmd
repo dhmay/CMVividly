@@ -11,8 +11,8 @@ Download the CMV ECOcluster (using code from this repo) and have a look.
 
 ### Takeaways from this post:
 
-* There HLA-COcluster sizes range from 14 to 6,562 TCRs
 * 91 HLA-COclusters are associated with 81 HLA alleles
+* HLA-COclusters range in size from 14 to 6,562 TCRs
 * More TCRs are associated with Class II alleles than Class I, in bigger HLA-COclusters
 * A handful of alleles have more than one HLA-COcluster. They're almost all Class I.
 * Class I TCRs have slightly but significantly higher pGen than Class II TCRs

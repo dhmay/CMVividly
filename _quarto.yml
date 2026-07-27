@@ -7,6 +7,7 @@ website:
   description: "Exploring the public T-cell response to Cytomegalovirus."
   site-url: "https://dhmay.github.io/CMVividly"
   repo-url: "https://github.com/dhmay/CMVividly"
+  issue-url: "https://github.com/dhmay/CMVividly/issues/new?template=suggest-an-analysis.md"
   repo-actions: [issue]
   favicon: resources/cmvividly_logo.png
   navbar:

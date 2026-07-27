@@ -8,68 +8,41 @@ listing:
   filter-ui: false
 page-layout: full
 number-sections: False
+toc: false
 format:
   html:
     body-classes: home-posts-sidebar
-    include-in-header:
-      text: |
-        <script>
-        document.addEventListener("DOMContentLoaded", () => {
-          const sidebar = document.querySelector("#quarto-margin-sidebar");
-          if (!sidebar || document.getElementById("posts-sidebar-menu")) return;
-
-          const links = Array.from(document.querySelectorAll("#listing-listing .listing-title a"))
-            .map((link) => ({
-              href: link.getAttribute("href"),
-              title: link.textContent.trim(),
-            }))
-            .filter((item) => item.href && item.title);
-
-          if (!links.length) return;
-
-          const menu = document.createElement("nav");
-          menu.id = "posts-sidebar-menu";
-          menu.className = "posts-sidebar-menu";
-          menu.setAttribute("aria-label", "Posts");
-
-          const heading = document.createElement("h5");
-          heading.textContent = "Posts";
-          menu.appendChild(heading);
-
-          const list = document.createElement("ul");
-          links.forEach(({ href, title }) => {
-            const item = document.createElement("li");
-            const anchor = document.createElement("a");
-            anchor.href = href;
-            anchor.textContent = title;
-            item.appendChild(anchor);
-            list.appendChild(item);
-          });
-
-          menu.appendChild(list);
-          sidebar.appendChild(menu);
-        });
-        </script>
 ---
 
-<img src="resources/cmvividly_logo.png" alt="CMVividly" style="display: block; margin: 0 auto" />
+::: {.home-hero}
+
+::: {.home-hero-intro}
+<img src="resources/cmvividly_logo.png" alt="CMVividly" class="home-logo" />
 
 Welcome! I'm [Damon May](https://www.linkedin.com/in/damonhmay){target="_blank" rel="noopener noreferrer"}, a lead author of a [preprint](https://www.biorxiv.org/content/10.1101/2024.03.26.583354){target="_blank" rel="noopener noreferrer"}
 describing **ECOclusters**: groups of T-cell receptors (TCRs) that represent humanity's collective
-T-cell responses to viruses, bacteria, and other prevalent immune exposures. 
+T-cell responses to viruses, bacteria, and other prevalent immune exposures.
 Conceptually, and in several cases verifiably, each ECOcluster represents the response to a single immune
 exposure. Its TCRs are more likely to be sequenced in
 people who've had the exposure. For more background, see [About](about.html).
 
 The **CMV ECOcluster** ([download here](https://www.biorxiv.org/content/10.1101/2024.03.26.583354v3.supplementary-material){target="_blank" rel="noopener noreferrer"})
 is a sensitive, specific, quantitative
-biomarker of response to Cytomegalovirus (CMV). Each of its 52,447 TCRs is associated 
-with the Human Leukocyte Antigen (HLA) allele that presents the CMV peptide it binds. 
+biomarker of response to Cytomegalovirus (CMV). Each of its 52,447 TCRs is associated
+with the Human Leukocyte Antigen (HLA) allele that presents the CMV peptide it binds.
 Here, I'm exploring the CMV ECOcluster to help [the AIRR community](https://www.antibodysociety.org/the-airr-community/){target="_blank" rel="noopener noreferrer"}
 and others get the most from this new resource.
 I'll post updates here and on my [LinkedIn](https://www.linkedin.com/in/damonhmay){target="_blank" rel="noopener noreferrer"}.
-All the code is in [the GitHub repo](https://github.com/dhmay/CMVividly){target="_blank" rel="noopener noreferrer"}, easily runnable by anyone. 
+All the code is in [the GitHub repo](https://github.com/dhmay/CMVividly){target="_blank" rel="noopener noreferrer"}, easily runnable by anyone.
 
 So, those 52,447 TCRs: let's **see 'em, vividly**.
+:::
 
+::: {.home-hero-posts}
 #### Posts (newest first)
+
+::: {#listing}
+:::
+:::
+
+:::

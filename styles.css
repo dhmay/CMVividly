@@ -157,41 +157,49 @@ pre {
   text-decoration: underline;
 }
 
-/* 10) Homepage custom sidebar menu: replace the default TOC with post links */
-body.home-posts-sidebar #TOC {
-  display: none !important;
+/* 10b) Homepage: reclaim the large empty side margins quarto's page grid
+   reserves by default, so the hero can use the full width. The page has
+   no TOC/margin sidebar (toc: false), so main's natural "column-page"
+   class (page-start/page-end) can span the whole row unopposed. */
+@media (min-width: 992px) {
+  body.home-posts-sidebar #quarto-content.page-columns {
+    grid-template-columns:
+      [screen-start] 1.5em
+      [screen-start-inset page-start page-start-inset body-start-outset] minmax(0, 0.3fr)
+      [body-start] 1.5em
+      [body-content-start] minmax(500px, 4fr)
+      [body-content-end body-end body-end-outset page-end-inset] 1.5em
+      [page-end] minmax(0, 0.3fr)
+      [screen-end-inset] 1.5em
+      [screen-end];
+  }
 }
 
-body.home-posts-sidebar #posts-sidebar-menu {
+/* 10c) Homepage hero: logo + intro beside the posts, so posts are visible
+   without scrolling past a wall of text */
+.home-hero {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.85fr) minmax(340px, 1.15fr);
+  gap: 2.5rem;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .home-hero {
+    grid-template-columns: 1fr;
+  }
+}
+
+.home-logo {
+  display: block;
+  width: 100%;
+  max-width: 180px;
+  height: auto;
+  margin: 0 0 1.5rem 0;
+}
+
+.home-hero-posts #listing-listing {
   margin-top: 0.5rem;
-  padding-top: 0.5rem;
-  border-top: 1px solid rgba(0, 0, 0, 0.08);
-}
-
-body.home-posts-sidebar #posts-sidebar-menu h5 {
-  margin-bottom: 0.5rem;
-  font-weight: 700;
-  color: var(--text);
-}
-
-body.home-posts-sidebar #posts-sidebar-menu ul {
-  list-style: none;
-  padding-left: 0;
-  margin: 0;
-}
-
-body.home-posts-sidebar #posts-sidebar-menu li + li {
-  margin-top: 0.35rem;
-}
-
-body.home-posts-sidebar #posts-sidebar-menu a {
-  color: var(--text);
-  text-decoration: none;
-}
-
-body.home-posts-sidebar #posts-sidebar-menu a:hover {
-  color: var(--accent-2);
-  text-decoration: underline;
 }
 
 /* 11) Navbar: brand type + subtle separation from content */

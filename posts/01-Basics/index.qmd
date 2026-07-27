@@ -1,12 +1,16 @@
 ---
-title: "CMV ECOcluster basics"
+title: "Basics"
 date: "2026-07-24"
-description: "Download the CMV ECOcluster (using code from this repo), explain the columns. Break it down by HLA-COcluster, HLA allele and HLA class. Look at HLA alleles with more than one HLA-COcluster, and at TCR generation probability."
+description: "Download the CMV ECOcluster and have a look. Break down TCRs and HLA-COclusters by HLA allele and class."
 format:
     html:
         toc: true
 number-sections: true
 ---
+* Download the CMV ECOcluster (using code from this repo), explain the columns
+* Break it down by HLA-COcluster, HLA allele and HLA class
+* Look at HLA alleles with more than one HLA-COcluster
+* Examine TCR generation probability by HLA class 
 
 ## Setup
 Simple imports for data manipulation and plotting.

@@ -47,7 +47,7 @@ format:
     toc-location: right
     number-sections: true
     code-fold: true
-    code-tools: true
+    code-tools: false
     fig-width: 8
     fig-height: 5
     df-print: paged

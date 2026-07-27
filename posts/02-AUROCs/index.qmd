@@ -1,7 +1,7 @@
 ---
-title: "Individual HLA-COclusters as CMV biomarkers"
+title: "HLA-COclusters as CMV biomarkers"
 date: "2026-07-25"
-description: "The different HLA-COclusters in the CMV ECOcluster range widely in diagnostic value. Let's see if we can figure out why."
+description: "Per-HLA-allele clusters in the CMV ECOcluster range widely in diagnostic value. Why?"
 format:
     html:
         toc: true

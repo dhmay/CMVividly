@@ -24,20 +24,19 @@ I spent seven years at Adaptive Biotechnologies, in both leadership (Associate D
 and individual contributor (Principal Scientist) roles, building ML models on
 immune receptor repertoires.
 
-I'm a lead author of a [preprint](https://www.biorxiv.org/content/10.1101/2024.03.26.583354){target="_blank" rel="noopener noreferrer"}
-describing **ECOclusters**: groups of T-cell receptors (TCRs) that represent humanity's collective
-T-cell responses to viruses, bacteria, and other prevalent immune exposures.
-Conceptually, and in several cases verifiably, each ECOcluster represents the response to a single immune
-exposure. Its TCRs are more likely to be sequenced in
-people who've had the exposure. For more background, see [About](about.html).
+Here, I'm sharing insights about a new resource my colleagues and
+I made available in July 2026: The **CMV ECOcluster**. 
+We mined more than 30,000 T-cell receptor (TCR) repertoires to find **ECOclusters**:
+groups of TCRs that tend to occur in the same people. Each ECOcluster putatively represents
+humanity's collective response to a virus, bacterium or other prevalent exposure  (
+[DIA Global Forum explainer](https://globalforum.diaglobal.org/issue/january-2025/#ecoclusters){target="_blank" rel="noopener noreferrer"}).
+We described ECOclusters in [this preprint](https://www.biorxiv.org/content/10.1101/2024.03.26.583354){target="_blank" rel="noopener noreferrer"}.
 
-The **CMV ECOcluster** ([download here](https://www.biorxiv.org/content/10.1101/2024.03.26.583354v3.supplementary-material){target="_blank" rel="noopener noreferrer"})
+The **CMV ECOcluster** ([direct download](https://www.biorxiv.org/content/10.1101/2024.03.26.583354v3.supplementary-material){target="_blank" rel="noopener noreferrer"})
 is a sensitive, specific, quantitative
 biomarker of response to Cytomegalovirus (CMV). Each of its 52,447 TCRs is associated
 with the Human Leukocyte Antigen (HLA) allele that presents the CMV peptide it binds.
-Here, I'm exploring the CMV ECOcluster to help [the AIRR community](https://www.antibodysociety.org/the-airr-community/){target="_blank" rel="noopener noreferrer"}
-and others get the most from this new resource.
-I'll post updates here and on my [LinkedIn](https://www.linkedin.com/in/damonhmay){target="_blank" rel="noopener noreferrer"}.
+I'll post new analyses here and announce them on my [LinkedIn](https://www.linkedin.com/in/damonhmay){target="_blank" rel="noopener noreferrer"}.
 All the code is in [the GitHub repo](https://github.com/dhmay/CMVividly){target="_blank" rel="noopener noreferrer"}, easily runnable by anyone.
 
 So, those 52,447 TCRs: let's **see 'em, vividly**.

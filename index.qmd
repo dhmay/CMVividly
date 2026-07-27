@@ -20,17 +20,18 @@ format:
 <img src="resources/cmvividly_logo.png" alt="CMVividly" class="home-logo" />
 
 I'm Damon May ([LinkedIn](https://www.linkedin.com/in/damonhmay){target="_blank" rel="noopener noreferrer"}), a machine learning researcher and computational immunologist.
-I spent seven years at Adaptive Biotechnologies, in both leadership (Associate Director)
-and individual contributor (Principal Scientist) roles, building ML models on
+I was most recently at Adaptive Biotechnologies, in both leadership (Associate Director)
+and individual contributor (Principal Scientist, most recently) roles, building ML models on
 immune receptor repertoires.
 
 Here, I'm sharing insights about a new resource my colleagues and
 I made available in July 2026: The **CMV ECOcluster**. 
 We mined more than 30,000 T-cell receptor (TCR) repertoires to find **ECOclusters**:
 groups of TCRs that tend to occur in the same people. Each ECOcluster putatively represents
-humanity's collective response to a virus, bacterium or other prevalent exposure  (
-[DIA Global Forum explainer](https://globalforum.diaglobal.org/issue/january-2025/#ecoclusters){target="_blank" rel="noopener noreferrer"}).
-We described ECOclusters in [this preprint](https://www.biorxiv.org/content/10.1101/2024.03.26.583354){target="_blank" rel="noopener noreferrer"}.
+humanity's collective response to a virus, bacterium or other prevalent exposure
+([explainer](https://globalforum.diaglobal.org/issue/january-2025/#ecoclusters){target="_blank" rel="noopener noreferrer"} in DIA Global Forum).
+We described ECOclusters in [this preprint](https://www.biorxiv.org/content/10.1101/2024.03.26.583354){target="_blank" rel="noopener noreferrer"},
+with a major update in July 2026.
 
 The **CMV ECOcluster** ([direct download](https://www.biorxiv.org/content/10.1101/2024.03.26.583354v3.supplementary-material){target="_blank" rel="noopener noreferrer"})
 is a sensitive, specific, quantitative

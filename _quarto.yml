@@ -3,11 +3,11 @@ project:
   output-dir: _site
 
 website:
-  title: "CMVividly"
-  description: "Exploring the public T-cell response to Cytomegalorvirus."
+  title: "CMVividly: Exploring the public T-cell response to Cytomegalovirus"
+  description: "Exploring the public T-cell response to Cytomegalovirus."
   site-url: "https://dhmay.github.io/CMVividly"
   repo-url: "https://github.com/dhmay/CMVividly"
-  repo-actions: [source, issue]
+  repo-actions: [issue]
   favicon: resources/cmvividly_logo.png
   navbar:
     logo: resources/cmvividly_logo.png
@@ -52,6 +52,9 @@ format:
     fig-height: 5
     df-print: paged
     embed-resources: false
+
+language:
+  repo-action-links-issue: "Suggest an analysis"
 
 execute:
   freeze: auto

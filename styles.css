@@ -198,6 +198,18 @@ pre {
   margin: 0 0 1.5rem 0;
 }
 
+/* Let the intro paragraph start beside the logo and wrap below it once
+   it runs out of vertical room, instead of stacking the two. Only above
+   the hero's own stacking breakpoint — a float reads as cramped once the
+   intro column narrows down to mobile width. */
+@media (min-width: 900px) {
+  .home-logo {
+    float: left;
+    width: auto;
+    margin: 0 1.5rem 1rem 0;
+  }
+}
+
 .home-hero-posts #listing-listing {
   margin-top: 0.5rem;
 }

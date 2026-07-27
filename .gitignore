@@ -24,4 +24,6 @@ data/processed/*
 !data/processed/.gitkeep
 
 /.quarto/
+**/*.quarto_ipynb*
+
 **/*.quarto_ipynb

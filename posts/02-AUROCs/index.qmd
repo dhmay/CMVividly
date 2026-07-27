@@ -20,7 +20,7 @@ a lot.
 
 Let's see if we can figure out why some HLA-COclusters are "better" than others.
 
-### Takeaways from this post:
+## Takeaways from this post:
 
 * HLA-COcluster AUROC varies widely
 * Most low-AUROC HLA-COclusters are small
@@ -109,7 +109,7 @@ pdf_hla_coclusters.sort_values("hla_cocluster_auroc_hlaaware")[["hla_cocluster",
                                                                ]].head(5)
 ```
 
-#### AUROC relationship with HLA-COcluster TCR count
+### AUROC relationship with HLA-COcluster TCR count
 
 HLA-COclusters vary widely in cardinality. Does the number of TCRs in an HLA-COcluster
 correlate with its AUROC?
@@ -133,14 +133,14 @@ the CMV HLA-COclusters don't perform well as diagnostics *because*
 they have too few TCRs. That could be for multiple reasons:
 
 * Perhaps some of those small HLA-COclusters are of low quality, i.e., not very CMV-specific. 
-* Or the TCRs could be CMV-specific, but the small HLA-COcluster size might case
+* Or the TCRs could be CMV-specific, but the small HLA-COcluster size might cause
 a lot of dropout
     * i.e., in many CMV+ donors none of the small number of TCRs happens to be in the repertoire, by chance. 
 Bigger HLA-COclusters means more shots on goal. 
     * That's why the general-purpose
 ECOcluster breadth metric we used in the manuscript **weights HLA-COclusters by cardinality**.
 
-#### HLA-unaware AUROC
+### HLA-unaware AUROC
 
 In the manuscript, we also calculated an HLA-unaware AUROC for every HLA-COcluster.
 We expect those to be full of noise, because they include many people without the

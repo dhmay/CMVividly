@@ -7,13 +7,19 @@ format:
         toc: true
 number-sections: true
 ---
-* Download the CMV ECOcluster (using code from this repo), explain the columns
-* Break it down by HLA-COcluster, HLA allele and HLA class
-* Look at HLA alleles with more than one HLA-COcluster
-* Examine TCR generation probability by HLA class 
+Download the CMV ECOcluster (using code from this repo) and have a look.
+
+### Takeaways from this post:
+
+* There HLA-COcluster sizes range from 14 to 6,562 TCRs
+* 91 HLA-COclusters are associated with 81 HLA alleles
+* More TCRs are associated with Class II alleles than Class I, in bigger HLA-COclusters
+* A handful of alleles have more than one HLA-COcluster. They're almost all Class I.
+* Class I TCRs have slightly but significantly higher pGen than Class II TCRs
+    * maybe due to greater statistical power in more-prevalent Class II alleles
 
 ## Setup
-Simple imports for data manipulation and plotting.
+Basic imports for data manipulation and plotting.
 
 ```{python}
 # basic imports
@@ -24,7 +30,8 @@ import seaborn as sns
 # make plots look nice
 sns.set_context("talk")
 
-# make tables look nice and be interactive
+# make tables look nice and be interactive.
+# itables can be a little fiddly, so just comment this out if it gives trouble
 import itables
 itables.init_notebook_mode()
 
@@ -32,17 +39,27 @@ itables.init_notebook_mode()
 from scipy.stats import mannwhitneyu
 ```
 
+Reminder before we get started:
+HLA-COclusters are subclusters of ECOclusters that are each associated
+with a single HLA-allele. ECOclusters are built by clustering the
+HLA-COclusters, by breadth correlation in repertoires, across HLA alleles.
+
 ## Load the 2026 CMV ECOcluster
 
-Load the dataset and print the columns: 
+Load the dataset and display a sample of the rows (you can sort on the columns
+and search for values).
+The loader method I'm using adds a few extra columns.
+
 ```{python}
-# import to load the CMV ECOcluster, downloading if not already downloaded.
+# load the CMV ECOcluster, downloading if not already downloaded.
 from cmvividly.data.access import load_cmv_ecocluster_2026
 pdf_cmv_ecocluster_2026 = load_cmv_ecocluster_2026()
-list(pdf_cmv_ecocluster_2026.columns)
+pdf_cmv_ecocluster_2026
 ```
 
-These columns are as described in our preprint:
+## What are all those columns?
+
+Most of the columns are as described in our preprint:
 
 <style>
 .cmv-columns-table {
@@ -99,20 +116,16 @@ The loader method I'm using (from the cmvividly package) adds some useful column
     </tbody>
 </table>
 
-Here's an interactive table with a few hundred rows from the CMV ECOcluster, one row per TCR. 
-You can sort on the columns and search for values:
-```{python}
-pdf_cmv_ecocluster_2026
-```
+## Count things
 
-## Take a basic look
 ```{python}
 n_tcrs = len(pdf_cmv_ecocluster_2026)
 n_hla_coclusters = len(set(pdf_cmv_ecocluster_2026["hla_cocluster"]))
 n_hlas = len(set(pdf_cmv_ecocluster_2026["hla"]))
 print(f"TCRs: {n_tcrs}. HLA-COclusters: {n_hla_coclusters}. HLAs: {n_hlas}.")
 ```
-There are 91 HLA-COclusters associated with 81 HLA alleles, so there are some multiples. 
+There are 91 HLA-COclusters associated with 81 HLA alleles, so some alleles
+have multiple HLA-COclusters. We'll look at that in a bit. 
 
 ### Build a dataframe with one row per HLA-COcluster
 
@@ -132,6 +145,9 @@ sns.barplot(pdf_cmv_ecocluster_2026.hla_class.value_counts(), ax=ax)
 ax.set_title("TCRs associated with\neach HLA class")
 ax.set_xlabel("HLA class")
 f.set_size_inches(4, 3)
+
+# go back to regular pandas table display for smaller tables
+itables.init_notebook_mode(all_interactive=False)
 pdf_cmv_ecocluster_2026.hla_class.value_counts()
 ```
 HLA-COclusters
@@ -143,6 +159,11 @@ ax.set_xlabel("HLA class")
 f.set_size_inches(4, 3)
 pdf_hla_coclusters.hla_class.value_counts()
 ```
+
+There are more Class II-associated TCRs and HLA-COclusters. I'm not entirely sure,
+But I think this is due to greater statistical power to associate TCRs with Class II
+alleles (or heterodimers, or p groups), and I think that in turn is due to the greater
+prevalence of some Class II alleles.
 
 ### Look at the number of TCRs per HLA-COcluster
 
@@ -170,7 +191,7 @@ class_is_higher = pdf_hla_coclusters[pdf_hla_coclusters.hla_class == "ci"].n_tcr
 print(f"Mean TCRs per HLA-COcluster is higher for {'Class I' if class_is_higher else 'Class II'}. 2-sided Mann-Whitney U test p-value: {mwu_p:.3e}.")
 ```
 
-Yes, Class II-associated HLA-COclusters are starkly and significantly bigger than Class I.
+They sure do! Class II-associated HLA-COclusters are starkly and significantly bigger than Class I.
 
 ### Which HLA alleles have more than one HLA-COcluster? How many?
 
@@ -182,16 +203,16 @@ pdf_coclusters_per_hla_multiple = pdf_coclusters_per_hla[
 hlas_with_multiple_coclusters = set(pdf_coclusters_per_hla_multiple.hla)
 pdf_coclusters_per_hla_multiple
 ```
-Interesting: it's almost all Class I alleles, even though there are both more
-HLA-COclusters and more TCRs associated with Class II alleles. That suggests more
-population substructure w.r.t. Class I. Maybe there's more
+Interesting: it's almost all Class I alleles, even though there are both **more
+HLA-COclusters** and **more TCRs** associated with Class II alleles than Class I alleles.
+That suggests more population substructure w.r.t. Class I responses. Maybe there's more
 differentiation of the CD8 response by infection phase than there is in CD4?
 
 ### Take a look at TCR generation probability (pGen)
 
-As calculated by OLGA. 
+pGene was calculated with [OLGA](https://github.com/statbiophys/OLGA). 
 
-Two TCRs have dramatically lower pGen than the rest. Let's take those out for plotting:
+Two TCRs have dramatically lower pGen than the rest. Let's take those out, just for plotting:
 
 ```{python}
 n_verylow_pgens = sum(pdf_cmv_ecocluster_2026.tcr_pgen < 1e-20)
@@ -200,7 +221,7 @@ pdf_notlow_pgen = pdf_cmv_ecocluster_2026[pdf_cmv_ecocluster_2026.tcr_pgen >= 1e
 print(f"Plotting on TCRs with pGen >= 1e-20: {len(pdf_notlow_pgen)} of {len(pdf_cmv_ecocluster_2026)} TCRs")
 ```
 
-Look at the distribution of pGen.
+#### Look at the distribution of pGen, full ECOcluster.
 ```{python}
 f, ax = plt.subplots()
 sns.histplot(pdf_notlow_pgen.log10_tcr_pgen_eps, stat="count", ax=ax)
@@ -212,7 +233,7 @@ That's more meaningful when placed in context. As described in the manuscript, i
 notably narrower, with a higher median, then randomly selected TCRs from a large number
 of repertoires.
 
-Does it differ by HLA class? Plot and test.
+#### Does it differ by HLA class? Plot and test.
 
 ```{python}
 f, ax = plt.subplots()
@@ -228,3 +249,6 @@ higher_class = "Class II" if class_ii_is_higher else "Class I"
 print(f"2-sided Mann-Whitney U test p-value: {mwu_p:.3e}. Mean pGen is higher for {higher_class}.")
 ```
 The means aren't *very* different, but Class I mean is significantly higher.
+That *could* be a consequence of the greater statistical power to associated TCRs
+with Class II alleles: In Class II, we can associate TCRs with lower pGen, that occur
+in a lower proportion of people with the allele.

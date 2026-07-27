@@ -8,22 +8,30 @@ format:
 number-sections: true
 ---
 
-HLA-COclusters are subclusters of ECOclusters that are each associated
-with a single HLA-allele. ECOclusters are built by clustering the
-HLA-COclusters, by breadth correlation in repertoires, across HLA alleles.
+In the manuscript, we evaluated breadth on each HLA-COcluster
+(proportion of a repertoire's TCRs that are members)
+as a predictor of CMV status, in holdout repertoires (120 donors in 
+[Emerson Cohort 2](https://clients.adaptivebiotech.com/pub/Emerson-2017-NatGen)).
 
-In the manuscript, we evaluated breadth (proportion of repertoire TCRs that are members)
-on each HLA-COcluster as a predictor of CMV status, in holdout repertoires. The
-publicly available CMV ECOcluster has AUROCs associated with each HLA-COcluster,
-describing their ability to classify holdout donors (120 donors from 
-[Emerson Cohort 2](https://clients.adaptivebiotech.com/pub/Emerson-2017-NatGen))
-as CMV+ or CMV-.
+The publicly available CMV ECOcluster has AUROCs associated with each HLA-COcluster,
+describing the performance of HLA-COcluster breadth as a classifier of CMV status in the
+subset of holdout donors inferred to have the associated HLA allele. Those AUROCs vary quite
+a lot.
 
 Let's see if we can figure out why some HLA-COclusters are "better" than others.
 
+### Takeaways from this post:
+
+* HLA-COcluster AUROC varies widely
+* Most low-AUROC HLA-COclusters are small
+* Class II-associated HLA-COclusters tend to have higher AUROCs
+    * They also tend to have more TCRs, which could explain the better AUROCs
+* HLA-unaware AUROCs are mostly garbage, as you'd expect: they compare groups of
+TCRs in people who don't have the alleles that present the peptides they respond to
+
 ## Setup
 
-Basic imports, load the 2026 CMV ECOcluster.
+Basic imports.
 
 ```{python}
 # basic imports
@@ -36,7 +44,11 @@ sns.set_context("talk")
 
 # statistics
 from scipy.stats import mannwhitneyu
+```
 
+Load the 2026 CMV ECOcluster.
+
+```{python}
 # load the CMV ECOcluster, downloading if not already downloaded.
 from cmvividly.data.access import load_cmv_ecocluster_2026
 pdf_cmv_ecocluster_2026 = load_cmv_ecocluster_2026()
@@ -52,7 +64,7 @@ pdf_hla_coclusters = extract_hlacoclusters_pdf(pdf_cmv_ecocluster_2026)
 HLA-COclusters are only relevant for people with their associated HLA alleles.
 Let's look at the AUROCs defined on those people first.
 Those are only defined for about half the HLA-COclusters (the rest didn't 
-have enough HLA-matched samples in holdout):
+have enough HLA-matched samples in holdout to evaluate meaningfully):
 
 ```{python}
 pdf_hla_coclusters["has_aware_auroc"] = pdf_hla_coclusters.hla_cocluster_auroc_hlaaware.notnull()
@@ -97,10 +109,10 @@ pdf_hla_coclusters.sort_values("hla_cocluster_auroc_hlaaware")[["hla_cocluster",
                                                                ]].head(5)
 ```
 
-#### Relationship with HLA-COcluster TCR count
+#### AUROC relationship with HLA-COcluster TCR count
 
-HLA-COclusters vary widely in cardinality. Does the number of TCRs in an HLA-COcluster correlate
-with its AUROC?
+HLA-COclusters vary widely in cardinality. Does the number of TCRs in an HLA-COcluster
+correlate with its AUROC?
 
 ```{python}
 f, ax = plt.subplots()
@@ -115,21 +127,24 @@ It sure does! The biggest HLA-Coclusters (all Class II) all look stellar. The
 worst ones are mostly small (except one with ~1000 TCRs), though most small ones
 are also very good. And, as we saw in the [Basics post](../01-Basics/index.html),
 Class II-associated HLA-COclusters tend to be larger than Class I. 
+
 So, it seems plausible that some of
 the CMV HLA-COclusters don't perform well as diagnostics *because*
-they have too few TCRs.
+they have too few TCRs. That could be for multiple reasons:
 
-Perhaps some of those small HLA-COclusters are of low quality, i.e., not very CMV-specific. 
-They could also be high-quality but suffer from a lot of dropout, i.e., in many CMV+
-donors none of the small number of TCRs happens to be in the repertoire, by chance. 
-Bigger HLA-COclusters means more shots on goal. That's why the general-purpose
-ECOcluster breadth metric we used in the manuscript weights HLA-COclusters by cardinality.
+* Perhaps some of those small HLA-COclusters are of low quality, i.e., not very CMV-specific. 
+* Or the TCRs could be CMV-specific, but the small HLA-COcluster size might case
+a lot of dropout
+    * i.e., in many CMV+ donors none of the small number of TCRs happens to be in the repertoire, by chance. 
+Bigger HLA-COclusters means more shots on goal. 
+    * That's why the general-purpose
+ECOcluster breadth metric we used in the manuscript **weights HLA-COclusters by cardinality**.
 
 #### HLA-unaware AUROC
 
-We also calculated an HLA-unaware AUROC for every HLA-COcluster. We expect those to be
-full of noise, because they include many people without the associated HLA allele.
-But are some of them good, anyway?
+In the manuscript, we also calculated an HLA-unaware AUROC for every HLA-COcluster.
+We expect those to be full of noise, because they include many people without the
+associated HLA allele. But are some of them good, anyway?
 
 ```{python}
 f, ax = plt.subplots()
@@ -141,4 +156,3 @@ Not really, no! And there are some high-ish HLA-unaware AUROCs, but they're all
 on HLA-COclusters that had enough samples in holdout to evaluate HLA-aware. That makes sense!
 If there aren't enough samples in holdout to evaluate HLA-aware, we're looking at
 a rare allele whose HLA-unaware AUROC will be swamped by noise.
-

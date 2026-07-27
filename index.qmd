@@ -39,6 +39,7 @@ biomarker of response to Cytomegalovirus (CMV). Each of its 52,447 TCRs is assoc
 with the Human Leukocyte Antigen (HLA) allele that presents the CMV peptide it binds.
 I'll post new analyses here and announce them on my [LinkedIn](https://www.linkedin.com/in/damonhmay){target="_blank" rel="noopener noreferrer"}.
 All the code is in [the GitHub repo](https://github.com/dhmay/CMVividly){target="_blank" rel="noopener noreferrer"}; see [About](about.html) for how to run it yourself.
+Is there an analysis you'd like to see me do? Suggest it [here](https://github.com/dhmay/CMVividly/issues/new?template=suggest-an-analysis.md).
 
 So, those 52,447 TCRs: let's **see 'em, vividly**.
 :::

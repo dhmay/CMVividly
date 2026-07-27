@@ -19,7 +19,12 @@ format:
 ::: {.home-hero-intro}
 <img src="resources/cmvividly_logo.png" alt="CMVividly" class="home-logo" />
 
-Welcome! I'm [Damon May](https://www.linkedin.com/in/damonhmay){target="_blank" rel="noopener noreferrer"}, a lead author of a [preprint](https://www.biorxiv.org/content/10.1101/2024.03.26.583354){target="_blank" rel="noopener noreferrer"}
+I'm Damon May ([LinkedIn](https://www.linkedin.com/in/damonhmay){target="_blank" rel="noopener noreferrer"}), a machine learning researcher and computational immunologist.
+I spent seven years at Adaptive Biotechnologies, in both leadership (Associate Director)
+and individual contributor (Principal Scientist) roles, building ML models on
+immune receptor repertoires.
+
+I'm a lead author of a [preprint](https://www.biorxiv.org/content/10.1101/2024.03.26.583354){target="_blank" rel="noopener noreferrer"}
 describing **ECOclusters**: groups of T-cell receptors (TCRs) that represent humanity's collective
 T-cell responses to viruses, bacteria, and other prevalent immune exposures.
 Conceptually, and in several cases verifiably, each ECOcluster represents the response to a single immune

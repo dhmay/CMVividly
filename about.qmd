@@ -3,24 +3,28 @@ title: "About CMVividly"
 page-layout: full
 ---
 
-This page has the technical details for running the code behind these posts yourself.
+This page helps you get set up to run these kinds of analyses yourself.
 
-## To reproduce these posts
+## Run notebooks / code in a Codespace
 
-Clone [the CMVividly github repo](https://github.com/dhmay/CMVividly){target="_blank" rel="noopener noreferrer"} and install python and uv.
+The fastest way to explore this code (no local setup required) is [GitHub Codespaces](https://github.com/features/codespaces){target="_blank" rel="noopener noreferrer"}:
 
-From the repository root:
+1. On [the CMVividly repo](https://github.com/dhmay/CMVividly){target="_blank" rel="noopener noreferrer"} page, click the green **Code** button, open the **Codespaces** tab, and click **Create codespace on main**.
+2. Wait for the codespace to build. The first launch runs `uv sync` automatically, installing all dependencies and the `cmvividly` package itself, and it takes a minute or two.
+3. In the file explorer, open the example notebook, e.g. `notebooks/cmvividly_example.ipynb`.
+4. Two options for starting a notebook:
+    * Click **Select Kernel** in the top right, choose **Python Environments**, and pick the `.venv` interpreter that `uv sync` created (not the default system Python).
+    * Open a terminal in the codespace and run `uv run jupyter lab --no-browser`, then click "Open in Browser" in the box that pops up.
 
-```bash
-uv sync
-uv run quarto render
-```
+## Reproduce this environment on your machine
 
-Or, with a regular virtual environment:
-
-```bash
-python -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-quarto render
-```
+1. Clone [the CMVividly github repo](https://github.com/dhmay/CMVividly){target="_blank" rel="noopener noreferrer"} and install python and uv.
+2. Two options for setting up the environment:
+    * with **uv**
+        * From the repository root type `uv sync`
+        * To start Jupyter, type `uv run jupyter lab`
+    * with **venv** and **pip**
+        * `python -m venv .venv`
+        * `source .venv/bin/activate`
+        * `pip install -r requirements.txt`
+        * Put the `src/python` directory on your `PYTHONPATH` to use the cmvividly package.

@@ -3,38 +3,60 @@
         alt="CMVividly">
 </p>
 
-Exploring public T-cell receptors (TCRs) that respond to Cytomegalorvirus.
+Exploring the public T-cell response to Cytomegalovirus, live, at [cmvividly.com](https://cmvividly.com).
 
-I'm a lead author of a [preprint](https://www.biorxiv.org/content/10.1101/2024.03.26.583354) describing "ECOclusters":
-groups of T-cell receptors (TCRs) that represent humanity's collective T-cell responses to viruses, bacteria, etc. We
-constructed ECOclusters by finding groups of T-cell receptors (TCRs) that tend to occur in the same people, across >30,000 people.
+I'm Damon May, a machine learning researcher and computational immunologist. I was most recently at Adaptive
+Biotechnologies, in both leadership (Associate Director) and individual contributor (Principal Scientist) roles,
+building ML models on immune receptor repertoires.
 
-The “CMV ECOcluster” is our compilation of humanity’s collective public TCR response to Cytomegalovirus (CMV): 52,447 TCRs, each associated with the HLA allele that presents the CMV peptide it binds ([available here](https://www.biorxiv.org/content/10.1101/2024.03.26.583354v3.supplementary-material)). Here, I'm exploring the CMV ECOcluster to help [the AIRR community](https://www.antibodysociety.org/the-airr-community/)
-and others make the best use of this new public resource ([more details here](about.qmd)). I'll add updates here, publish them to [cmvividly.com](https://cmvividly.com), and
-publicize them on my [LinkedIn](https://www.linkedin.com/in/damonhmay). 
+Here, I'm sharing insights about a new resource my colleagues and I made available in July 2026: the **CMV
+ECOcluster**. We mined more than 30,000 T-cell receptor (TCR) repertoires to find **ECOclusters**: groups of TCRs
+that tend to occur in the same people. Each ECOcluster putatively represents humanity's collective response to a
+virus, bacterium, or other prevalent exposure
+([explainer](https://globalforum.diaglobal.org/issue/january-2025/#ecoclusters) in DIA Global Forum). We described
+ECOclusters in [this preprint](https://www.biorxiv.org/content/10.1101/2024.03.26.583354), with a major update in
+July 2026.
 
-So, those 52,447 CMV TCRs: let's **see 'em, vividly**.
+The **CMV ECOcluster**
+([direct download](https://www.biorxiv.org/content/10.1101/2024.03.26.583354v3.supplementary-material)) is a
+sensitive, specific, quantitative biomarker of response to Cytomegalovirus (CMV). Each of its 52,447 TCRs is
+associated with the Human Leukocyte Antigen (HLA) allele that presents the CMV peptide it binds. I'll post new
+analyses at [cmvividly.com](https://cmvividly.com) and announce them on my
+[LinkedIn](https://www.linkedin.com/in/damonhmay).
 
-## Replicating my environment and running my code locally
+So, those 52,447 TCRs: let's **see 'em, vividly**.
 
-I did package management with [uv](https://docs.astral.sh/uv/), so you should be able to:
+## Run notebooks / code in a Codespace
 
-1. Install Python (e.g., 3.12.x, such as 3.12.13).
-2. Install **uv** (e.g., curl ... | sh or your preferred installer method).
-3. Clone this repo.
-4. `cd` to the repo root.
-5. Create/sync the environment and install dependencies: `uv sync`
+The fastest way to explore this code (no local setup required) is
+[GitHub Codespaces](https://github.com/features/codespaces):
 
-The code used by my Quarto posts is stored in `src/python`, so if you put that directory on your PYTHONPATH you should be able to
-do things like I'm doing in that Python environment (e.g., via `uv run jupyter lab`).
+1. On this repo page, click the green **Code** button, open the **Codespaces** tab, and click
+   **Create codespace on main**.
+2. Wait for the codespace to build. The first launch runs `uv sync` automatically, installing all dependencies and
+   the `cmvividly` package itself — this takes a minute or two.
+3. In the file explorer, open the example notebook, `notebooks/cmvividly_example.ipynb`.
+4. Two options for starting a notebook:
+    * Click **Select Kernel** in the top right, choose **Python Environments**, and pick the `.venv` interpreter
+      that `uv sync` created (not the default system Python).
+    * Open a terminal in the codespace and run `uv run jupyter lab --no-browser`, then click **Open in Browser**
+      in the notification that pops up.
 
-## Running my code with GitHub Codespaces
+## Reproduce this environment on your machine
 
-This repository includes a [.devcontainer](.devcontainer) configuration, so you can open it with GitHub Codespaces
-and work with the `cmvividly` package and all its dependencies:
+1. Clone this repo and install Python and [uv](https://docs.astral.sh/uv/).
+2. From the repository root, two options for setting up the environment:
+    * with **uv**: `uv sync`, then start Jupyter with `uv run jupyter lab`
+    * with **venv** and **pip**:
+      ```bash
+      python -m venv .venv
+      source .venv/bin/activate
+      pip install -r requirements.txt
+      ```
 
-1. In this github repo, choose **Code** -> **Codespaces** -> **Create codespace on main**.
-2. Wait for the container to build and for `uv sync --all-groups` to finish.
-3. Open a terminal or notebook and use the preinstalled Python and package environment.
+The code used by the Quarto posts lives in `src/python`; put that directory on your `PYTHONPATH` to use it the same
+way the posts do.
 
-The first startup may take a few minutes because it installs the project dependencies inside the container.
+To render the Quarto site itself, run `quarto render` (or `uv run quarto render`) from the repo root.
+
+More details are on the [About page](https://cmvividly.com/about.html).

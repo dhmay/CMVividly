@@ -1,4 +1,6 @@
 /* ====== Modern scientist site accents on a white canvas ====== */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap');
+
 :root{
   --accent: #1f7a8c;       /* teal-blue */
   --accent-2:#155e69;
@@ -7,6 +9,10 @@
   --muted: rgba(11, 37, 64, 0.68);
   --border: rgba(11, 37, 64, 0.14);
   --code-border: rgba(31, 122, 140, 0.22);
+  --font-heading: "Space Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+               "Helvetica Neue", Arial, sans-serif;
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+               "Helvetica Neue", Arial, sans-serif;
 }
 
 /* 1) Force white canvas */
@@ -14,13 +20,25 @@ body, .quarto-container, main, article {
   background: #ffffff !important;
 }
 
+body {
+  font-family: var(--font-sans);
+  line-height: 1.65;
+}
+
 /* 2) Typography hierarchy */
-h1 { color: var(--text); font-weight: 800; letter-spacing: -0.02em; }
-h2 { color: var(--text); font-weight: 780; letter-spacing: -0.01em; }
-h3, h4, h5, h6 { color: var(--text); font-weight: 700; }
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+}
+h1 { color: var(--text); font-weight: 700; letter-spacing: -0.02em; }
+h2 { color: var(--text); font-weight: 650; letter-spacing: -0.01em; }
+h3, h4, h5, h6 { color: var(--text); font-weight: 600; }
 
 p, li {
   color: var(--text);
+}
+
+p {
+  margin-bottom: 1.1rem;
 }
 
 /* 3) Section spacing + subtle separators (modern rhythm) */
@@ -37,19 +55,29 @@ a { color: var(--accent); text-underline-offset: 3px; }
 a:hover { color: var(--accent-2); }
 
 /* 5) TOC: cleaner and more modern active state */
-.tocify ul {
+#TOC ul {
   border-left: 1px solid rgba(0,0,0,0.08);
   padding-left: 0.75rem;
   margin-left: 0.25rem;
 }
 
-.nav.nav-pills .nav-link.active,
-.nav a.active {
-  background: rgba(31, 122, 140, 0.10) !important;
+#TOC a.nav-link {
+  color: var(--muted);
+  border-radius: 6px;
+  transition: background-color .15s ease, color .15s ease;
+}
+
+#TOC a.nav-link:hover {
+  color: var(--accent-2);
+}
+
+#TOC a.nav-link.active {
+  background: rgba(31, 122, 140, 0.10);
   color: var(--text) !important;
   border-left: 3px solid var(--accent);
   padding-left: 0.6rem;
   margin-left: -0.6rem;
+  font-weight: 500;
 }
 
 /* 6) Callouts: subtle tint + left bar */
@@ -92,11 +120,18 @@ pre {
   border: 1px solid rgba(0,0,0,0.08);
   border-radius: 14px;
   padding: 1rem;
+  transition: box-shadow .15s ease, transform .15s ease;
 }
 
-/* 9) Homepage posts listing: light grey section background, white cards */
+.quarto-listing .listing-item:hover, .quarto-listing .card:hover {
+  box-shadow: 0 6px 18px rgba(11, 37, 64, 0.08);
+  transform: translateY(-2px);
+}
+
+/* 9) Homepage posts listing: tinted section background, white cards */
 #listing-listing {
-  background: #94aad8;
+  background: rgba(31, 122, 140, 0.06);
+  border: 1px solid rgba(31, 122, 140, 0.14);
   border-radius: 18px;
   padding: 1rem;
 }
@@ -106,6 +141,20 @@ pre {
   border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 14px;
   padding: 1rem;
+  transition: box-shadow .15s ease, transform .15s ease;
+}
+
+#listing-listing .quarto-post:hover {
+  box-shadow: 0 6px 18px rgba(11, 37, 64, 0.08);
+  transform: translateY(-2px);
+}
+
+#listing-listing .quarto-post .listing-title a {
+  text-decoration: none;
+}
+
+#listing-listing .quarto-post .listing-title a:hover {
+  text-decoration: underline;
 }
 
 /* 10) Homepage custom sidebar menu: replace the default TOC with post links */
@@ -143,5 +192,42 @@ body.home-posts-sidebar #posts-sidebar-menu a {
 body.home-posts-sidebar #posts-sidebar-menu a:hover {
   color: var(--accent-2);
   text-decoration: underline;
+}
+
+/* 11) Navbar: brand type + subtle separation from content */
+.navbar {
+  border-bottom: 1px solid var(--nav-border);
+  box-shadow: 0 1px 3px rgba(11, 37, 64, 0.05);
+}
+
+.navbar-title, .navbar-brand {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--text) !important;
+}
+
+.navbar .nav-link {
+  font-weight: 500;
+}
+
+.navbar .nav-link:hover {
+  color: var(--accent) !important;
+}
+
+/* 12) Footer: quiet, consistent close to every page */
+.page-footer, footer.footer {
+  margin-top: 3.5rem;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.nav-footer a {
+  color: var(--muted);
+}
+
+.nav-footer a:hover {
+  color: var(--accent);
 }
 

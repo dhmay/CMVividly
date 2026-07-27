@@ -8,6 +8,7 @@ website:
   site-url: "https://dhmay.github.io/CMVividly"
   repo-url: "https://github.com/dhmay/CMVividly"
   repo-actions: [source, issue]
+  favicon: resources/cmvividly_logo.png
   navbar:
     logo: resources/cmvividly_logo.png
     right:
@@ -19,6 +20,19 @@ website:
         href: "https://github.com/dhmay/CMVividly"
       - icon: linkedin
         href: "https://www.linkedin.com/in/damonhmay/"
+      - icon: mortarboard-fill
+        href: "https://scholar.google.com/citations?user=bDGK4S4AAAAJ"
+        aria-label: "Google Scholar"
+  page-footer:
+    left: "&copy; 2026 Damon May &middot; CMVividly"
+    center: "Exploring the public T-cell response to Cytomegalovirus"
+    right:
+      - icon: github
+        href: "https://github.com/dhmay/CMVividly"
+        aria-label: "GitHub"
+      - icon: linkedin
+        href: "https://www.linkedin.com/in/damonhmay/"
+        aria-label: "LinkedIn"
       - icon: mortarboard-fill
         href: "https://scholar.google.com/citations?user=bDGK4S4AAAAJ"
         aria-label: "Google Scholar"

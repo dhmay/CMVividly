@@ -28,7 +28,7 @@ Here, I'm sharing insights about a new resource my colleagues and
 I made available in July 2026: The **CMV ECOcluster**. 
 We mined more than 30,000 T-cell receptor (TCR) repertoires to find **ECOclusters**:
 groups of TCRs that tend to occur in the same people. Each ECOcluster putatively represents
-humanity's collective response to a virus, bacterium or other prevalent exposure
+humanity's collective, shared response to a virus, bacterium or other prevalent exposure
 ([explainer](https://globalforum.diaglobal.org/issue/january-2025/#ecoclusters){target="_blank" rel="noopener noreferrer"} in DIA Global Forum).
 We described ECOclusters in [this preprint](https://www.biorxiv.org/content/10.1101/2024.03.26.583354){target="_blank" rel="noopener noreferrer"},
 with a major update in July 2026.
@@ -37,11 +37,12 @@ The **CMV ECOcluster** ([direct download](https://www.biorxiv.org/content/10.110
 is a sensitive, specific, quantitative
 biomarker of response to Cytomegalovirus (CMV). Each of its 52,447 TCRs is associated
 with the Human Leukocyte Antigen (HLA) allele that presents the CMV peptide it binds.
+So, those 52,447 TCRs: let's **see 'em, vividly**.
+
 I'll post new analyses here and announce them on my [LinkedIn](https://www.linkedin.com/in/damonhmay){target="_blank" rel="noopener noreferrer"}.
 All the code is in [the GitHub repo](https://github.com/dhmay/CMVividly){target="_blank" rel="noopener noreferrer"}; see [About](about.html) for how to run it yourself.
 Is there an analysis you'd like to see me do? Suggest it [here](https://github.com/dhmay/CMVividly/issues/new?template=suggest-an-analysis.md).
 
-So, those 52,447 TCRs: let's **see 'em, vividly**.
 :::
 
 ::: {.home-hero-posts}

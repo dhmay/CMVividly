@@ -9,7 +9,7 @@ number-sections: true
 ---
 Download the CMV ECOcluster (using code from this repo) and have a look.
 
-### Takeaways from this post:
+## Takeaways from this post:
 
 * 91 HLA-COclusters are associated with 81 HLA alleles
 * HLA-COclusters range in size from 14 to 6,562 TCRs

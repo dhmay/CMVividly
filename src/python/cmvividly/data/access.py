@@ -1,5 +1,6 @@
 from pathlib import Path
 import pandas as pd
+import numpy as np
 
 from cmvividly.data.hamming1_pairs import find_cdr3_hamming1_pairs
 
@@ -111,10 +112,12 @@ def postprocess_cmv_ecocluster(df: pd.DataFrame) -> pd.DataFrame:
     df["hla_class"] = df["hla"].apply(
         lambda x: "cii" if x.startswith("D") else "ci")
     df[["cdr3", "vgene", "jgene"]] = df["tcr"].str.split("+", expand=True)
-    import numpy as np
-    df["log10_tcr_pgen_eps"] = (df["tcr_pgen"] + 1e-50).apply(lambda x: np.log10(x))
+
+    first_cols = ["tcr", "cdr3", "vgene", "jgene", "hla", "hla_class"]
+    if "tcr_pgen" in df.columns:
+        df["log10_tcr_pgen_eps"] = (df["tcr_pgen"] + 1e-50).apply(lambda x: np.log10(x))
+        first_cols += ["tcr_pgen", "log10_tcr_pgen_eps"]
     # rearrange the columns: tcr, cdr3, vgene, jgene, hla, hla_class, tcr_pgen, log10_tcr_pgen_eps and the rest
-    first_cols = ["tcr", "cdr3", "vgene", "jgene", "hla", "hla_class", "tcr_pgen", "log10_tcr_pgen_eps"]
     cols = first_cols + [c for c in df.columns if c not in first_cols]
     return df[cols]
 

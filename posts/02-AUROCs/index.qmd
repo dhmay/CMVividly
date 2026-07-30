@@ -40,7 +40,8 @@ from matplotlib import pyplot as plt
 import seaborn as sns
 
 # make plots look nice
-sns.set_context("talk")
+from cmvividly.plots.style import set_style
+set_style()
 
 # statistics
 from scipy.stats import mannwhitneyu

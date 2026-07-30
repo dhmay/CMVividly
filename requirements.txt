@@ -6,6 +6,7 @@ ipykernel>=6.29
 jupyter>=1.1.1
 jupyterlab>=4.0
 matplotlib>=3.8
+matplotlib-venn>=1.1.2
 numpy>=2.4.6
 pandas>=2.2
 plotly>=6.9.0

@@ -298,7 +298,7 @@ display(get_hlalist_by_gene(hlas_2024_only))
 print("Alleles in 2026 only:")
 display(get_hlalist_by_gene(hlas_2026_only))
 
-print(f"2026-only 'alleles' that are P groups: {sum([hla.endswith("P") for hla in hlas_2026_only])} of {len(hlas_2026_only)}")
+print(f"2026-only 'alleles' that are P groups: {sum([hla.endswith('P') for hla in hlas_2026_only])} of {len(hlas_2026_only)}")
 ```
 
 In the 2026 version, we combined several groups of HLA alleles in the same [p group](https://hla.alleles.org/pages/p&g_groups/p_groups/) (alleles with the same binding domains) into a single model for each p group, after observing that they tended to have the same associated TCRs.

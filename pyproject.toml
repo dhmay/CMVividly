@@ -29,6 +29,7 @@ dependencies = [
     "pyright==1.1.411",
     "jupyterlab-extensions==0.0.1",
     "jupyter-copilot==0.1.5",
+    "matplotlib-venn>=1.1.2",
 ]
 
 [tool.uv]

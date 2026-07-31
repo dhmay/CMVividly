@@ -8,56 +8,78 @@ from typing import Iterable
 
 import pandas as pd
 
-def find_cdr3_hamming1_pairs(pdf: pd.DataFrame) -> pd.DataFrame:
-	"""Build all Hamming-1 CDR3 pairs from the "cdr3" column
+def find_hamming1_pairs_same_vj(pdf: pd.DataFrame) -> pd.DataFrame:
+    # divide up pdf by [vgene, jgene] and find Hamming-1 pairs within each group
+    grouped = pdf.groupby(["vgene", "jgene"])
+    output_dfs = []
+    for (vgene, jgene), group in grouped:
+        pairs_df = find_cdr3_hamming1_pairs(group, seq_col="tcr")
+        output_dfs.append(pairs_df)
+    if not output_dfs:
+        return pd.DataFrame(
+            columns=[
+                "row_i",
+                "row_j",
+                "tcr_i",
+                "tcr_j",
+                "differing_position",
+                "seq_length",
+            ]
+        )
+    return pd.concat(output_dfs, ignore_index=True)
+
+def find_cdr3_hamming1_pairs(pdf: pd.DataFrame,
+							 seq_col="cdr3") -> pd.DataFrame:
+	"""Build all Hamming-1 pairs from the specified column
 	in an input dataframe.
 
 	If multiple rows have the same CDR3 sequence, all combinations of
 	pairs involving those rows are included in the output.
 
 	Args:
-		pdf: Input dataframe containing ``cdr3`` column.
+		pdf: Input dataframe containing the specified CDR3 column.
+		seq_col: Name of the column containing CDR3 sequences.
 
 	Returns:
-		DataFrame with one row per pair of input rows whose ``cdr3``
+		DataFrame with one row per pair of input rows whose 
 		sequences are the same length and Hamming distance 1.
 
 		Output columns:
 		- ``row_i``: original index label of first row in pair
 		- ``row_j``: original index label of second row in pair
-		- ``cdr3_i``: first row's CDR3 sequence
-		- ``cdr3_j``: second row's CDR3 sequence
+		- ``{seq_col}_i``: first row's CDR3 sequence
+		- ``{seq_col}_j``: second row's CDR3 sequence
 		- ``differing_position``: 0-based index where the sequences differ
 		- ``cdr3_length``: sequence length shared by the pair
 	"""
-	if "cdr3" not in pdf.columns:
-		raise ValueError("Input dataframe must contain a 'cdr3' column.")
+	if seq_col not in pdf.columns:
+		raise ValueError(f"Input dataframe must contain a '{seq_col}' column.")
 
 	if pdf.empty:
 		return pd.DataFrame(
 			columns=[
 				"row_i",
 				"row_j",
-				"cdr3_i",
-				"cdr3_j",
+				f"{seq_col}_i",
+				f"{seq_col}_j",
 				"differing_position",
 				"cdr3_length",
 			]
 		)
 
-	cdr3 = pdf["cdr3"]
-	if cdr3.isna().any():
-		raise ValueError("Input dataframe contains null values in 'cdr3'.")
+	seq = pdf[seq_col]
+	if seq.isna().any():
+		raise ValueError(f"Input dataframe contains null values in '{seq_col}'.")
 
-	cdr3_str = cdr3.astype(str)
-	lengths = cdr3_str.str.len()
+	seq_str = seq.astype(str)
+	lengths = seq_str.str.len()
 
 	row_index = pdf.index.to_list()
 	seq_to_row_positions_by_length: dict[int, dict[str, list[int]]] = defaultdict(
 		lambda: defaultdict(list)
 	)
 
-	for pos, (seq, seq_len) in enumerate(zip(cdr3_str.to_list(), lengths.to_list())):
+	for pos, (seq, seq_len) in enumerate(zip(seq_str.to_list(), lengths.to_list())):
 		seq_to_row_positions_by_length[seq_len][seq].append(pos)
 
 	output_rows: list[dict[str, object]] = []
@@ -79,10 +101,10 @@ def find_cdr3_hamming1_pairs(pdf: pd.DataFrame) -> pd.DataFrame:
 						{
 							"row_i": row_index[row_pos_i],
 							"row_j": row_index[row_pos_j],
-							"cdr3_i": seq_i,
-							"cdr3_j": seq_j,
+							f"{seq_col}_i": seq_i,
+							f"{seq_col}_j": seq_j,
 							"differing_position": differing_position,
-							"cdr3_length": seq_len,
+							"seq_length": seq_len,
 						}
 					)
 
@@ -94,7 +116,7 @@ def find_cdr3_hamming1_pairs(pdf: pd.DataFrame) -> pd.DataFrame:
 				"cdr3_i",
 				"cdr3_j",
 				"differing_position",
-				"cdr3_length",
+				"seq_length",
 			]
 		)
 

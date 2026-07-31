@@ -28,7 +28,8 @@ from matplotlib import pyplot as plt
 import seaborn as sns
 
 # make plots look nice
-sns.set_context("talk")
+from cmvividly.plots.style import set_style
+set_style()
 
 # make tables look nice and be interactive.
 # itables can be a little fiddly, so just comment this out if it gives trouble

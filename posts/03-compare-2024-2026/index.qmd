@@ -1,0 +1,523 @@
+---
+title: "Comparing the 2024 and 2026 CMV ECOclusters"
+date: "2026-07-30"
+description: "The 2026 CMV ECOcluster has twice as many TCRs. What else changed?"
+format:
+    html:
+        toc: true
+number-sections: true
+---
+
+## What we're doing here
+
+In 2024, we put out [a preprint](https://www.biorxiv.org/content/10.1101/2024.05.08.593237v1) that made public an initial version of the CMV
+ECOcluster. In 2026, we updated the ECOclusters preprint significantly and
+made public a new version of the CMV ECOcluster. The two versions both define
+sensitive, specific classifiers for CMV, but the TCRs they contain differ
+greatly. Here, I'll characterize the differences and try to explain them a bit.
+
+Since anyone familiar with the 2024 CMV ECOcluster must be a bit of
+an ECOclusters nerd, this post will get fairly far into some weeds.
+
+## Takeaways from this post:
+
+* A new version of the CMV ECOcluster was released in 2026 in a major update
+to the preprint
+* The 2026 version has about twice as many TCRs as the 2024 version,
+but it's missing most of the 2024 TCRs
+* The 2026 version is far more Class II-dominated (90% of TCRs vs. 65%)
+    * In absolute terms, 2026 has *many fewer* Class I-associated TCRs than 2024
+* TCRs unique to the 2026 version have much lower generation probability (pGen) than TCRs in both versions
+    * Likely because the 2026 version, built on more repertoires, had more statistical power to associate rarer TCRs
+* Almost a quarter of shared TCRs' HLA allele associations disagree between versions
+    * There's almost no shifting of TCRs between HLA *class* associations
+* About half the TCRs "lost" between 2024 and 2026 have at least one near-identical
+match (same V and J, Hamming-1 CDR3) among 2026 TCRs
+    * That suggests many of them are actually CMV-specific and are missing
+    for statistical, not biological, reasons
+    * The best way to use the 2024 and 2026 CMV ECOclusters may be to combine them
+        * I'll explore that further in a future post
+
+## Setup
+
+Basic imports.
+
+```{python}
+# useful imports
+import pandas as pd
+import seaborn as sns
+from cmvividly.data import access as cmv_access
+from cmvividly.data.access import load_cmv_ecocluster_2026, load_cmv_ecocluster_2024
+from matplotlib import pyplot as plt
+from matplotlib_venn import venn2
+
+import itables
+from cmvividly.plots.style import set_style
+set_style()
+
+#stats
+from scipy.stats import mannwhitneyu
+```
+
+Load both versions of the CMV ECOcluster and count the rows.
+
+```{python}
+# load the 2024 CMV ECOcluster.
+pdf_cmv_ecocluster_2024 = load_cmv_ecocluster_2024()
+print(f"Rows in 2024 ECOcluster: {len(pdf_cmv_ecocluster_2024)}")
+# load the 2026 CMV ECOcluster.
+pdf_cmv_ecocluster_2026 = load_cmv_ecocluster_2026()
+print(f"Rows in 2026 ECOcluster: {len(pdf_cmv_ecocluster_2026)}")
+```
+
+First, a note: the 2024 CMV ECOcluster has some TCRs that occur multiple times, while the 2026 CMV ECOcluster does not:
+
+```{python}
+print(f"Max occurrences of a TCR in 2026:", pdf_cmv_ecocluster_2026["tcr"].value_counts().max())
+print(f"Occurrence count breakdown in 2024:")
+pdf_cmv_ecocluster_2024.tcr.value_counts().reset_index()["count"].value_counts()
+```
+
+That's due to methodological differences in TCR-HLA allele association between 2024 and 2026.
+It's pretty much a rounding error, but it'll throw our accounting off slightly, so let's
+deduplicate the 2024 version by TCR (taking an HLA association at random).
+
+```{python}
+pdf_cmv_ecocluster_2024_dedup = pdf_cmv_ecocluster_2024.drop_duplicates(subset=["tcr"])
+print(f"Rows in deduplicated 2024 dataframe: {len(pdf_cmv_ecocluster_2024_dedup)}")
+```
+
+## Compare TCRs between the two versions
+
+```{python}
+tcr_set_2024 = set(pdf_cmv_ecocluster_2024_dedup["tcr"].unique())
+tcr_set_2026 = set(pdf_cmv_ecocluster_2026["tcr"].unique())
+all_tcrs_set = tcr_set_2024 | tcr_set_2026
+proportion_all_tcrs_shared = len(tcr_set_2024 & tcr_set_2026) / len(all_tcrs_set)
+
+f, ax = plt.subplots()
+venn2([tcr_set_2024, tcr_set_2026], set_labels=("2024", "2026"), ax=ax, subset_label_formatter=lambda n: f"{n:,}")
+ax.set_title(f"TCRs ({proportion_all_tcrs_shared*100:.0f}% of total shared)", y=.95)
+```
+
+Wow! The 2026 ECOcluster is much bigger, but it loses half the TCRs from the
+2024 version.
+
+### Break down TCRs in both versions by HLA class
+
+```{python}
+# build a 2x2 table: # of TCRs in 2024 where hla == "ci" and where hla == "cii", and same in 2026
+n_ci_2024 = sum(pdf_cmv_ecocluster_2024_dedup["hla_class"] == "ci")
+n_cii_2024 = sum(pdf_cmv_ecocluster_2024_dedup["hla_class"] == "cii")
+n_ci_2026 = sum(pdf_cmv_ecocluster_2026["hla_class"] == "ci")
+n_cii_2026 = sum(pdf_cmv_ecocluster_2026["hla_class"] == "cii")
+
+# Create a 2x2 table
+pdf_hlaclass_by_version = pd.DataFrame({
+    "Class I": [n_ci_2024, n_ci_2026],
+    "Class II": [n_cii_2024, n_cii_2026],
+    "% Class II": [n_cii_2024 / (n_ci_2024 + n_cii_2024) * 100, n_cii_2026 / (n_ci_2026 + n_cii_2026) * 100]
+}, index=["2024", "2026"])
+
+# make a stacked barplot
+f, ax = plt.subplots(figsize=(5, 4))
+pdf_hlaclass_by_version[["Class I", "Class II"]].plot(kind="bar", stacked=True, ax=ax)
+ax.set_xlabel("Version")
+ax.set_ylabel("Number of TCRs")
+ax.set_title("TCRs by HLA Class and Version")
+ax.legend(title="HLA Class")
+plt.xticks(rotation=0)
+plt.tight_layout()
+
+
+pdf_hlaclass_by_version
+```
+
+The 2026 ECOcluster is 90% Class-II-associated TCRs, vs. 65% in 2024.
+That's a big shift! And it's consistent with the reported changes in HLA models
+between the two versions: as described in the preprint, Class II alleles tended to
+have dramatically more associated TCRs than Class II.
+
+But, also, in absolute terms, the 2026 version actually has *many fewer* Class I-associated TCRs than the 2024 version did.
+That's a bit of a surprise; I'll look into that some more, further down.
+
+### Merge the two versions on TCR so we can compare them more specifically
+
+```{python}
+# first, add an hla_gene column so we can break things down by gene later
+pdf_cmv_ecocluster_2024_dedup["hla_gene"] = pdf_cmv_ecocluster_2024_dedup.hla.apply(
+    lambda x: x.split("*")[0])
+pdf_cmv_ecocluster_2026["hla_gene"] = pdf_cmv_ecocluster_2026.hla.apply(
+    lambda x: x.split("*")[0])
+
+# set up an outer join on tcr, to build a dataframe that contains all TCRs in both ECOcluster versions
+
+merge_cols = ["tcr", "cdr3", "vgene", "jgene"]
+
+pdf_2024_merge = pdf_cmv_ecocluster_2024_dedup.copy()
+pdf_2024_merge["source_2024"] = True
+
+pdf_2026_merge = pdf_cmv_ecocluster_2026.copy()
+pdf_2026_merge["source_2026"] = True
+
+
+pdf_merged_tcr_outer = pdf_2024_merge.merge(
+    pdf_2026_merge,
+    on=merge_cols,
+    how="outer",
+    suffixes=("_2024", "_2026"),
+    indicator=True,
+)
+
+# annotate each row with HLA class agreement and where the TCR came from
+pdf_merged_tcr_outer["hla_class_agree"] = (
+    pdf_merged_tcr_outer["hla_class_2024"] == pdf_merged_tcr_outer["hla_class_2026"]
+)
+pdf_merged_tcr_outer["source"] = pdf_merged_tcr_outer["_merge"].map(
+    {"left_only": "2024 only", "right_only": "2026 only", "both": "shared"})
+pdf_merged_tcr_outer["hla_class_sourced"] = pdf_merged_tcr_outer.apply(
+    lambda row: row["hla_class_2024"] if row["source"] == "2024 only"
+    else row["hla_class_2026"] if row["source"] == "2026 only"
+    else row["hla_class_2024"] if row["hla_class_agree"]
+          else "disagree",
+    axis=1
+)
+pdf_merged_tcr_outer["source_2026"] = pdf_merged_tcr_outer.source_2026.fillna(False).astype(bool)
+pdf_merged_tcr_outer["source_2024"] = pdf_merged_tcr_outer.source_2024.fillna(False).astype(bool)
+
+print(f"TCRs in merged table: {len(pdf_merged_tcr_outer)}")
+```
+
+#### Look at generation probability in the 2026 version
+
+I don't have convenient access to a pGen estimate for the 2024 version, but I can look at how it differs in the 2026 version by HLA class and by whether the TCR was in the 2024 version.
+
+```{python}
+pdf_2026_annot_2024 = pdf_merged_tcr_outer[pdf_merged_tcr_outer.source_2026 == True]
+pdf_2026_annot_2024_droplowp = pdf_2026_annot_2024[pdf_2026_annot_2024.tcr_pgen >= 1e-25]
+f, ax = plt.subplots()
+sns.boxplot(data=pdf_2026_annot_2024_droplowp,
+            x="log10_tcr_pgen_eps",
+            y="hla_class_2026", hue="source_2024", ax=ax, orient="horiz")
+ax.set_xlabel("log10(pGen + eps)")
+ax.set_ylabel("HLA Class")
+ax.set_title("pGen of 2026 TCRs by HLA class and 2024 presence")
+plt.tight_layout()
+
+pdf_2026_annot_2024_cii = pdf_2026_annot_2024[pdf_2026_annot_2024["hla_class_2026"] == "cii"]
+pdf_2026_annot_2024_ci = pdf_2026_annot_2024[pdf_2026_annot_2024["hla_class_2026"] == "ci"]
+
+higher_pgen_hlaclass = "Class II" if pdf_2026_annot_2024_cii["tcr_pgen"].mean() > pdf_2026_annot_2024_ci["tcr_pgen"].mean() else "Class I"
+
+mwu_p_hlaclass = mannwhitneyu(
+    pdf_2026_annot_2024_cii["tcr_pgen"],
+    pdf_2026_annot_2024_ci["tcr_pgen"],
+).pvalue
+
+
+mwu_p_cii = mannwhitneyu(
+    pdf_2026_annot_2024_cii[pdf_2026_annot_2024_cii["source_2024"] == True]["tcr_pgen"],
+    pdf_2026_annot_2024_cii[pdf_2026_annot_2024_cii["source_2024"] == False]["tcr_pgen"],
+).pvalue
+mwu_p_ci = mannwhitneyu(
+    pdf_2026_annot_2024_ci[pdf_2026_annot_2024_ci["source_2024"] == True]["tcr_pgen"],
+    pdf_2026_annot_2024_ci[pdf_2026_annot_2024_ci["source_2024"] == False]["tcr_pgen"],
+).pvalue
+print(f"Two-sided Mann-Whitney U test p-values:")
+print(f"Between HLA classes: {mwu_p_hlaclass:.2e} ({higher_pgen_hlaclass} higher)")
+print(f"Within HLA class, 2024 vs. 2026: cii = {mwu_p_cii:.2e}, ci = {mwu_p_ci:.2e}")
+print("")
+print("(dropping very-low-pGen outliers for visibility)")
+```
+
+Overall, the Class II TCRs have slightly (and significantly) lower pGen. But the much bigger effect is that, in both HLA classes, the TCRs that are unique to the 2026 version have strongly lower pGen than the ones the two versions share. One way to interpret that is that the much larger dataset that built the new ECOclusters provides more statistical power to associate TCRs that are observed in fewer people.
+
+That leaves the question: why are more than half of the 2024 TCRs missing from the 2026 version? I have a hypothesis that it's *not* because they're not actually CMV-specific. I'll explore that further down in this post, and likely return to that question in a later post.
+
+### Look at the HLA class associations of TCRs in both versions, and unique to each
+
+First let's visualize how TCRs are either present or absent in each version, and associated with HLA Class I or Class II alleles in each version, with a Sankey plot.
+
+```{python}
+from cmvividly.plots.sankey import plot_sankey
+
+plot_sankey(pdf_merged_tcr_outer.fillna("MISSING"), source_col="hla_class_2024",
+            target_col="hla_class_2026")
+pass
+```
+
+That gives us a feel for what's going on: HLA class is ~100% consistent when present in both versions, but there are a lot of TCRs just missing from one version. Almost all the new ones in 2026 are Class II, while the ones unique to 2024 are an even split.
+
+Let's look at that a little more precisely.
+
+```{python}
+source_hlaclass_breakdown = pd.crosstab(pdf_merged_tcr_outer.hla_class_sourced, pdf_merged_tcr_outer.source, margins=True)
+source_hlaclass_breakdown.loc["% Class I"] = (source_hlaclass_breakdown.loc["ci"] / source_hlaclass_breakdown.loc["All"] * 100).map("{:.0f}%".format)
+source_hlaclass_breakdown.loc["% Class II"] = (source_hlaclass_breakdown.loc["cii"] / source_hlaclass_breakdown.loc["All"] * 100).map("{:.0f}%".format)
+
+source_hlaclass_breakdown
+```
+
+There's a lot in that table:
+
+- **TCRs present in both versions** are 82% Class II (between the 65% in 2024 and the 90% in 2026)
+- **2024-only TCRs** are about evenly split
+- **2026-only TCRs** are 92% Class II
+- **Disagreements**: almost none. 12,529 TCRs are in both versions, and all but 7 have the same HLA Class association.
+
+## Compare HLA alleles represented in the two versions
+
+```{python}
+hla_set_2024 = set(pdf_cmv_ecocluster_2024["hla"].unique())
+hla_set_2026 = set(pdf_cmv_ecocluster_2026["hla"].unique())
+all_hlas_set = hla_set_2024 | hla_set_2026
+proportion_all_hlas_shared = len(hla_set_2024 & hla_set_2026) / len(all_hlas_set)
+
+f, ax = plt.subplots()
+venn2([hla_set_2024, hla_set_2026], set_labels=("2024", "2026"), ax=ax, subset_label_formatter=lambda n: f"{n:,}")
+ax.set_title(f"Alleles ({proportion_all_hlas_shared*100:.0f}% of total shared)", y=.95)
+pass
+```
+
+Let's look at the specific alleles that drop out or show up in 2026 vs. 2024.
+
+```{python}
+def get_hlalist_by_gene(hlas) -> pd.DataFrame:
+    genes = set([hla.split("*")[0] for hla in hlas])
+    gene_list_map = {gene: sorted([hla for hla in hlas if hla.startswith(gene)]) for gene in set([hla.split("*")[0] for hla in hlas])}
+    return pd.DataFrame([{"gene": gene, "hlas": ", ".join(gene_list_map[gene])} for gene in sorted(genes)])
+
+itables.init_notebook_mode()
+
+hlas_2024_only = hla_set_2024.difference(hla_set_2026)
+hlas_2026_only = hla_set_2026.difference(hla_set_2024)
+
+print("Alleles in 2024 only:")
+display(get_hlalist_by_gene(hlas_2024_only))
+
+print("Alleles in 2026 only:")
+display(get_hlalist_by_gene(hlas_2026_only))
+
+print(f"2026-only 'alleles' that are P groups: {sum([hla.endswith("P") for hla in hlas_2026_only])} of {len(hlas_2026_only)}")
+```
+
+In the 2026 version, we combined several groups of HLA alleles in the same [p group](https://hla.alleles.org/pages/p&g_groups/p_groups/) (alleles with the same binding domains) into a single model for each p group, after observing that they tended to have the same associated TCRs.
+
+P groups gave us more statistical power to model alleles in 2026, but in the CMV ECOcluster they only replaced two 2024 alleles:
+
+* `DRB1*14:54` -> `DRB1*14:01P`
+* `DRB4*01:03` -> `DRB4*01:01P`
+
+### Do a lot of TCRs change HLA allele associations between versions?
+
+```{python}
+pdf_merged_tcr_inner = pdf_merged_tcr_outer[pdf_merged_tcr_outer["source"] == "shared"]
+
+pdf_merged_tcr_inner["hla_agree"] = pdf_merged_tcr_inner["hla_2024"] == pdf_merged_tcr_inner["hla_2026"]
+proportion_disagree = (pdf_merged_tcr_inner.hla_agree == False).sum() / len(pdf_merged_tcr_inner)
+print(f"{proportion_disagree*100:.1f}% of TCR HLA associations disagree between versions")
+
+pdf_merged_tcr_inner.hla_agree.value_counts()
+```
+
+That's a lot of disagreement! Are there many shifts between HLA genes?
+
+```{python}
+pdf_merged_tcr_inner["hla_gene_agree"] = pdf_merged_tcr_inner["hla_gene_2024"] == pdf_merged_tcr_inner["hla_gene_2026"]
+proportion_disagree = (pdf_merged_tcr_inner.hla_gene_agree == False).sum() / len(pdf_merged_tcr_inner)
+print(f"{proportion_disagree*100:.1f}% of TCR HLA gene associations disagree between versions")
+
+pdf_merged_tcr_inner.hla_gene_agree.value_counts()
+```
+
+That's still a lot of disagreement at the HLA gene level! Let's visualize it.
+
+```{python}
+from cmvividly.plots.sankey import plot_sankey
+
+plot_sankey(pdf_merged_tcr_inner, source_col="hla_gene_2024",
+            target_col="hla_gene_2026")
+pass
+```
+
+So, most of that movement is between DQA1 and DRB1, in both directions. That could be due to more LD between some of those alleles. Let's get more granular and look at individual gene pairs.
+
+```{python}
+pdf_tcrs_disagree_hla = pdf_merged_tcr_inner[pdf_merged_tcr_inner.hla_agree == False]
+pdf_disagreeing_allelepair_counts = pdf_tcrs_disagree_hla[["hla_2024", "hla_2026"]].value_counts().reset_index()
+
+f, ax = plt.subplots()
+sns.histplot(data=pdf_disagreeing_allelepair_counts, x="count", ax=ax
+)
+ax.set_xlabel("Number of TCRs")
+ax.set_ylabel("Frequency")
+ax.set_title("Distribution of disagreeing HLA allele pair counts")
+plt.tight_layout()
+
+print("Top pairs of disagreeing HLA alleles:")
+pdf_disagreeing_allelepair_counts[:8]
+```
+
+So, a handful of outlier allele pairs account for most of the allele association disagreement.
+
+* The third and sixth on the list is the easiest to explain: `DRB1*14:54` -> `DRB1*14:01P` and `DRB4*01:03` -> `DRB4*01:01P`, as I noted above.
+* The first one is the same heterodimer except `DPB1*03:01` -> `DPB1*104:01`
+    * Both those alleles are in TCE group 2, which suggests they might bind similar peptides
+    * So, perhaps both heterodimers present peptides that those TCRs bind, and they're simply getting assigned to different alleles in different versions due to statistical noise
+* I don't have good explanations for the rest of the outliers. There could be some LD involved, or some pairs of alleles/heterodimers that bind similar peptides.
+
+### Have a look at TCR count per HLA allele in each version
+
+```{python}
+import numpy as np
+
+pdf_hla_count_2024 = pdf_cmv_ecocluster_2024_dedup.groupby(["hla", "hla_class"]).size().reset_index()
+pdf_hla_count_2024.rename(columns={0: "tcrs_2024"}, inplace=True)
+pdf_hla_count_2026 = pdf_cmv_ecocluster_2026.groupby(["hla", "hla_class"]).size().reset_index()
+pdf_hla_count_2026.rename(columns={0: "tcrs_2026"}, inplace=True)
+
+pdf_hla_counts_bothversions = pdf_hla_count_2024.merge(
+    pdf_hla_count_2026,
+    on=["hla_class", "hla"],
+    how="outer",
+    suffixes=("_2024", "_2026")
+).fillna(0)
+pdf_hla_counts_bothversions["log10_tcrs_2024"] = np.log10(pdf_hla_counts_bothversions["tcrs_2024"] + 1)
+pdf_hla_counts_bothversions["log10_tcrs_2026"] = np.log10(pdf_hla_counts_bothversions["tcrs_2026"] + 1)
+
+
+f, ax = plt.subplots()
+sns.scatterplot(data=pdf_hla_counts_bothversions, x="log10_tcrs_2024", y="log10_tcrs_2026", ax=ax,
+               hue="hla_class", s=10)
+# add abline
+sns.lineplot(x=np.linspace(0, 3), y=np.linspace(0, 3), color="black", linewidth=1, linestyle="--", alpha=0.5, ax=ax)
+
+ax.set_xlabel("${log_{10}}$ 2024 count")
+ax.set_ylabel("${log_{10}}$ 2026 count")
+ax.set_title("TCR counts per HLA allele in 2026 vs 2024\n(log scale, missing = 0.0, line is 1:1)")
+plt.tight_layout()
+f.set_size_inches(7, 6)
+```
+
+Takeaways:
+
+* TCR counts for HLAs present in both versions aren't correlated between versions
+* They aren't systematically higher in Class II than Class I
+    * Rather, the excess of Class II TCRs in the 2026 version is explained by:
+        * a few outlier Class II alleles present in both versions but much larger in 2026
+        * a few new-to-2026 Class II alleles with high counts
+
+Those top alleles in 2026 are:
+
+```{python}
+pdf_hla_counts_bothversions.sort_values("tcrs_2026", ascending=False)[:8]
+```
+
+## What are we "losing" from 2024 to 2026?
+
+We've summarized the biggest differences between the two versions of the CMV ECOcluster. But given that the 2024 ECOcluster has been available for two years and has been [independently established](https://www.biorxiv.org/content/10.1101/2025.06.24.661167v2) as a sensitive, specific biomarker of CMV infection, it's concerning that half those TCRs just go away in the new version.
+To put a point on it: the old one was good, the new one is good...
+but is some kind of hybrid better (or at least more comprehensive) than either?
+
+I won't answer that question completely in this post. In this post, I'll just catalog what we're "losing" in the 2026 ECOcluster and speculate about why.
+I plan to dig further in another post, using CMV-labeled repertoires. 
+
+Let's look at the HLA alleles that lost the most TCRs.
+Here, I don't mean the TCR shows up in the 2026 ECOcluster associated with a different allele. I mean actually lost. We already learned above that those are about 50/50 Class I vs. Class II. How does that break down by allele?
+
+```{python}
+pdf_cmv_ecocluster_2024_dedup["in_2026"] = pdf_cmv_ecocluster_2024_dedup["tcr"].isin(tcr_set_2026)
+
+pdf_for_agg = pdf_cmv_ecocluster_2024_dedup.copy()
+pdf_for_agg["not_in_2026"] = ~pdf_for_agg.in_2026
+pdf_for_agg["n_lost"] = pdf_for_agg["not_in_2026"]
+pdf_for_agg["n_original"] = 1
+pdf_loss_summary = pdf_for_agg.groupby(["hla", "hla_class", "hla_gene"]).agg({
+    "in_2026": "mean",
+    "n_original": "sum",
+    "n_lost": "sum"
+}).reset_index()
+pdf_loss_summary["proportion_lost"] = pdf_loss_summary["n_lost"] / pdf_loss_summary.n_original
+
+pdf_loss_summary.sort_values("n_lost", ascending=False)[:10]
+```
+
+```{python}
+n_alleles_totally_lost = sum(pdf_loss_summary.proportion_lost == 1)
+print(f"We lost all the TCRs from {n_alleles_totally_lost} alleles.")
+```
+
+Let's look at the ones that had the most TCRs in 2024.
+
+```{python}
+pdf_loss_summary.sort_values(["proportion_lost", "n_lost"], ascending=False)
+```
+
+Plot the proportion TCRs lost vs. the original TCR count.
+
+```{python}
+f, ax = plt.subplots()
+sns.scatterplot(x="n_original", y="proportion_lost", data=pdf_loss_summary,
+               hue="hla_class")
+ax.set_title("Proportion TCRs 'lost' per allele vs. original count")
+```
+
+So, the biggest losers, in terms of proportion of TCRs lost, seem to be Class I alleles. That's as expected, given that the 2026 ECOcluster is far more Class II-dominated and that, even though it's much bigger overall, it actually has many fewer Class I-associated TCRs.
+
+### Are those "lost" TCRs sequence-similar to TCRs in the 2026 ECOcluster?
+
+Highly sequence-similar TCRs tend to bind the same antigen. So, if many of those
+"lost" 2024 TCRs are sequence-similar to a 2026 TCR (I'll define that here as same V gene,
+same J gene, same CDR3 length, one CDR3 edit), that's strong evidence
+they *shouldn't* have been lost. 1-Hamming doesn't always mean same-antigen binding,
+but the additional evidence that it was CMV-associated in the 2024 version
+makes it pretty compelling.
+
+```{python}
+from cmvividly.data.hamming1_pairs import find_hamming1_pairs_same_vj
+
+# find all Hamming-1 pairs with the same v and j gene in the outer join between 2024 and 2026.
+# That's overkill, but that's the tooling I've built so far.
+pdf_ham1_pairs_all = find_hamming1_pairs_same_vj(
+    pdf_merged_tcr_outer)
+pdf_ham1_pairs_all = (
+    pdf_ham1_pairs_all
+    .drop(columns=["row_i", "row_j"])
+    .rename(columns={
+        "tcr_i": "tcr_2024",
+        "tcr_j": "tcr_2026"
+    })
+)
+# filter to just the ones present in 2024...
+pdf_ham1_pairs_in2024 = pdf_ham1_pairs_all[pdf_ham1_pairs_all.tcr_2024.isin(set(pdf_cmv_ecocluster_2024.tcr))]
+# ...with a match in 2026.
+pdf_ham1_pairs_in2024_pairin2026 = pdf_ham1_pairs_in2024[pdf_ham1_pairs_in2024.tcr_2026.isin(set(pdf_cmv_ecocluster_2026.tcr))]
+tcrs_2024_ham1_match_2026 = set(pdf_ham1_pairs_in2024_pairin2026.tcr_2024)
+lost_tcrs_2024 = set(pdf_cmv_ecocluster_2024_dedup[~pdf_cmv_ecocluster_2024_dedup.in_2026].tcr)
+lost_tcrs_2024_ham1_match_2026 = tcrs_2024_ham1_match_2026.intersection(lost_tcrs_2024)
+n_lost_2024 = len(lost_tcrs_2024)
+n_lost_with2026match = len(lost_tcrs_2024_ham1_match_2026)
+proportion_oflost_withmatch = n_lost_with2026match / n_lost_2024
+print(f"{n_lost_with2026match} of {n_lost_2024} 'lost' TCRs ({proportion_oflost_withmatch*100:.1f}%) have a Hamming-1 match in 2026")
+```
+
+A lot of those "lost" TCRs have a match! Do they have just one? Lots of matches would be more evidence that they shouldn't have been lost.
+
+```{python}
+pdf_losttcr_matchcounts = pdf_ham1_pairs_in2024_pairin2026.tcr_2024.value_counts().reset_index()
+f, ax = plt.subplots()
+sns.histplot(pdf_losttcr_matchcounts["count"])
+f.set_size_inches(8, 3)
+ax.set_title("Hamming-1 matches in 2026 per matched 'lost' 2024 TCR")
+```
+
+Almost half of the "lost" 2024 TCRs have at least 1 Hamming-1 match in 2026... and more than a quarter have 2+ matches... and some have as many as 20 Hamming-1 matches! That's very strong evidence that some of those TCRs, at least, shouldn't have been lost.
+
+Why were they lost, then? Some ideas:
+
+* It could be due to a loss of statistical power, in one of two ways:
+    * The samples used to build the 2026 ECOclusters were more numerous than the 2024 samples, but they weren't a superset. It's possible that some alleles had fewer allele+ donors in 2026.
+    * Or maybe the mix of donor HLA alleles included more samples in incomplete LD with those alleles, making the HLA associations weaker.
+* Also, it was just a completely different clustering process, and a complicated one. Perhaps some of the drift is just due to different runs of HDBSCAN on different datasets, with no real underlying "reason".
+
+In any case, this analysis is a strong suggestion that many of those "lost" 2024 TCRs are actually CMV-specific. I'll look for more evidence in a future post, by seeing how those TCRs behave in CMV-labeled repertoires.

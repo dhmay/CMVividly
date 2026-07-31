@@ -8,35 +8,32 @@ format:
 number-sections: true
 ---
 
-## What we're doing here
+## Why are there two versions of the CMV ECOcluster?
 
 In 2024, we put out [a preprint](https://www.biorxiv.org/content/10.1101/2024.05.08.593237v1) that made public an initial version of the CMV
-ECOcluster. In 2026, we updated the ECOclusters preprint significantly and
-made public a new version of the CMV ECOcluster. The two versions both define
-sensitive, specific classifiers for CMV, but the TCRs they contain differ
-greatly. Here, I'll characterize the differences and try to explain them a bit.
+ECOcluster. In 2026, having rebuilt ECOclusters with more data and improved algorithms, 
+we updated the ECOclusters preprint significantly and put a new version of the CMV ECOcluster
+in the supplemental data. The two versions both define
+sensitive, specific classifiers for CMV, but they're very different from each other.
+Here, I'll characterize the differences and try to explain them a bit.
 
-Since anyone familiar with the 2024 CMV ECOcluster must be a bit of
-an ECOclusters nerd, this post will get fairly far into some weeds.
+Since anyone familiar with the 2024 CMV ECOcluster is likely to be a bit of
+an ECOclusters enthusiast, already, this post will get fairly far into some weeds.
 
 ## Takeaways from this post:
 
-* A new version of the CMV ECOcluster was released in 2026 in a major update
-to the preprint
-* The 2026 version has about twice as many TCRs as the 2024 version,
-but it's missing most of the 2024 TCRs
+* The 2026 version has twice as many TCRs as 2024, but it's missing *most* of the 2024 TCRs
 * The 2026 version is far more Class II-dominated (90% of TCRs vs. 65%)
     * In absolute terms, 2026 has *many fewer* Class I-associated TCRs than 2024
-* TCRs unique to the 2026 version have much lower generation probability (pGen) than TCRs in both versions
-    * Likely because the 2026 version, built on more repertoires, had more statistical power to associate rarer TCRs
+* TCRs new in 2026 have much lower generation probability (pGen) than TCRs in both versions
+    * The 2026 version likely had more statistical power to associate rarer TCRs
 * Almost a quarter of shared TCRs' HLA allele associations disagree between versions
-    * There's almost no shifting of TCRs between HLA *class* associations
-* About half the TCRs "lost" between 2024 and 2026 have at least one near-identical
-match (same V and J, Hamming-1 CDR3) among 2026 TCRs
-    * That suggests many of them are actually CMV-specific and are missing
-    for statistical, not biological, reasons
-    * The best way to use the 2024 and 2026 CMV ECOclusters may be to combine them
-        * I'll explore that further in a future post
+    * Almost none disagree on HLA *class* association
+* About half the TCRs "lost" in 2026 have at least one close sequence match among 2026 TCRs
+    * That suggests many of them are missing for statistical/technical, not biological, reasons
+* The best way to use the 2024 and 2026 CMV ECOclusters may be to combine them, carefully
+    * I took a first stab at that in a code block in this post (near the end)
+    * I'll explore the best way to combine them further in a future post
 
 ## Setup
 
@@ -520,4 +517,62 @@ Why were they lost, then? Some ideas:
     * Or maybe the mix of donor HLA alleles included more samples in incomplete LD with those alleles, making the HLA associations weaker.
 * Also, it was just a completely different clustering process, and a complicated one. Perhaps some of the drift is just due to different runs of HDBSCAN on different datasets, with no real underlying "reason".
 
-In any case, this analysis is a strong suggestion that many of those "lost" 2024 TCRs are actually CMV-specific. I'll look for more evidence in a future post, by seeing how those TCRs behave in CMV-labeled repertoires.
+In any case, this analysis is a strong suggestion that many of those "lost" 2024 TCRs
+are actually CMV-specific. 
+
+## Combining the two ECOclusters
+
+The 2026 CMV ECOcluster is bigger and possibly "better", overall. But the 2024 version has
+many TCRs and HLA alleles missing from 2026. If you're applying the 2026 ECOcluster to repertoires,
+it's worth trying the same analysis with the 2024 ECOcluster, and also combining them... carefully. 
+
+At the very least, we need to deal with the combining of groups of HLA alleles into p-group
+models that was done in the 2026 version but not in 2024. That allele mapping is in a big table
+in the supplementary materials for the 2026. The practical impact for the CMV ECOcluster is as
+described above:
+
+* `DRB1*14:54` -> `DRB1*14:01P`
+* `DRB4*01:03` -> `DRB4*01:01P`
+
+In the code block below, I'll take a quick stab at combining the two and dealing with those two p groups.
+This isn't the final word on the best way to combine the two ECOclusters, so I won't put this in
+library code yet.
+
+```{python}
+def combine_2024_2026_cmv_ecoclusters(pdf_cmv_ecocluster_2024, pdf_cmv_ecocluster_2026):
+    """This is a quick and dirty stab at combining the two ECOclusters.
+    I'l button it up later, after seeing how the 2024 and 2026 TCRs behave in repertoires"""
+    pdf_cmv_ecocluster_2024_formerge = pdf_cmv_ecocluster_2024_dedup.copy()
+    pdf_cmv_ecocluster_2024_formerge["hla"] = (
+        pdf_cmv_ecocluster_2024_formerge.hla
+        .replace("DRB1*14:54", "DRB1*14:01P")
+        .replace("DRB4*01:03", "DRB4*01:01P")
+    )
+    tcr_columns = ["cdr3", "vgene", "jgene"]
+    pdf_combined_ecocluster = pdf_cmv_ecocluster_2024_formerge.merge(
+        pdf_cmv_ecocluster_2026, on=tcr_columns, how="outer",
+        suffixes=["_2024", "_2026"])
+    pdf_combined_ecocluster["hla"] = [
+        row["hla_2026"] if isinstance(row["hla_2026"], str)
+        else row["hla_2024"]
+        for _, row in pdf_combined_ecocluster.iterrows()
+    ]
+    return pdf_combined_ecocluster
+
+pdf_combined_ecocluster = combine_2024_2026_cmv_ecoclusters(pdf_cmv_ecocluster_2024, pdf_cmv_ecocluster_2026)
+```
+
+Let's see how many TCRs and HLA alleles that combined ECOcluster comprises.
+
+```{python}
+n_tcrs = len(pdf_combined_ecocluster)
+n_hlas = len(set(pdf_combined_ecocluster.hla))
+print(f"Combined ECOcluster has {n_tcrs} TCRs associated with {n_hlas} HLA alleles")
+```
+
+## Making the best use of these two ECOclusters
+
+In a future post, I plan to explore the ideas that the 2024-only TCRs are CMV-specific,
+and that the best way to use the two ECOclusters is to combine them, by seeing how those
+TCRs behave in CMV-labeled repertoires. I'll also take a more formal stab at combining them
+in a way that deals with the differences in how they were built.

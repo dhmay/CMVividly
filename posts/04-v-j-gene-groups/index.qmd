@@ -540,7 +540,8 @@ I think treating those pairs of V genes each as a single V gene is a pretty reas
 
 What does that mean practically? Well, if you're working with Adaptive repertoire data, and you've got a TCR with one of those V genes that otherwise (CDR3 and J) matches to a CMV ECOcluster TCR with the other, you should probably treat it as a match.
 
-To facilitate that kind of matching, I made a library routine, `combine_indistinguishable_genes`, that takes a dataframe of TCRs and returns a new dataframe with those genes combined using the mappings above: 7 groups of V genes and one group of two J genes.
+To facilitate that kind of matching, I made a [library routine](https://github.com/dhmay/CMVividly/blob/main/src/python/cmvividly/data/combine_v_j_groups.py{target="_blank" rel="noopener noreferrer"}),
+`combine_indistinguishable_genes`, that takes a dataframe of TCRs and returns a new dataframe with those genes combined using the mappings above: 7 groups of V genes and one group of two J genes.
 
 Let's apply that method to the CMV ECOclsuter TCRs and see how many TCRs we end up with.
 

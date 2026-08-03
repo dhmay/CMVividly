@@ -1,7 +1,7 @@
 ---
-title: "Groups of \"indistinguishable\" V and J genes in the CMV ECOcluster"
+title: "Groups of poorly distinguished V and J genes"
 date: "2026-08-02"
-description: "A few groups of V and J genes are often confused with each other. We should probably treat them as equivalent."
+description: "A few sets of V and J genes are often confused with each other. We should probably treat them as groups."
 format:
     html:
         toc: true

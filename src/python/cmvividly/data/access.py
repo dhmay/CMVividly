@@ -1,8 +1,9 @@
+"""Methods for accessing data"""
 from pathlib import Path
 import pandas as pd
-import numpy as np
 
 from cmvividly.data.hamming1_pairs import find_cdr3_hamming1_pairs
+from cmvividly.data.manipulation import postprocess_cmv_ecocluster
 
 # Walk up the directory tree to find the project root
 PROJECT_ROOT = Path(__file__).resolve().parents[4]
@@ -23,6 +24,9 @@ CMV_ECOCLUSTER_2024_TSV_PATH = RAW_DIR / CMV_ECOCLUSTER_2024_TSV_FILENAME
 
 CMV_ECOCLUSTER_2026_CDR3_HAMMING1_PAIRS_TSV_FILENAME = "cmv_ecocluster_2026_cdr3_hamming1_pairs.tsv"
 CMV_ECOCLUSTER_2026_CDR3_HAMMING1_PAIRS_TSV_PATH = PROCESSED_DIR / CMV_ECOCLUSTER_2026_CDR3_HAMMING1_PAIRS_TSV_FILENAME
+
+EMERSON_REPERTOIRES_ZIP_FILENAME = "emerson-2017-natgen.zip"
+EMERSON_REPERTOIRES_ZIP_PATH = RAW_DIR / EMERSON_REPERTOIRES_ZIP_FILENAME
 
 def load_cmv_ecocluster_2026(overwrite: bool = False,
                              timeout_seconds: int = 60) -> pd.DataFrame:
@@ -97,27 +101,4 @@ def load_tsv_pandas(tsv_path: Path) -> pd.DataFrame:
     """
     return pd.read_csv(tsv_path, sep="\t")
 
-def postprocess_cmv_ecocluster(df: pd.DataFrame) -> pd.DataFrame:
-    """
-    Post-process a CMV ECOcluster DataFrame (either 2026 or 2024):
-    * add hla_class column with values 'ci' or 'cii'
-    * add "cdr3", "vgene" and "jgene" columns by splitting the "tcr" column on "+"
-    * add "log10_pgen_eps" column by computing log10(pgen + 1e-50) to avoid log(0)
-    Args:
-        df: A pandas DataFrame containing the CMV ECOcluster data. 
-    Returns:
-        A pandas DataFrame with the added hla_class column.
-    """
-    df = df.copy()
-    df["hla_class"] = df["hla"].apply(
-        lambda x: "cii" if x.startswith("D") else "ci")
-    df[["cdr3", "vgene", "jgene"]] = df["tcr"].str.split("+", expand=True)
-
-    first_cols = ["tcr", "cdr3", "vgene", "jgene", "hla", "hla_class"]
-    if "tcr_pgen" in df.columns:
-        df["log10_tcr_pgen_eps"] = (df["tcr_pgen"] + 1e-50).apply(lambda x: np.log10(x))
-        first_cols += ["tcr_pgen", "log10_tcr_pgen_eps"]
-    # rearrange the columns: tcr, cdr3, vgene, jgene, hla, hla_class, tcr_pgen, log10_tcr_pgen_eps and the rest
-    cols = first_cols + [c for c in df.columns if c not in first_cols]
-    return df[cols]
 

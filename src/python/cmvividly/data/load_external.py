@@ -1,3 +1,5 @@
+"""Methods for downloading external datasets"""
+
 from pathlib import Path
 from urllib.request import Request, urlopen
 import zipfile
@@ -12,6 +14,7 @@ from cmvividly.data.access import (
     CMV_ECOCLUSTER_2026_TSV_PATH,
     CMV_ECOCLUSTER_2024_ZIP_PATH,
     CMV_ECOCLUSTER_2024_TSV_PATH,
+    EMERSON_REPERTOIRES_ZIP_PATH
 )
 
 CMV_ECOCLUSTER_2026_ZIP_URL = (
@@ -22,6 +25,11 @@ CMV_ECOCLUSTER_2026_ZIP_URL = (
 CMV_ECOCLUSTER_2024_ZIP_URL = (
     "https://www.biorxiv.org/content/biorxiv/early/2024/05/10/"
     "2024.05.08.593237/DC1/embed/media-1.zip?download=true"
+)
+
+EMERSON_REPERTOIRES_ZIP_URL = (
+    "https://adaptivepublic.blob.core.windows.net/publishedproject-supplements"
+    "/emerson-2017-natgen/emerson-2017-natgen.zip"
 )
 
 def download_cmv_ecocluster_2026(overwrite: bool = False,
@@ -109,22 +117,8 @@ def download_cmv_ecocluster_oneversion(
 
     zip_path = zip_path
 
-    req = Request(
-        zip_url,
-        headers={"User-Agent": "CMVividly/1.0"},
-    )
+    download_zipfile(zip_url, zip_path, timeout_seconds=timeout_seconds)
 
-    with urlopen(req, timeout=timeout_seconds) as response, open(zip_path, "wb") as out:
-        while True:
-            chunk = response.read(1024 * 1024)
-            if not chunk:
-                break
-            out.write(chunk)
-
-    if not zipfile.is_zipfile(zip_path):
-        zip_path.unlink(missing_ok=True)
-        raise ValueError(
-            f"Downloaded file is not a valid zip archive: {zip_path}")
     # unzip it
     cmv_ecocluster_zip = ZipFile(zip_path, "r")
     cmv_ecocluster_zip.extractall(output_dir)
@@ -134,3 +128,63 @@ def download_cmv_ecocluster_oneversion(
     orig_path = output_dir / orig_name
     Path(orig_path).rename(tsv_path)
     return tsv_path
+
+
+def download_emerson_repertoires(overwrite: bool = False,
+                                 timeout_seconds: int = 60) -> Path:
+    """Download the "Emerson" CMV repertoires.
+
+    Args:
+        overwrite (bool, optional): _description_. Defaults to False.
+        timeout_seconds (int, optional): _description_. Defaults to 60.
+
+    Returns:
+        Path: Path to the downloaded zip file.
+    """
+    if EMERSON_REPERTOIRES_ZIP_PATH.exists() and not overwrite:
+        return EMERSON_REPERTOIRES_ZIP_PATH
+    download_zipfile(
+        url=EMERSON_REPERTOIRES_ZIP_URL,
+        out_path=EMERSON_REPERTOIRES_ZIP_PATH,
+        timeout_seconds=timeout_seconds,
+    )
+    return EMERSON_REPERTOIRES_ZIP_PATH
+
+
+def download_zipfile(url: str, out_path: Path, timeout_seconds: int = 60) -> None:
+    """Download a file and ensure it's a zip file
+
+    Args:
+        url (str): _description_
+        out_path (Path): _description_
+        timeout_seconds (int, optional): _description_. Defaults to 60.
+
+    Raises:
+        ValueError: _description_
+    """
+    download_file(url, out_path, timeout_seconds=timeout_seconds)
+    if not zipfile.is_zipfile(out_path):
+        out_path.unlink(missing_ok=True)
+        raise ValueError(
+            f"Downloaded file is not a valid zip archive: {out_path}")
+
+
+def download_file(url: str, out_path: Path, timeout_seconds: int = 60) -> None:
+    """Download a file from url into out_path
+
+    Args:
+        url (str): _description_
+        out_path (Path): _description_
+        timeout_seconds (int, optional): _description_. Defaults to 60.
+    """
+    req = Request(
+        url,
+        headers={"User-Agent": "CMVividly/1.0"},
+    )
+
+    with urlopen(req, timeout=timeout_seconds) as response, open(out_path, "wb") as out:
+        while True:
+            chunk = response.read(1024 * 1024)
+            if not chunk:
+                break
+            out.write(chunk)

@@ -1,3 +1,6 @@
+# Methods for manipulating dataframes
+
+import numpy as np
 import pandas as pd
 
 def extract_hlacoclusters_pdf(pdf_cmv_ecocluster: pd.DataFrame) -> pd.DataFrame:
@@ -33,3 +36,28 @@ def extract_hlacoclusters_pdf(pdf_cmv_ecocluster: pd.DataFrame) -> pd.DataFrame:
     # make n_tcrs the second column, after hla_cocluster, and before the other columns
     pdf_hla_coclusters = pdf_hla_coclusters[["hla_cocluster", "n_tcrs"] + hlacocluster_level_cols]
     return pdf_hla_coclusters
+
+
+def postprocess_cmv_ecocluster(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Post-process a CMV ECOcluster DataFrame (either 2026 or 2024):
+    * add hla_class column with values 'ci' or 'cii'
+    * add "cdr3", "vgene" and "jgene" columns by splitting the "tcr" column on "+"
+    * add "log10_pgen_eps" column by computing log10(pgen + 1e-50) to avoid log(0)
+    Args:
+        df: A pandas DataFrame containing the CMV ECOcluster data. 
+    Returns:
+        A pandas DataFrame with the added hla_class column.
+    """
+    df = df.copy()
+    df["hla_class"] = df["hla"].apply(
+        lambda x: "cii" if x.startswith("D") else "ci")
+    df[["cdr3", "vgene", "jgene"]] = df["tcr"].str.split("+", expand=True)
+
+    first_cols = ["tcr", "cdr3", "vgene", "jgene", "hla", "hla_class"]
+    if "tcr_pgen" in df.columns:
+        df["log10_tcr_pgen_eps"] = (df["tcr_pgen"] + 1e-50).apply(lambda x: np.log10(x))
+        first_cols += ["tcr_pgen", "log10_tcr_pgen_eps"]
+    # rearrange the columns: tcr, cdr3, vgene, jgene, hla, hla_class, tcr_pgen, log10_tcr_pgen_eps and the rest
+    cols = first_cols + [c for c in df.columns if c not in first_cols]
+    return df[cols]

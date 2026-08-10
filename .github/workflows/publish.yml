@@ -39,6 +39,28 @@ jobs:
       - name: Sync Python dependencies (uv)
         run: uv sync
 
+      - name: Cache CMV ECOcluster 2026 download
+        id: cache-cmv-ecocluster-2026
+        uses: actions/cache@v4
+        with:
+          path: data/raw/cmv_ecocluster_2026.tsv
+          key: cmv-ecocluster-2026-tsv-v1
+
+      - name: Download CMV ECOcluster 2026 dataset (if not cached)
+        if: steps.cache-cmv-ecocluster-2026.outputs.cache-hit != 'true'
+        run: uv run python -c "from cmvividly.data.access import load_cmv_ecocluster_2026; load_cmv_ecocluster_2026()"
+
+      - name: Cache CMV ECOcluster 2024 download
+        id: cache-cmv-ecocluster-2024
+        uses: actions/cache@v4
+        with:
+          path: data/raw/cmv_ecocluster_2024.tsv
+          key: cmv-ecocluster-2024-tsv-v1
+
+      - name: Download CMV ECOcluster 2024 dataset (if not cached)
+        if: steps.cache-cmv-ecocluster-2024.outputs.cache-hit != 'true'
+        run: uv run python -c "from cmvividly.data.access import load_cmv_ecocluster_2024; load_cmv_ecocluster_2024()"
+
       - name: Render site (uv env)
         run: uv run quarto render
 ## end adding

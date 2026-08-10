@@ -2,6 +2,9 @@
 
 from pathlib import Path
 from urllib.request import Request, urlopen
+from urllib.error import URLError
+import socket
+import time
 import zipfile
 from zipfile import ZipFile
 import logging
@@ -169,22 +172,38 @@ def download_zipfile(url: str, out_path: Path, timeout_seconds: int = 60) -> Non
             f"Downloaded file is not a valid zip archive: {out_path}")
 
 
-def download_file(url: str, out_path: Path, timeout_seconds: int = 60) -> None:
-    """Download a file from url into out_path
+def download_file(url: str, out_path: Path, timeout_seconds: int = 60,
+                  max_retries: int = 3, backoff_seconds: float = 5) -> None:
+    """Download a file from url into out_path, retrying on timeout/connection errors.
 
     Args:
         url (str): _description_
         out_path (Path): _description_
         timeout_seconds (int, optional): _description_. Defaults to 60.
+        max_retries (int, optional): Number of attempts before giving up. Defaults to 3.
+        backoff_seconds (float, optional): Seconds to wait before retrying, doubling
+            after each failed attempt. Defaults to 5.
     """
     req = Request(
         url,
         headers={"User-Agent": "CMVividly/1.0"},
     )
 
-    with urlopen(req, timeout=timeout_seconds) as response, open(out_path, "wb") as out:
-        while True:
-            chunk = response.read(1024 * 1024)
-            if not chunk:
-                break
-            out.write(chunk)
+    for attempt in range(1, max_retries + 1):
+        try:
+            with urlopen(req, timeout=timeout_seconds) as response, open(out_path, "wb") as out:
+                while True:
+                    chunk = response.read(1024 * 1024)
+                    if not chunk:
+                        break
+                    out.write(chunk)
+            return
+        except (URLError, TimeoutError, socket.timeout) as e:
+            if attempt == max_retries:
+                raise
+            logger.warning(
+                "Download attempt %d/%d for %s failed (%s); retrying in %.0fs...",
+                attempt, max_retries, url, e, backoff_seconds,
+            )
+            time.sleep(backoff_seconds)
+            backoff_seconds *= 2

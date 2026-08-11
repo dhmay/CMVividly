@@ -9,7 +9,8 @@ jupyter: python3
 
 * The CMV ECOcluster is a very good predictor of CMV status, even without accounting for donor HLA type
 * But donor HLA type does matter! Asian or Pacific Islander donors have fewer CMV ECOcluster TCRs.
-* Among CMV+ donors, the CMV ECOcluster can be used to predict HLA allele status for many alleles with high sensitivity and specificity
+* Among CMV+ donors, the CMV ECOcluster can be used to predict donor HLA allele status for several alleles with high sensitivity and specificity
+    * Those HLA "models" could be used as a seed for stronger, generalized models
 
 ```{python}
 # useful imports
@@ -268,52 +269,69 @@ pdf_tcr_matches_2026["hla_for_join"] = pdf_tcr_matches_2026.hla.apply(
 # Join the HLA metadata with the breadth metric and assess breath as a predictor
 pdf_sample_metadata_withhla_cmvpos = pdf_sample_metadata_withhla[pdf_sample_metadata_withhla.cmv_status == 1]
 
-rows = []
-f, ax = plt.subplots()
 
-for allele in alleles_enough_cmvpos_with_hlacocluster:    
-    allele_for_join = allele[len("HLA-"):] + ":01"
-    pdf_matches_this_allele = pdf_tcr_matches_2026[pdf_tcr_matches_2026.hla == allele_for_join]
-    pdf_rowcounts_this_allele = pdf_matches_this_allele.groupby("sample_name").agg({
-        "tcr_repertoire": "count",
-        "productive_frequency": "sum"
-    }).reset_index()
-    pdf_rowcounts_this_allele_withmeta = pdf_sample_metadata_withhla_cmvpos.merge(
-        pdf_rowcounts_this_allele, how="left", on="sample_name").fillna(0)
-    pdf_rowcounts_this_allele_withmeta["breadth"] = pdf_rowcounts_this_allele_withmeta["tcr_repertoire"] / pdf_rowcounts_this_allele_withmeta["productive_rearrangements"]
-    pdf_rowcounts_this_allele_withmeta["depth"] = pdf_rowcounts_this_allele_withmeta["productive_frequency"]
-    auroc_breadth = calc_auroc(pdf_rowcounts_this_allele_withmeta, "breadth", label_col=allele)
-    sens_98_spec_breadth = calc_roc_summary(pdf_rowcounts_this_allele_withmeta, "breadth", label_col=allele,
-                                            specificities=[0.98])["senses_at_specs"][0]
-    auroc_depth = calc_auroc(pdf_rowcounts_this_allele_withmeta, "depth", label_col=allele)
-    rows.append({
-        "allele": allele,
-        "n_cmvpos": sum(pdf_rowcounts_this_allele_withmeta[allele] == 1),
-        "auroc_breadth": auroc_breadth,
-        "auroc_depth": auroc_depth,
-        "sens_98_spec_breadth": sens_98_spec_breadth
-    })
-    plot_roc(pdf_rowcounts_this_allele_withmeta, 
-             "breadth", label_col=allele, ax=ax, label=allele)
-ax.set_title("ROC curves predicting HLA allele status\nusing breadth, by allele")
-ax.legend(bbox_to_anchor=(1.01, 1.05), loc='upper left')
-f.set_size_inches(6,6)
+def calc_rocs_all_models(pdf_metadata, title_suffix):
+    rows = []
+    f, ax = plt.subplots()
+    
+    for allele in alleles_enough_cmvpos_with_hlacocluster:    
+        allele_for_join = allele[len("HLA-"):] + ":01"
+        pdf_matches_this_allele = pdf_tcr_matches_2026[pdf_tcr_matches_2026.hla == allele_for_join]
+        pdf_rowcounts_this_allele = pdf_matches_this_allele.groupby("sample_name").agg({
+            "tcr_repertoire": "count",
+            "productive_frequency": "sum"
+        }).reset_index()
+        pdf_rowcounts_this_allele_withmeta = pdf_metadata.merge(
+            pdf_rowcounts_this_allele, how="left", on="sample_name").fillna(0)
+        pdf_rowcounts_this_allele_withmeta["breadth"] = pdf_rowcounts_this_allele_withmeta["tcr_repertoire"] / pdf_rowcounts_this_allele_withmeta["productive_rearrangements"]
+        pdf_rowcounts_this_allele_withmeta["depth"] = pdf_rowcounts_this_allele_withmeta["productive_frequency"]
+        auroc_breadth = calc_auroc(pdf_rowcounts_this_allele_withmeta, "breadth", label_col=allele)
+        sens_98_spec_breadth = calc_roc_summary(pdf_rowcounts_this_allele_withmeta, "breadth", label_col=allele,
+                                                specificities=[0.98])["senses_at_specs"][0]
+        auroc_depth = calc_auroc(pdf_rowcounts_this_allele_withmeta, "depth", label_col=allele)
+        rows.append({
+            "allele": allele,
+            "n_cmvpos": sum(pdf_rowcounts_this_allele_withmeta[allele] == 1),
+            "auroc_breadth": auroc_breadth,
+            "auroc_depth": auroc_depth,
+            "sens_98_spec_breadth": sens_98_spec_breadth
+        })
+        plot_roc(pdf_rowcounts_this_allele_withmeta, 
+                 "breadth", label_col=allele, ax=ax, label=allele)
+    ax.set_title(f"ROC curves predicting HLA allele status\nusing breadth, by allele, {title_suffix}")
+    ax.legend(bbox_to_anchor=(1.01, 1.05), loc='upper left')
+    f.set_size_inches(5,5)
+    
+    pdf_allele_aurocs = pd.DataFrame(rows).sort_values("auroc_breadth", ascending=False)
+    return pdf_allele_aurocs
 
-pdf_allele_aurocs = pd.DataFrame(rows).sort_values("auroc_breadth", ascending=False)
+pdf_allele_aurocs_cmvpos = calc_rocs_all_models(pdf_sample_metadata_withhla_cmvpos, "CMV+ donors")
 ```
 
 Let's take a look at the AUROCs and sensitivities at 98% specificity for those models.
 
 ```{python}
 f, ax = plt.subplots()
-sns.scatterplot(data=pdf_allele_aurocs, y="auroc_depth", x="auroc_breadth")
+sns.scatterplot(data=pdf_allele_aurocs_cmvpos, y="auroc_depth", x="auroc_breadth")
 ax.set_title("AUROC for breadth vs depth predicting\nHLA allele status among CMV+ donors")
 sns.lineplot(x=[0, 1], y=[0, 1], color="gray", linestyle="--", ax=ax)
 f.set_size_inches(5, 5)
-pdf_allele_aurocs
+pdf_allele_aurocs_cmvpos
 ```
 
 AUROCs based on breadth and on depth are strikingly similar, with a slight advantage to breadth-based models.
+
+Just to be sure, let's take a look at those same "models" in CMV- donors. There should be no signal, because those donors shouldn't have CMV-responding TCRs.
+
+```{python}
+pdf_sample_metadata_withhla_cmvneg = pdf_sample_metadata_withhla[pdf_sample_metadata_withhla.cmv_status == 0]
+
+pdf_allele_aurocs_cmvneg = calc_rocs_all_models(pdf_sample_metadata_withhla_cmvneg, "CMV- donors")
+```
+
+Huh! Most of the alleles are total garbage, as expected. But there's some signal in `A*01`. 
+There's only one `A*01:01` HLA-COcluster in the CMV ECOcluster, but perhaps it's not totally "pure"...
+maybe it's dominated by CMV-specific TCRs, but some TCRs also respond to other exposures.
 
 ## Applications of HLA allele models usable on CMV+ donors
 

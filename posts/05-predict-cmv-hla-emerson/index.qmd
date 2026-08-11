@@ -1,5 +1,5 @@
 ---
-title: Predict CMV status and HLA type
+title: Predicting CMV status and HLA type
 date: "2026-08-10"
 description: "Intersect CMV ECOcluster TCRs with repertoires to predict CMV status and HLA type."
 jupyter: python3

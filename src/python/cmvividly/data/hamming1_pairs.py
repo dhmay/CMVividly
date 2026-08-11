@@ -123,6 +123,49 @@ def find_cdr3_hamming1_pairs(pdf: pd.DataFrame,
 	return pd.DataFrame(output_rows)
 
 
+def populate_hamming1_pairs_othercols(pdf_all_ham1_pairs: pd.DataFrame,
+									  pdf_original: pd.DataFrame) -> pd.DataFrame:
+    """Populate additional columns in a dataframe of Hamming-1 pairs.
+
+    Args:
+        pdf_all_ham1_pairs: DataFrame containing Hamming-1 pairs with columns
+            ``row_i`` and ``row_j`` that are index labels of the original dataframe.
+        pdf_original: Original dataframe from which the pairs were derived.
+
+    Returns:
+        DataFrame with additional columns populated from the original dataframe.
+    """
+    pdf_original_withrow = pdf_original.copy()
+    pdf_original_withrow["row"] = range(len(pdf_original_withrow))
+    pdf_hamming1_pairs_allcols = (
+        pdf_all_ham1_pairs
+        .drop(columns=["cdr3_i", "cdr3_j"])
+        .merge(pdf_original_withrow[["row", "tcr", "cdr3", "vgene", "jgene", "hla_cocluster", "hla"]], 
+            left_on="row_i", right_on="row")
+        .rename(columns={"tcr": "tcr_i",
+                        "vgene": "vgene_i",
+                        "jgene": "jgene_i",
+                        "cdr3": "cdr3_i",
+                        "hla_cocluster": "hla_cocluster_i",
+                        "hla": "hla_i"
+                        })
+        .merge(pdf_original_withrow[["row", "tcr", "cdr3", "vgene", "jgene", "hla_cocluster", "hla"]], 
+            left_on="row_j", right_on="row")
+        .rename(columns={"tcr": "tcr_j",
+                        "vgene": "vgene_j",
+                        "jgene": "jgene_j",
+                        "cdr3": "cdr3_j",
+                        "hla_cocluster": "hla_cocluster_j",
+                        "hla": "hla_j"
+                        })    
+    )
+    pdf_hamming1_pairs_allcols["same_vgene"] = pdf_hamming1_pairs_allcols["vgene_i"] == pdf_hamming1_pairs_allcols["vgene_j"]
+    pdf_hamming1_pairs_allcols["same_jgene"] = pdf_hamming1_pairs_allcols["jgene_i"] == pdf_hamming1_pairs_allcols["jgene_j"]
+    pdf_hamming1_pairs_allcols["same_hlacocluster"] = pdf_hamming1_pairs_allcols["hla_cocluster_i"] == pdf_hamming1_pairs_allcols["hla_cocluster_j"]
+    pdf_hamming1_pairs_allcols["same_hla"] = pdf_hamming1_pairs_allcols["hla_i"] == pdf_hamming1_pairs_allcols["hla_j"]
+    return pdf_hamming1_pairs_allcols
+
+
 def _iter_hamming1_unique_sequence_pairs(sequences: list[str]) -> Iterable[tuple[int, int, int]]:
 	"""Yield unique sequence-id pairs that are Hamming-1 apart.
 

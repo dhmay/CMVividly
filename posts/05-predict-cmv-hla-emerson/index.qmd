@@ -36,8 +36,8 @@ This intersection makes no attempt to account for donor HLA type.
 Let's load those processed files and prepare them for analysis.
 
 ```{python}
-metadata_filepath = "/Users/damonmay/CMVividly/data/processed/emerson_cohorts_sample_metadata.tsv"
-pdf_sample_metadata = pd.read_csv(metadata_filepath, sep="\t")
+from cmvividly.data.access import load_emerson_metadata
+pdf_sample_metadata = load_emerson_metadata()
 print("'Emerson' cohort breakdown by CMV status:")
 pd.crosstab(pdf_sample_metadata.cohort,
             pdf_sample_metadata.cmv_status)
@@ -46,8 +46,8 @@ pd.crosstab(pdf_sample_metadata.cohort,
 A sample of the TCR intersection of the CMV ECOcluster with the 'Emerson' repertoires:
 
 ```{python}
-file_path_inters_2026 = "/Users/damonmay/CMVividly/data/processed/emerson_cmveco_2026_intersection_cdr3_exact.parquet"
-pdf_tcr_matches_2026 = pd.read_parquet(file_path_inters_2026)
+from cmvividly.data.access import load_cmv_ecocluster_intersect_emerson
+pdf_tcr_matches_2026 = load_cmv_ecocluster_intersect_emerson()
 pdf_tcr_matches_2026
 ```
 

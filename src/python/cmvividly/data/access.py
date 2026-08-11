@@ -28,6 +28,12 @@ CMV_ECOCLUSTER_2026_CDR3_HAMMING1_PAIRS_TSV_PATH = PROCESSED_DIR / CMV_ECOCLUSTE
 EMERSON_REPERTOIRES_ZIP_FILENAME = "emerson-2017-natgen.zip"
 EMERSON_REPERTOIRES_ZIP_PATH = RAW_DIR / EMERSON_REPERTOIRES_ZIP_FILENAME
 
+EMERSON_METADATA_TSV_FILENAME = "emerson_cohorts_sample_metadata.tsv"
+EMERSON_METADATA_TSV_PATH = PROCESSED_DIR / EMERSON_METADATA_TSV_FILENAME
+
+CMV_ECOCLUSTER_INTERSECT_EMERSON_PARQUET_FILENAME = "emerson_cmveco_2026_intersection_cdr3_exact.parquet"
+CMV_ECOCLUSTER_INTERSECT_EMERSON_PARQUET_PATH = PROCESSED_DIR / CMV_ECOCLUSTER_INTERSECT_EMERSON_PARQUET_FILENAME
+
 def load_cmv_ecocluster_2026(overwrite: bool = False,
                              timeout_seconds: int = 60) -> pd.DataFrame:
     """
@@ -102,3 +108,26 @@ def load_tsv_pandas(tsv_path: Path) -> pd.DataFrame:
     return pd.read_csv(tsv_path, sep="\t")
 
 
+def load_emerson_metadata() -> pd.DataFrame:
+    """
+    Load the Emerson 2017 metadata into a pandas DataFrame.
+
+    Returns:
+        A pandas DataFrame containing the Emerson 2017 metadata.
+    """
+    tsv_path = EMERSON_METADATA_TSV_PATH
+    if not tsv_path.exists():
+        raise FileNotFoundError(f"Emerson metadata file not found at {tsv_path}.")
+    return load_tsv_pandas(tsv_path)
+
+def load_cmv_ecocluster_intersect_emerson() -> pd.DataFrame:
+    """
+    Load the intersection of the 2026 CMV ECOcluster and Emerson 2017 repertoires (by TCR) into a pandas DataFrame.
+
+    Returns:
+        A pandas DataFrame containing the intersection of the 2026 CMV ECOcluster and Emerson 2017 repertoires.
+    """
+    parquet_path = CMV_ECOCLUSTER_INTERSECT_EMERSON_PARQUET_PATH
+    if not parquet_path.exists():
+        raise FileNotFoundError(f"CMV ECOcluster intersect Emerson file not found at {parquet_path}.")
+    return pd.read_parquet(parquet_path)

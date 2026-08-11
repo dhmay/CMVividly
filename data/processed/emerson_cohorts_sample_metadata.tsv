@@ -1,0 +1,787 @@
+sample_name	cmv_status	cohort	productive_rearrangements	sex	ethnicity	race	Tissue Source	age	hla_class_i
+P00076	1.0	cohort_1	59552	Female	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	48.0	
+Keck0076_MC1	1.0	cohort_2	287910	Male	Non-Hispanic or Latino	Asian or Pacific Islander	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	27.0	
+P00402	1.0	cohort_1	471962	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	42.0	HLA-A*03,HLA-A*26,HLA-B*38,HLA-B*44
+P00655		cohort_1	194142		Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA-A*02,HLA-B*40,HLA-B*51
+Keck0067_MC1	1.0	cohort_2	153019	Male	Non-Hispanic or Latino	Asian or Pacific Islander	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	28.0	
+P00181	0.0	cohort_1	233425	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	37.0	HLA-A*01,HLA-A*03,HLA-B*08,HLA-B*49
+P00334	0.0	cohort_1	126607	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	47.0	HLA-A*02,HLA-A*03,HLA-B*07,HLA-B*14
+P00043	0.0	cohort_1	181775	Female	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA-A*24,HLA-A*30,HLA-B*13,HLA-B*51
+P00580	0.0	cohort_1	149611	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	54.0	HLA-A*01,HLA-A*03,HLA-B*08,HLA-B*15
+P00636	0.0	cohort_1	202287	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	42.0	HLA-A*11,HLA-A*32,HLA-B*07,HLA-B*15
+P00233	0.0	cohort_1	370363	Female	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	23.0	HLA-A*01,HLA-A*02,HLA-B*08,HLA-B*40
+P00131	0.0	cohort_1	131291	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA-A*02,HLA-A*32,HLA-B*44,HLA-B*51
+P00411	0.0	cohort_1	240681	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	46.0	HLA-A*01,HLA-A*68,HLA-B*18,HLA-B*52
+P00452	0.0	cohort_1	223125	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	43.0	HLA-A*02,HLA-A*29,HLA-B*44,HLA-B*45
+P00637	1.0	cohort_1	141668	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	55.0	HLA-A*24,HLA-A*32,HLA-B*38,HLA-B*44
+P00208	1.0	cohort_1	144208	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA-A*01,HLA-A*02,HLA-B*07,HLA-B*61
+P00409	0.0	cohort_1	184102	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	51.0	HLA-A*11,HLA-A*24,HLA-B*39,HLA-B*62
+P00356	0.0	cohort_1	234449	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA-A*01,HLA-A*02,HLA-B*37,HLA-B*44
+P00246	0.0	cohort_1	191663	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	37.0	HLA-A*02,HLA-A*23,HLA-B*07,HLA-B*44
+P00210	1.0	cohort_1	110510	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	54.0	HLA-A*01,HLA-B*07,HLA-B*51
+P00159	0.0	cohort_1	193733	Female	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	27.0	HLA-A*03,HLA-A*30,HLA-B*13,HLA-B*35
+P00063	0.0	cohort_1	143620	Female	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	37.0	HLA-A*02,HLA-B*18,HLA-B*44
+P00365	1.0	cohort_1	107915	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	31.0	HLA-A*03,HLA-A*33,HLA-B*14,HLA-B*45
+P00094	1.0	cohort_1	297035	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	13.0	HLA-A*02,HLA-A*24,HLA-B*15,HLA-B*55
+Keck0021_MC1	0.0	cohort_2	272416	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	26.0	
+P00140	0.0	cohort_1	310108	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	34.0	HLA-A*02,HLA-A*32,HLA-B*07,HLA-B*39
+P00306	0.0	cohort_1	157673	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	65.0	HLA-A*01,HLA-A*02,HLA-B*08,HLA-B*52
+P00113	1.0	cohort_1	207230	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	61.0	HLA-A*01,HLA-A*29,HLA-B*45,HLA-B*62
+P00157	1.0	cohort_1	99609	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	55.0	HLA-A*01,HLA-A*24,HLA-B*35,HLA-B*38
+P00209	0.0	cohort_1	221091	Female	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA-A*02,HLA-A*24,HLA-B*38,HLA-B*44
+P00148	0.0	cohort_1	82037	Female	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	42.0	HLA-A*02,HLA-A*24,HLA-B*08,HLA-B*39
+P00558	0.0	cohort_1	265370	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	61.0	HLA-A*01,HLA-B*08,HLA-B*15
+P00611	0.0	cohort_1	254673	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	41.0	HLA-A*01,HLA-A*11,HLA-B*07,HLA-B*15
+P00333	0.0	cohort_1	292305	Female	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	58.0	HLA-A*01,HLA-A*30,HLA-B*18,HLA-B*57
+P00400	0.0	cohort_1	56599	Female	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA-A*03,HLA-A*30,HLA-B*07,HLA-B*13
+P00169	0.0	cohort_1	285813	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	19.0	HLA-A*01,HLA-A*11,HLA-B*35,HLA-B*58
+P00340	1.0	cohort_1	89781	Male	Non-Hispanic or Latino	Native American or Alaska Native	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	17.0	HLA-A*02,HLA-A*24,HLA-B*27,HLA-B*35
+P00228	0.0	cohort_1	243897	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA-A*01,HLA-A*26,HLA-B*08,HLA-B*38
+P00372	0.0	cohort_1	209457	Female	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA-A*02,HLA-A*03,HLA-B*35,HLA-B*60
+Keck0055_MC1	1.0	cohort_2	274344	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	32.0	
+P00539	0.0	cohort_1	242947	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	55.0	HLA-A*24,HLA-B*15,HLA-B*40
+P00199	0.0	cohort_1	157656	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	50.0	HLA-A*01,HLA-A*25,HLA-B*08
+P00497	1.0	cohort_1	389081	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	60.0	HLA MHC Class I,HLA-A*01,HLA-A*31,HLA-B*35
+P00142	1.0	cohort_1	177880	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	62.0	HLA-A*02,HLA-B*35,HLA-B*44
+P00449	1.0	cohort_1	155634	Female	Non-Hispanic or Latino	Native American or Alaska Native	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	22.0	HLA-A*24,HLA-A*30,HLA-B*13,HLA-B*61
+P00046	0.0	cohort_1	125093	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	21.0	
+P00424	0.0	cohort_1	176084	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	43.0	HLA-A*01,HLA-A*02,HLA-B*13,HLA-B*62
+P00175	0.0	cohort_1	268251	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	30.0	HLA MHC Class I,HLA-A*01,HLA-A*11,HLA-B*37
+P00370	1.0	cohort_1	166469	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		
+P00256	1.0	cohort_1	158237	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	58.0	HLA-A*02,HLA-A*03,HLA-B*07,HLA-B*27
+P00026	1.0	cohort_1	315556	Female	Hispanic or Latino	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	26.0	HLA-A*29,HLA-A*33,HLA-B*14,HLA-B*44
+P00250	1.0	cohort_1	185094	Female	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA-A*01,HLA-A*03,HLA-B*07,HLA-B*57
+P00248	1.0	cohort_1	132070	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	42.0	HLA-A*31,HLA-A*32,HLA-B*15,HLA-B*62
+P00036	1.0	cohort_1	259187	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	53.0	HLA-A*02,HLA-A*26,HLA-B*14,HLA-B*27
+P00191	1.0	cohort_1	58525	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	34.0	HLA-A*02,HLA-A*29,HLA-B*44
+P00591	0.0	cohort_1	218514	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	60.0	HLA-A*23,HLA-A*68,HLA-B*40,HLA-B*44
+P00362	1.0	cohort_1	244485	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	43.0	HLA-A*03,HLA-A*29,HLA-B*07,HLA-B*27
+Keck0087_MC1	0.0	cohort_2	270566	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	29.0	
+P00619	1.0	cohort_1	120008	Male	Non-Hispanic or Latino	Asian or Pacific Islander	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	44.0	HLA-A*02,HLA-A*31,HLA-B*35,HLA-B*51
+P00266	1.0	cohort_1	159075	Female	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA MHC Class I,HLA-A*02,HLA-A*03,HLA-B*14,HLA-B*51
+P00269	0.0	cohort_1	106969	Female	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	36.0	HLA-A*24,HLA-A*32,HLA-B*44,HLA-B*62
+P00330	1.0	cohort_1	264309	Female	Non-Hispanic or Latino	African Race	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	55.0	HLA-A*02,HLA-A*68,HLA-B*07,HLA-B*08
+P00448	1.0	cohort_1	159247	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	52.0	HLA-A*02,HLA-A*24,HLA-B*35,HLA-B*38
+P00523	0.0	cohort_1	174484	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	44.0	HLA-A*02,HLA-A*03,HLA-B*07,HLA-B*15
+P00450	0.0	cohort_1	129945	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	43.0	
+P00651	1.0	cohort_1	225685	Male	Non-Hispanic or Latino	Asian or Pacific Islander	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	47.0	HLA-A*11,HLA-A*24,HLA-B*07,HLA-B*08
+Keck0075_MC1	1.0	cohort_2	184396	Female	Non-Hispanic or Latino	Asian or Pacific Islander	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	25.0	
+P00308	0.0	cohort_1	162983	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	46.0	HLA-A*02,HLA-A*32,HLA-B*15,HLA-B*35
+P00632	1.0	cohort_1	125482	Female	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA MHC Class I,HLA-A*02,HLA-B*15,HLA-B*39
+P00466	1.0	cohort_1	176507	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	31.0	HLA-A*01,HLA-A*24,HLA-B*18,HLA-B*35
+P00035	1.0	cohort_1	342119	Female	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	51.0	
+Keck0020_MC1	0.0	cohort_2	70416	Female	Non-Hispanic or Latino	Asian or Pacific Islander	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	20.0	
+P00562	0.0	cohort_1	313653	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	57.0	HLA-A*11,HLA-A*29,HLA-B*27,HLA-B*51
+P00247	1.0	cohort_1	94927	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	55.0	HLA-A*29,HLA-A*30,HLA-B*13,HLA-B*57
+P00541	1.0	cohort_1	304676	Female	Non-Hispanic or Latino	African Race	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	36.0	HLA-A*33,HLA-A*68,HLA-B*78,HLA-B*82
+P00067	0.0	cohort_1	264666	Female	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	25.0	HLA-A*01,HLA-A*02,HLA-B*08,HLA-B*51
+Keck0053_MC1	1.0	cohort_2	121845	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	25.0	
+P00399	1.0	cohort_1	337694	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	56.0	HLA-A*01,HLA-A*02,HLA-B*57,HLA-B*73
+P00171	0.0	cohort_1	221259	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	15.0	HLA-A*02,HLA-A*30,HLA-B*07,HLA-B*18
+P00048	0.0	cohort_1	189365	Female	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	35.0	HLA-A*02,HLA-A*25,HLA-B*18,HLA-B*62
+P00310	1.0	cohort_1	267882	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA-A*03,HLA-A*32,HLA-B*07,HLA-B*35
+P00494	1.0	cohort_1	139579	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	46.0	HLA-A*11,HLA-A*29,HLA-B*15,HLA-B*18
+P00254	0.0	cohort_1	334947	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	50.0	HLA-A*03,HLA-A*26,HLA-B*07,HLA-B*44
+P00590	1.0	cohort_1	65628	Male	Hispanic or Latino	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	48.0	HLA-A*02,HLA-A*68,HLA-B*39,HLA-B*52
+P00384	1.0	cohort_1	358356	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	33.0	HLA-A*25,HLA-A*33,HLA-B*08,HLA-B*35
+P00099	0.0	cohort_1	101196	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA-A*02,HLA-A*11,HLA-B*18,HLA-B*62
+P00414	1.0	cohort_1	140963	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	55.0	HLA-A*02,HLA-A*11,HLA-B*44
+P00508	0.0	cohort_1	163094	Female	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	48.0	HLA-A*26,HLA-A*29,HLA-B*38,HLA-B*44
+P00176	1.0	cohort_1	265936	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	10.0	HLA-A*01,HLA-A*24,HLA-B*08,HLA-B*38
+P00600	0.0	cohort_1	156457	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	32.0	HLA-A*03,HLA-B*07,HLA-B*08
+P00510	1.0	cohort_1	335179	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	5.0	HLA-A*03,HLA-A*68,HLA-B*07,HLA-B*35
+P00196	1.0	cohort_1	161070	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	48.0	HLA-A*02,HLA-A*03,HLA-B*08,HLA-B*44
+Keck0057_MC1	1.0	cohort_2	233159	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	32.0	
+P00041	0.0	cohort_1	58292	Female	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	29.0	HLA-A*24,HLA-A*29,HLA-B*39,HLA-B*44
+P00071	1.0	cohort_1	42435	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA-A*01,HLA-A*32,HLA-B*08,HLA-B*60
+P00495	0.0	cohort_1	202716	Female	Hispanic or Latino	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	40.0	HLA MHC Class I,HLA-A*02,HLA-A*11,HLA-B*39,HLA-B*57
+P00154	1.0	cohort_1	179748	Female	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	46.0	HLA-A*01,HLA-A*24,HLA-B*08,HLA-B*51
+P00332	0.0	cohort_1	394537	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	2.0	HLA-A*24,HLA-B*07,HLA-B*51
+P00052	0.0	cohort_1	172213	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA-A*24,HLA-A*29,HLA-B*07,HLA-B*62
+P00536	0.0	cohort_1	228521	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	48.0	HLA-A*02,HLA-A*29,HLA-B*40,HLA-B*44
+P00417	0.0	cohort_1	230900	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	52.0	HLA MHC Class I,HLA-A*29,HLA-A*31,HLA-B*27,HLA-B*44
+P00277	1.0	cohort_1	61221	Female	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	22.0	HLA-A*03,HLA-A*29,HLA-B*07,HLA-B*44
+Keck0035_MC1	1.0	cohort_2	106782	Male	Non-Hispanic or Latino	Asian or Pacific Islander	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	20.0	
+P00614	0.0	cohort_1	212125	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	60.0	HLA-A*02,HLA-A*31,HLA-B*15,HLA-B*18
+P00351	0.0	cohort_1	327817	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	46.0	HLA-A*02,HLA-A*24,HLA-B*44
+P00483	1.0	cohort_1	92813	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	49.0	HLA-A*03,HLA-B*35,HLA-B*60
+P00467	1.0	cohort_1	240255	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	48.0	HLA-A*01,HLA-A*66,HLA-B*08,HLA-B*58
+P00397	0.0	cohort_1	338495	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	14.0	HLA MHC Class I,HLA-A*29,HLA-B*14,HLA-B*44
+Keck0044_MC1	1.0	cohort_2	121011	Female	Non-Hispanic or Latino	Asian or Pacific Islander	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	28.0	
+P00478	0.0	cohort_1	139429	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	51.0	HLA MHC Class I,HLA-A*01,HLA-A*26,HLA-B*38,HLA-B*57
+P00320	0.0	cohort_1	219519	Male	Non-Hispanic or Latino	Asian or Pacific Islander	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	8.0	HLA-A*26,HLA-A*34,HLA-B*38
+P00361	0.0	cohort_1	155819	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	39.0	HLA-A*01,HLA-A*03,HLA-B*07,HLA-B*08
+Keck0093_MC1	0.0	cohort_2	478240	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	27.0	
+P00573	1.0	cohort_1	75684	Female	Hispanic or Latino	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	40.0	HLA-A*30,HLA-A*68,HLA-B*13,HLA-B*48
+P00518	1.0	cohort_1	185475	Male	Non-Hispanic or Latino	Asian or Pacific Islander	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	47.0	HLA-A*02,HLA-A*03,HLA-B*07,HLA-B*40
+P00274	0.0	cohort_1	272136	Female	Non-Hispanic or Latino	Native American or Alaska Native	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	35.0	HLA-A*24,HLA-A*31,HLA-B*35,HLA-B*48
+P00031	1.0	cohort_1	178626	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	37.0	HLA-A*02,HLA-A*24,HLA-B*08,HLA-B*51
+P00455	1.0	cohort_1	182896	Female	Non-Hispanic or Latino	Native American or Alaska Native	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	63.0	HLA-A*01,HLA-A*02,HLA-B*08,HLA-B*62
+P00165	1.0	cohort_1	135896	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA-A*02,HLA-A*24,HLA-B*44,HLA-B*62
+P00121	1.0	cohort_1	114195	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	36.0	
+P00004	0.0	cohort_1	197856	Female	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	45.0	HLA MHC Class I,HLA-A*02,HLA-A*11,HLA-B*35,HLA-B*51
+P00621	1.0	cohort_1	276413	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	45.0	HLA-A*02,HLA-A*23,HLA-B*07,HLA-B*44
+P00194	1.0	cohort_1	244757	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	25.0	HLA-A*02,HLA-B*44,HLA-B*57
+Keck0077_MC1	1.0	cohort_2	261430	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	23.0	
+P00533	0.0	cohort_1	212952	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	34.0	HLA-A*25,HLA-A*68,HLA-B*08,HLA-B*40
+P00088	1.0	cohort_1	204316	Female	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA-A*01,HLA-A*02,HLA-B*08,HLA-B*27
+P00388	1.0	cohort_1	280761	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	55.0	HLA-A*03,HLA-A*11,HLA-B*07,HLA-B*35
+P00225	1.0	cohort_1	200386	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	40.0	HLA-A*02,HLA-A*24,HLA-B*35,HLA-B*62
+P00549	1.0	cohort_1	330964	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	52.0	HLA-A*02,HLA-A*24,HLA-B*07,HLA-B*55
+P00464	0.0	cohort_1	68736	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	62.0	
+Keck0056_MC1	0.0	cohort_2	214201	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	32.0	
+P00212	1.0	cohort_1	252851	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	33.0	HLA-A*02,HLA-A*03,HLA-B*27,HLA-B*44
+Keck0012_MC1	0.0	cohort_2	96125	Male	Non-Hispanic or Latino	Asian or Pacific Islander	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	25.0	
+P00575	0.0	cohort_1	15008	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	42.0	HLA-A*01,HLA-A*02,HLA-B*08,HLA-B*51
+P00282	1.0	cohort_1	146313	Male	Non-Hispanic or Latino	Asian or Pacific Islander	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	37.0	HLA-A*11,HLA-A*34,HLA-B*15,HLA-B*38
+P00593	1.0	cohort_1	255690	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	23.0	HLA MHC Class I,HLA-A*02,HLA-B*07,HLA-B*14
+P00403	1.0	cohort_1	157016	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	72.0	HLA MHC Class I,HLA-A*02,HLA-A*32,HLA-B*37,HLA-B*51
+P00309	1.0	cohort_1	145713	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	41.0	HLA-A*01,HLA-A*31,HLA-B*40,HLA-B*50
+Keck0102_MC1	0.0	cohort_2	214424	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	32.0	
+Keck0025_MC1	0.0	cohort_2	109604	Male	Non-Hispanic or Latino	Asian or Pacific Islander	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	22.0	
+Keck0022_MC1	0.0	cohort_2	110442	Female	Non-Hispanic or Latino	Asian or Pacific Islander	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	21.0	
+P00020	1.0	cohort_1	97990	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	32.0	HLA-A*02,HLA-B*51
+Keck0106_MC1	0.0	cohort_2	226521	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	33.0	
+P00460	0.0	cohort_1	228674	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	49.0	HLA-A*02,HLA-A*31,HLA-B*51,HLA-B*56
+P00339	0.0	cohort_1	212316	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	42.0	HLA MHC Class I,HLA-A*11,HLA-A*25,HLA-B*18,HLA-B*44
+Keck0104_MC1	1.0	cohort_2	397486	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	30.0	
+P00001	0.0	cohort_1	104850	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	55.0	HLA-A*03,HLA-A*24,HLA-B*07
+P00023	0.0	cohort_1	324192	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	10.0	HLA-A*11,HLA-A*25,HLA-B*27,HLA-B*58
+Keck0068_MC1	1.0	cohort_2	227446	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	28.0	
+P00214	0.0	cohort_1	220633	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	25.0	HLA-A*02,HLA-A*03,HLA-B*07,HLA-B*51
+Keck0080_MC1	1.0	cohort_2	435689	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	31.0	
+P00292	0.0	cohort_1	243263	Male	Hispanic or Latino	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA-A*02,HLA-A*30,HLA-B*13,HLA-B*60
+P00605	1.0	cohort_1	196073	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	43.0	HLA-A*01,HLA-A*02,HLA-B*08,HLA-B*44
+P00553	1.0	cohort_1	195983	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	48.0	HLA-A*02,HLA-A*11,HLA-B*07,HLA-B*44
+P00017	1.0	cohort_1	266055	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	22.0	HLA-A*02,HLA-A*03,HLA-B*07,HLA-B*27
+P00118	0.0	cohort_1	180248	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	26.0	HLA-A*01,HLA-A*29,HLA-B*08,HLA-B*51
+P00570	1.0	cohort_1	129198	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	42.0	HLA-A*02,HLA-A*80,HLA-B*51,HLA-B*58
+P00074	0.0	cohort_1	177413	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	48.0	
+P00253	1.0	cohort_1	207055	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	34.0	HLA-A*02,HLA-A*03,HLA-B*07,HLA-B*62
+P00239	1.0	cohort_1	270812	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	52.0	HLA-A*01,HLA-A*02,HLA-B*07,HLA-B*08
+P00348	1.0	cohort_1	226567	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	45.0	HLA-A*01,HLA-A*24,HLA-B*08,HLA-B*18
+P00577	1.0	cohort_1	314263	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	59.0	HLA-A*02,HLA-A*32,HLA-B*38,HLA-B*57
+Keck0018_MC1	1.0	cohort_2	105421	Female	Non-Hispanic or Latino	Asian or Pacific Islander	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	19.0	
+P00331	1.0	cohort_1	267070	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	57.0	HLA-A*11,HLA-A*24,HLA-B*44,HLA-B*51
+P00571	1.0	cohort_1	224417	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	43.0	HLA-A*01,HLA-A*03,HLA-B*07,HLA-B*44
+Keck0088_MC1	1.0	cohort_2	251621	Female	Non-Hispanic or Latino	Asian or Pacific Islander	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	25.0	
+Keck0058_MC1	0.0	cohort_2	186609	Female	Non-Hispanic or Latino	Asian or Pacific Islander	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	26.0	
+Keck0069_MC1	0.0	cohort_2	591798	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	28.0	
+P00143	1.0	cohort_1	171599	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA-A*02,HLA-A*11,HLA-B*14,HLA-B*51
+Keck0116_MC1	0.0	cohort_2	357423	Female	Non-Hispanic or Latino	Asian or Pacific Islander	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	19.0	
+P00054	1.0	cohort_1	182268	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	49.0	HLA-A*02,HLA-A*32,HLA-B*44,HLA-B*60
+P00085	1.0	cohort_1	50328	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA-A*02,HLA-A*29,HLA-B*13,HLA-B*35
+P00658		cohort_1	115390		Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA-A*03,HLA-A*33,HLA-B*15
+P00596		cohort_1	86412		Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA-A*24,HLA-A*32,HLA-B*40,HLA-B*44
+Keck0063_MC1	0.0	cohort_2	106367	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	23.0	
+P00327	1.0	cohort_1	101425	Male	Non-Hispanic or Latino	Asian or Pacific Islander	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	34.0	HLA-A*01,HLA-A*03,HLA-B*35,HLA-B*37
+P00532	0.0	cohort_1	469797	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	24.0	HLA-A*68,HLA-B*51,HLA-B*55
+P00045	0.0	cohort_1	145336	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	31.0	HLA-A*02,HLA-A*03,HLA-B*51,HLA-B*62
+P00421	1.0	cohort_1	447268	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	46.0	HLA-A*02,HLA-B*35,HLA-B*51
+Keck0120_MC1	0.0	cohort_2	325366	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	26.0	
+P00217	1.0	cohort_1	259301	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA-A*02,HLA-A*11,HLA-B*07
+P00219	0.0	cohort_1	380655	Female	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	32.0	HLA-A*03,HLA-A*24,HLA-B*35,HLA-B*40
+P00354	1.0	cohort_1	297282	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	36.0	HLA-A*01,HLA-A*25,HLA-B*08,HLA-B*18
+P00173	0.0	cohort_1	214161	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	42.0	HLA-A*02,HLA-A*29,HLA-B*07,HLA-B*60
+P00502	0.0	cohort_1	167936	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	49.0	HLA-A*02,HLA-A*24,HLA-B*07,HLA-B*56
+P00419	0.0	cohort_1	106186	Female	Hispanic or Latino	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	23.0	HLA-A*11,HLA-A*30,HLA-B*13,HLA-B*35
+P00342	0.0	cohort_1	256143	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	48.0	HLA MHC Class I,HLA-A*02,HLA-A*24,HLA-B*08,HLA-B*60
+P00594		cohort_1	164848		Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA-A*23,HLA-A*24,HLA-B*15,HLA-B*44
+P00087	0.0	cohort_1	163152	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	46.0	HLA-A*03,HLA-A*24,HLA-B*07,HLA-B*37
+P00129	1.0	cohort_1	201475	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	60.0	HLA-A*01,HLA-A*68,HLA-B*08,HLA-B*14
+P00408	1.0	cohort_1	200953	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	44.0	HLA-A*24,HLA-A*25,HLA-B*18,HLA-B*51
+P00244	1.0	cohort_1	259695	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	51.0	HLA-A*29,HLA-A*31,HLA-B*07,HLA-B*44
+P00610	1.0	cohort_1	180462	Male	Non-Hispanic or Latino	Asian or Pacific Islander	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	48.0	HLA-A*32,HLA-A*34,HLA-B*40,HLA-B*44
+P00345	1.0	cohort_1	201349	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	65.0	HLA-A*01,HLA-A*68,HLA-B*18,HLA-B*47
+P00083	1.0	cohort_1	193385	Female	Unknown Ethnicity	Unknown racial group	Peripheral blood lymphocytes (PBL),T cells,gDNA	33.0	HLA MHC Class I,HLA-A*02,HLA-A*30,HLA-B*18
+P00115	0.0	cohort_1	258095	Female	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	42.0	HLA-A*01,HLA-A*25,HLA-B*08,HLA-B*44
+P00259	0.0	cohort_1	323545	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	25.0	HLA-A*02,HLA-A*24,HLA-B*35,HLA-B*44
+P00193	0.0	cohort_1	262193	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	22.0	HLA-A*02,HLA-B*14,HLA-B*44
+P00344	0.0	cohort_1	259796	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	24.0	HLA-A*24,HLA-A*26,HLA-B*35,HLA-B*38
+P00163	1.0	cohort_1	151152	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	26.0	HLA-A*02,HLA-A*03,HLA-B*07,HLA-B*14
+Keck0047_MC1	0.0	cohort_2	129918	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	30.0	
+P00107	1.0	cohort_1	211333	Female	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA-A*02,HLA-A*23,HLA-B*44,HLA-B*60
+Keck0101_MC1	1.0	cohort_2	350103	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	35.0	
+P00363	1.0	cohort_1	149835	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	33.0	HLA-A*02,HLA-A*30,HLA-B*13,HLA-B*44
+P00472	0.0	cohort_1	98076	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	31.0	
+P00321	1.0	cohort_1	235657	Female	Non-Hispanic or Latino	Asian or Pacific Islander	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	61.0	HLA-A*24,HLA-B*38,HLA-B*40
+P00134	0.0	cohort_1	233004	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	28.0	HLA-A*01,HLA-A*24,HLA-B*18,HLA-B*37
+P00070	0.0	cohort_1	93289	Female	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA-A*24,HLA-A*30,HLA-B*07,HLA-B*51
+P00629	0.0	cohort_1	138312	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	15.0	HLA-A*24,HLA-B*44,HLA-B*51
+P00561	0.0	cohort_1	113137	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	25.0	HLA-A*02,HLA-A*25,HLA-B*18,HLA-B*51
+P00109	0.0	cohort_1	65624	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	42.0	HLA MHC Class I,HLA-A*26,HLA-A*33,HLA-B*14,HLA-B*35
+P00653	1.0	cohort_1	229165	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	51.0	HLA-A*02,HLA-A*11,HLA-B*08,HLA-B*39
+P00476	1.0	cohort_1	286512	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	23.0	HLA-A*03,HLA-A*32,HLA-B*07,HLA-B*35
+P00473	1.0	cohort_1	170475	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	62.0	HLA-A*03,HLA-A*66,HLA-B*35,HLA-B*41
+P00347	1.0	cohort_1	214549	Male	Non-Hispanic or Latino	African Race	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	28.0	HLA-A*02,HLA-A*33,HLA-B*07,HLA-B*15
+Keck0073_MC1	1.0	cohort_2	271806	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	24.0	
+P00127	1.0	cohort_1	223892	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	54.0	HLA-A*03,HLA-A*11,HLA-B*07,HLA-B*55
+P00037	0.0	cohort_1	262006	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	29.0	HLA-A*01,HLA-A*02,HLA-B*08,HLA-B*62
+P00500	1.0	cohort_1	200595	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	42.0	HLA-A*02,HLA-A*31,HLA-B*15,HLA-B*27
+P00190	1.0	cohort_1	90344	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	50.0	HLA-A*01,HLA-A*03,HLA-B*49,HLA-B*57
+P00044	0.0	cohort_1	248772	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA-A*02,HLA-A*03,HLA-B*35,HLA-B*51
+P00152	0.0	cohort_1	170893	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	47.0	HLA-A*02,HLA-A*24,HLA-B*44,HLA-B*55
+P00486	0.0	cohort_1	217759	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	55.0	HLA-A*02,HLA-A*25,HLA-B*07,HLA-B*39
+P00578	0.0	cohort_1	207286	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	49.0	HLA-A*11,HLA-A*31,HLA-B*35
+P00470	1.0	cohort_1	144799	Male	Non-Hispanic or Latino	Asian or Pacific Islander	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	30.0	HLA-A*01,HLA-A*32,HLA-B*35,HLA-B*44
+P00661	1.0	cohort_1	229643	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	28.0	HLA-A*23,HLA-A*30,HLA-B*44,HLA-B*53
+P00092	0.0	cohort_1	317498	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	10.0	HLA-A*11,HLA-A*31,HLA-B*07
+P00608	0.0	cohort_1	144724	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	63.0	HLA-A*03,HLA-B*07
+P00009	0.0	cohort_1	290599	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	44.0	HLA-A*32,HLA-B*14,HLA-B*60
+P00156	0.0	cohort_1	351743	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		
+P00415	1.0	cohort_1	195218	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	57.0	HLA-A*01,HLA-B*08,HLA-B*57
+P00545	1.0	cohort_1	261650	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	52.0	HLA-A*01,HLA-A*68,HLA-B*08,HLA-B*35
+P00101	1.0	cohort_1	109179	Female	Hispanic or Latino	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	11.0	
+P00112	1.0	cohort_1	346899	Female	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	39.0	HLA-A*02,HLA-A*24,HLA-B*38,HLA-B*51
+P00462	1.0	cohort_1	92354	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	49.0	HLA-A*02,HLA-A*29,HLA-B*44,HLA-B*51
+P00582	0.0	cohort_1	219805	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	35.0	HLA-A*01,HLA-A*02,HLA-B*08,HLA-B*40
+P00015	0.0	cohort_1	295321	Female	Hispanic or Latino	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	1.0	HLA-A*03,HLA-A*24,HLA-B*08,HLA-B*61
+P00028	0.0	cohort_1	296375	Female	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA-A*03,HLA-B*18,HLA-B*35
+P00270	1.0	cohort_1	159463	Female	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA-A*11,HLA-A*31,HLA-B*07,HLA-B*51
+P00380	0.0	cohort_1	228647	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	39.0	HLA-A*02,HLA-A*68,HLA-B*08,HLA-B*44
+P00469	1.0	cohort_1	122004	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	41.0	HLA-A*01,HLA-A*03,HLA-B*08,HLA-B*35
+P00353	0.0	cohort_1	170089	Female	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA-A*02,HLA-A*66,HLA-B*41,HLA-B*44
+P00126	0.0	cohort_1	313925	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	23.0	HLA-A*24,HLA-A*31,HLA-B*18,HLA-B*60
+P00341	0.0	cohort_1	177780	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	46.0	HLA-A*25,HLA-A*29,HLA-B*38,HLA-B*44
+Keck0006_MC1	0.0	cohort_2	140154	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	23.0	
+P00581	0.0	cohort_1	290230	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	39.0	HLA-A*02,HLA-A*25,HLA-B*08,HLA-B*18
+P00471	0.0	cohort_1	68872	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA-A*02,HLA-A*68,HLA-B*13,HLA-B*51
+P00440	1.0	cohort_1	242799	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	44.0	
+Keck0010_MC1	0.0	cohort_2	119338	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	24.0	
+P00150	1.0	cohort_1	135020	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	29.0	HLA-A*02,HLA-A*23,HLA-B*41,HLA-B*58
+P00110	1.0	cohort_1	269874	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA-A*02,HLA-A*33,HLA-B*14,HLA-B*50
+Keck0007_MC1	1.0	cohort_2	96598	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	22.0	
+Keck0052_MC1	1.0	cohort_2	35269	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	33.0	
+P00602	1.0	cohort_1	272257	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	52.0	HLA-A*02,HLA-B*27
+P00325	1.0	cohort_1	255468	Male	Non-Hispanic or Latino	Asian or Pacific Islander	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	35.0	HLA-A*02,HLA-A*26,HLA-B*40,HLA-B*54
+P00487	0.0	cohort_1	317690	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	33.0	HLA-A*23,HLA-A*32,HLA-B*44,HLA-B*51
+P00311	0.0	cohort_1	80045	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA-A*02,HLA-A*11,HLA-B*14,HLA-B*35
+P00224	0.0	cohort_1	355978	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	23.0	HLA-A*02,HLA-A*24,HLA-B*07,HLA-B*60
+P00300	0.0	cohort_1	229634	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	44.0	
+P00371	0.0	cohort_1	139868	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	40.0	HLA-A*03,HLA-A*23,HLA-B*07,HLA-B*49
+P00642	1.0	cohort_1	187059	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	33.0	HLA-A*01,HLA-A*02,HLA-B*08,HLA-B*18
+P00406	0.0	cohort_1	327806	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	47.0	HLA-A*01,HLA-A*02,HLA-B*08,HLA-B*70
+P00557	1.0	cohort_1	132221	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	48.0	HLA-A*01,HLA-A*24,HLA-B*35,HLA-B*57
+P00103	0.0	cohort_1	223420	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	34.0	HLA-A*01,HLA-A*24,HLA-B*08,HLA-B*35
+P00648	0.0	cohort_1	237436	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA-A*01,HLA-A*02,HLA-B*08,HLA-B*44
+P00492	1.0	cohort_1	279856	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	22.0	HLA-A*02,HLA-A*68,HLA-B*15,HLA-B*38
+P00215	1.0	cohort_1	276374	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	34.0	HLA-A*03,HLA-A*11,HLA-B*08
+P00034	1.0	cohort_1	124122	Female	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA-A*03,HLA-A*24,HLA-B*18,HLA-B*39
+P00177	0.0	cohort_1	27800	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	25.0	HLA MHC Class I,HLA-A*02,HLA-B*51,HLA-B*60
+Keck0045_MC1	0.0	cohort_2	95471	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	34.0	
+P00050	0.0	cohort_1	258726	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA-A*01,HLA-A*26,HLA-B*08,HLA-B*38
+Keck0024_MC1	0.0	cohort_2	71730	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	25.0	
+P00180	0.0	cohort_1	177132	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	39.0	HLA-A*01,HLA-A*31,HLA-B*08,HLA-B*49
+P00329	1.0	cohort_1	213048	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	51.0	HLA-A*01,HLA-A*02,HLA-B*08,HLA-B*51
+P00442	0.0	cohort_1	252397	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	26.0	
+P00114	1.0	cohort_1	126885	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA-A*01,HLA-A*29,HLA-B*07,HLA-B*57
+P00301	0.0	cohort_1	213213	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	51.0	HLA-A*01,HLA-A*02,HLA-B*18,HLA-B*44
+P00665	0.0	cohort_1	52200	Female	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	57.0	HLA-A*01,HLA-A*02,HLA-B*51,HLA-B*57
+P00120	0.0	cohort_1	41203	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	59.0	HLA-A*01,HLA-A*02,HLA-B*44,HLA-B*51
+P00659	1.0	cohort_1	187118	Male	Non-Hispanic or Latino	African Race	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	56.0	HLA-A*24,HLA-A*68,HLA-B*15,HLA-B*27
+Keck0082_MC1	1.0	cohort_2	332119	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	29.0	
+P00646	0.0	cohort_1	291584	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	6.0	
+P00426	1.0	cohort_1	158261	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	54.0	HLA-A*24,HLA-A*31,HLA-B*27
+P00057	0.0	cohort_1	163196	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	47.0	
+P00207	0.0	cohort_1	1110	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	41.0	HLA-A*24,HLA-A*26,HLA-B*07
+P00098	0.0	cohort_1	294147	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	44.0	HLA-A*02,HLA-A*03,HLA-B*35,HLA-B*38
+P00264	0.0	cohort_1	127326	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	46.0	HLA-A*01,HLA-A*03,HLA-B*15
+P00618	1.0	cohort_1	217655	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	67.0	HLA-A*02,HLA-A*68,HLA-B*35,HLA-B*51
+P00589	1.0	cohort_1	192467	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	21.0	HLA-A*02,HLA-A*32,HLA-B*13,HLA-B*44
+P00346	1.0	cohort_1	102132	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	64.0	HLA-A*01,HLA-A*02,HLA-B*08,HLA-B*60
+P00144	1.0	cohort_1	175301	Male	Non-Hispanic or Latino	Native American or Alaska Native	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	46.0	HLA-A*02,HLA-A*68,HLA-B*27,HLA-B*61
+P00123	1.0	cohort_1	120711	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	48.0	
+P00438	0.0	cohort_1	117862	Female	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	35.0	HLA-A*03,HLA-A*24,HLA-B*07,HLA-B*35
+P00222	0.0	cohort_1	173082	Female	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA-A*03,HLA-A*25,HLA-B*14,HLA-B*18
+P00576	0.0	cohort_1	89313	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	57.0	HLA-A*01,HLA-A*02,HLA-B*07,HLA-B*15
+P00468	0.0	cohort_1	159729	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	38.0	
+P00579	1.0	cohort_1	295092	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	37.0	HLA-A*03,HLA-B*07,HLA-B*50
+P00430	1.0	cohort_1	267313	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	48.0	
+Keck0064_MC1	0.0	cohort_2	188414	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	27.0	
+Keck0103_MC1	0.0	cohort_2	165586	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	35.0	
+P00262	1.0	cohort_1	170811	Female	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	51.0	HLA MHC Class I,HLA-A*03,HLA-A*33,HLA-B*07,HLA-B*51
+P00352	1.0	cohort_1	187930	Male	Non-Hispanic or Latino	African Race	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	31.0	HLA-A*68,HLA-B*41,HLA-B*44
+P00328	0.0	cohort_1	101189	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	29.0	HLA-A*01,HLA-B*08
+P00660		cohort_1	226399		Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA-A*02,HLA-B*07,HLA-B*35
+P00544	0.0	cohort_1	189598	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	42.0	HLA-A*01,HLA-A*24,HLA-B*07,HLA-B*08
+P00634	0.0	cohort_1	360686	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	2.0	HLA-A*01,HLA-A*03,HLA-B*56,HLA-B*57
+P00436	0.0	cohort_1	150013	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	32.0	
+P00418	1.0	cohort_1	187013	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	39.0	HLA-A*01,HLA-A*24,HLA-B*08,HLA-B*44
+P00102	0.0	cohort_1	230518	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA-A*01,HLA-A*31,HLA-B*35,HLA-B*57
+P00521	1.0	cohort_1	126441	Male	Hispanic or Latino	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	36.0	HLA-A*01,HLA-A*24,HLA-B*07,HLA-B*14
+P00620	0.0	cohort_1	156108	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	51.0	HLA-A*24,HLA-A*25,HLA-B*18,HLA-B*50
+P00108	0.0	cohort_1	221085	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA MHC Class I,HLA-A*01,HLA-A*11,HLA-B*08,HLA-B*55
+P00501	0.0	cohort_1	114904	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	36.0	HLA-A*26,HLA-A*68,HLA-B*15,HLA-B*38
+Keck0091_MC1	1.0	cohort_2	231568	Male	Non-Hispanic or Latino	African Race	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	23.0	
+P00355	0.0	cohort_1	170379	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	21.0	HLA-A*01,HLA-B*14,HLA-B*37
+P00444	0.0	cohort_1	79690	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA-A*11,HLA-A*24,HLA-B*44,HLA-B*55
+P00011	0.0	cohort_1	102141	Female	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	32.0	HLA-A*02,HLA-B*41,HLA-B*44
+P00548	0.0	cohort_1	157180	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	32.0	HLA-A*02,HLA-A*03,HLA-B*07,HLA-B*40
+Keck0095_MC1	0.0	cohort_2	527465	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	34.0	
+P00644	1.0	cohort_1	321470	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	47.0	HLA-A*24,HLA-B*07,HLA-B*35
+Keck0110_MC1	1.0	cohort_2	200210	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	27.0	
+P00039	0.0	cohort_1	255406	Female	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA-A*01,HLA-A*03,HLA-B*08,HLA-B*44
+P00174	1.0	cohort_1	243088	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	56.0	HLA MHC Class I,HLA-A*01,HLA-A*26,HLA-B*08,HLA-B*22
+P00322	1.0	cohort_1	197139	Female	Non-Hispanic or Latino	Asian or Pacific Islander	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	47.0	HLA-A*24,HLA-B*35,HLA-B*38
+P00607	1.0	cohort_1	407531	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	46.0	HLA MHC Class I,HLA-A*02,HLA-A*03,HLA-B*07,HLA-B*27
+P00366	0.0	cohort_1	281742	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA-A*02,HLA-A*03,HLA-B*07,HLA-B*61
+P00119	0.0	cohort_1	237761	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	46.0	
+P00349	0.0	cohort_1	340726	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	39.0	HLA-A*01,HLA-A*02,HLA-B*07,HLA-B*57
+P00511	1.0	cohort_1	282019	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	35.0	HLA-A*01,HLA-A*25,HLA-B*08,HLA-B*44
+P00183	0.0	cohort_1	223715	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	18.0	HLA-A*03,HLA-B*07,HLA-B*51
+P00617	0.0	cohort_1	273074	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	34.0	HLA-A*01,HLA-A*25,HLA-B*08,HLA-B*18
+P00379	1.0	cohort_1	282481	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	34.0	HLA-A*02,HLA-B*18,HLA-B*27
+P00505	0.0	cohort_1	249820	Female	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	41.0	HLA-A*01,HLA-A*02,HLA-B*08,HLA-B*44
+Keck0032_MC1	1.0	cohort_2	125080	Male	Non-Hispanic or Latino	Asian or Pacific Islander	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	22.0	
+Keck0115_MC1	1.0	cohort_2	257970	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	25.0	
+Keck0054_MC1	1.0	cohort_2	189285	Female	Non-Hispanic or Latino	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	33.0	
+Keck0026_MC1	1.0	cohort_2	78609	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	19.0	
+P00514		cohort_1	136807		Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA-A*01,HLA-A*02,HLA-B*08,HLA-B*15
+P00491	1.0	cohort_1	164535	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	43.0	HLA-A*02,HLA-A*29,HLA-B*07,HLA-B*08
+P00585		cohort_1	209861		Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA-A*11,HLA-A*32,HLA-B*27,HLA-B*35
+P00290	1.0	cohort_1	208243	Female	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	55.0	HLA-A*03,HLA-A*29,HLA-B*07,HLA-B*44
+P00543	0.0	cohort_1	118305	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	55.0	HLA-A*24,HLA-A*25,HLA-B*08,HLA-B*18
+P00526	1.0	cohort_1	211452	Female	Hispanic or Latino	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	24.0	HLA-A*02,HLA-A*32,HLA-B*35,HLA-B*39
+P00220	0.0	cohort_1	290797	Female	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA-A*23,HLA-A*32,HLA-B*35,HLA-B*49
+P00552	0.0	cohort_1	233031	Female	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA-A*01,HLA-A*03,HLA-B*07,HLA-B*55
+Keck0109_MC1	1.0	cohort_2	164444	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	23.0	
+P00055	1.0	cohort_1	277008	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	27.0	HLA-A*02,HLA-A*34,HLA-B*14,HLA-B*44
+P00073	0.0	cohort_1	104594	Female	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA-A*02,HLA-A*31,HLA-B*07,HLA-B*27
+P00151	1.0	cohort_1	157760	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	38.0	HLA-A*02,HLA-A*26,HLA-B*07,HLA-B*60
+P00563	0.0	cohort_1	234031	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	25.0	HLA-A*03,HLA-A*33,HLA-B*07,HLA-B*50
+Keck0107_MC1	0.0	cohort_2	270612	Female	Non-Hispanic or Latino	African Race	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	22.0	
+P00512	1.0	cohort_1	198603	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	53.0	HLA-A*01,HLA-A*02,HLA-B*08,HLA-B*18
+P00551	1.0	cohort_1	185934	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	74.0	HLA-A*02,HLA-A*68,HLA-B*35,HLA-B*51
+P00662	1.0	cohort_1	215420	Female	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	34.0	HLA-A*02,HLA-A*03,HLA-B*08,HLA-B*51
+Keck0019_MC1	0.0	cohort_2	138122	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	21.0	
+P00135	1.0	cohort_1	230352	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	62.0	HLA-A*02,HLA-B*62
+P00003	1.0	cohort_1	161024	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	21.0	HLA-A*02,HLA-A*32,HLA-B*07,HLA-B*61
+P00410	0.0	cohort_1	35144	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	63.0	HLA-A*02,HLA-A*29,HLA-B*44
+P00187	1.0	cohort_1	272989	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	28.0	HLA-A*11,HLA-A*26,HLA-B*35,HLA-B*62
+P00498	1.0	cohort_1	246203	Female	Non-Hispanic or Latino	Asian or Pacific Islander	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	60.0	HLA-A*02,HLA-A*33,HLA-B*35,HLA-B*58
+Keck0004_MC1	1.0	cohort_2	125877	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	24.0	
+P00493	0.0	cohort_1	113500	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA-A*02,HLA-A*30,HLA-B*13,HLA-B*15
+P00392	1.0	cohort_1	315552	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	39.0	HLA-A*02,HLA-A*03,HLA-B*62
+P00319	1.0	cohort_1	247850	Female	Hispanic or Latino	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	42.0	HLA-A*26,HLA-A*31,HLA-B*35,HLA-B*38
+P00359	0.0	cohort_1	111838	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	49.0	HLA-A*01,HLA-A*02,HLA-B*08,HLA-B*61
+P00445	0.0	cohort_1	273345	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	5.0	
+P00317	0.0	cohort_1	282839	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA-A*02,HLA-A*24,HLA-B*07,HLA-B*44
+P00069	1.0	cohort_1	208932	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	30.0	HLA-A*01,HLA-B*08
+P00257	1.0	cohort_1	232858	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	47.0	HLA-A*01,HLA-A*03,HLA-B*08,HLA-B*62
+P00188	0.0	cohort_1	331691	Female	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	38.0	HLA-A*01,HLA-A*24,HLA-B*08,HLA-B*44
+Keck0096_MC1	1.0	cohort_2	329498	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	25.0	
+P00267	1.0	cohort_1	215813	Female	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA-A*11,HLA-A*26,HLA-B*48,HLA-B*75
+P00616	0.0	cohort_1	229991	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	41.0	HLA-A*01,HLA-A*24,HLA-B*40,HLA-B*41
+P00095	1.0	cohort_1	220772	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	54.0	
+Keck0078_MC1	0.0	cohort_2	227476	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	23.0	
+P00124	0.0	cohort_1	312593	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	8.0	HLA-A*01,HLA-A*24,HLA-B*07,HLA-B*18
+P00294	1.0	cohort_1	190907	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	34.0	
+P00235	0.0	cohort_1	239130	Female	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	46.0	HLA-A*01,HLA-A*30,HLA-B*18,HLA-B*44
+P00234	1.0	cohort_1	353435	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	41.0	
+P00496	1.0	cohort_1	24073	Female	Non-Hispanic or Latino	Asian or Pacific Islander	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	50.0	HLA-A*02,HLA-A*34,HLA-B*15,HLA-B*38
+P00474	0.0	cohort_1	373273	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	7.0	HLA-A*26,HLA-A*68,HLA-B*27,HLA-B*44
+P00387	0.0	cohort_1	104415	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	37.0	HLA-A*01,HLA-A*02,HLA-B*14,HLA-B*57
+P00090	1.0	cohort_1	199582	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	27.0	HLA-A*11,HLA-A*30,HLA-B*35,HLA-B*39
+P00357	0.0	cohort_1	223185	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	34.0	HLA-A*02,HLA-B*44,HLA-B*51
+Keck0041_MC1	0.0	cohort_2	90153	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	27.0	
+P00528	0.0	cohort_1	123945	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	70.0	HLA-A*03,HLA-A*29,HLA-B*40,HLA-B*44
+Keck0036_MC1	0.0	cohort_2	98866	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	23.0	
+P00117	0.0	cohort_1	61221	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	36.0	HLA-A*01,HLA-A*11,HLA-B*17,HLA-B*62
+P00236	1.0	cohort_1	325075	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	39.0	HLA-A*01,HLA-A*24,HLA-B*07,HLA-B*37
+P00078	0.0	cohort_1	180845	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	35.0	HLA-A*01,HLA-A*30,HLA-B*08,HLA-B*57
+P00268	1.0	cohort_1	176808	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA-A*02,HLA-A*29,HLA-B*44,HLA-B*60
+P00059	0.0	cohort_1	262607	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA-A*02,HLA-A*03,HLA-B*07,HLA-B*62
+P00080	0.0	cohort_1	286123	Female	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA-A*01,HLA-B*13,HLA-B*35
+Keck0043_MC1	1.0	cohort_2	89210	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	19.0	
+Keck0105_MC1	0.0	cohort_2	298495	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	32.0	
+Keck0071_MC1	0.0	cohort_2	321404	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	32.0	
+P00146	1.0	cohort_1	315125	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	7.0	HLA-A*24,HLA-A*33,HLA-B*58,HLA-B*63
+P00375	0.0	cohort_1	356593	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA-A*01,HLA-A*02,HLA-B*44,HLA-B*52
+P00454	0.0	cohort_1	387616	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	13.0	HLA-A*01,HLA-A*03,HLA-B*08,HLA-B*35
+P00216	0.0	cohort_1	118076	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	35.0	HLA-A*02,HLA-B*41,HLA-B*60
+P00572	1.0	cohort_1	10986	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	37.0	HLA-A*02,HLA-A*11,HLA-B*35,HLA-B*44
+P00307	0.0	cohort_1	136220	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	14.0	HLA-A*23,HLA-A*25,HLA-B*07,HLA-B*44
+P00147	0.0	cohort_1	115805	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	39.0	HLA-A*01,HLA-A*24,HLA-B*08,HLA-B*62
+P00592		cohort_1	113077		Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA-A*02,HLA-A*24,HLA-B*15,HLA-B*44
+P00160	1.0	cohort_1	282846	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	55.0	HLA-A*32,HLA-A*33,HLA-B*14,HLA-B*51
+P00249	0.0	cohort_1	291167	Female	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	46.0	HLA MHC Class I,HLA-A*03,HLA-A*11,HLA-B*07,HLA-B*52
+P00459	1.0	cohort_1	36279	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	66.0	HLA-A*03,HLA-A*68,HLA-B*07,HLA-B*08
+P00170	1.0	cohort_1	344384	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	15.0	HLA-A*02,HLA-A*24,HLA-B*18,HLA-B*44
+Keck0092_MC1	1.0	cohort_2	293403	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	21.0	
+P00441	1.0	cohort_1	6619	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	40.0	
+Keck0062_MC1	1.0	cohort_2	238729	Male	Non-Hispanic or Latino	Asian or Pacific Islander	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	23.0	
+Keck0015_MC1	1.0	cohort_2	116620	Male	Non-Hispanic or Latino	Asian or Pacific Islander	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	20.0	
+P00149	0.0	cohort_1	297186	Female	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	32.0	HLA-A*03,HLA-A*31,HLA-B*51,HLA-B*60
+P00229	0.0	cohort_1	334763	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	45.0	HLA-A*02,HLA-A*03,HLA-B*51,HLA-B*60
+P00513	0.0	cohort_1	258179	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	36.0	HLA-A*24,HLA-A*31,HLA-B*08,HLA-B*40
+P00288	1.0	cohort_1	287285	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	53.0	HLA MHC Class I,HLA-A*24,HLA-A*68,HLA-B*18,HLA-B*35
+P00583		cohort_1	169367		Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA-A*02,HLA-A*25,HLA-B*18,HLA-B*39
+P00287	0.0	cohort_1	207174	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	50.0	HLA-A*02,HLA-A*03,HLA-B*37,HLA-B*51
+P00447	0.0	cohort_1	200416	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	26.0	HLA-A*01,HLA-A*03,HLA-B*07,HLA-B*57
+P00382	0.0	cohort_1	235717	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA-A*01,HLA-A*26,HLA-B*08,HLA-B*38
+P00667		cohort_1	100720		Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA-A*01,HLA-B*08
+P00391	1.0	cohort_1	272024	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	43.0	HLA-A*24,HLA-A*32,HLA-B*35,HLA-B*62
+P00304	1.0	cohort_1	295964	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	61.0	HLA-A*02,HLA-A*03,HLA-B*07,HLA-B*15
+P00432	0.0	cohort_1	253071	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	23.0	
+Keck0039_MC1	0.0	cohort_2	79614	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	27.0	
+P00529	1.0	cohort_1	85881	Male	Hispanic or Latino	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	20.0	HLA-A*11,HLA-A*36,HLA-B*35,HLA-B*37
+P00446	0.0	cohort_1	52701	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	17.0	HLA MHC Class I,HLA-A*01,HLA-A*24,HLA-B*53,HLA-B*62
+P00639	0.0	cohort_1	266954	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	60.0	HLA-A*01,HLA-A*02,HLA-B*35,HLA-B*44
+P00289	1.0	cohort_1	69681	Female	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	37.0	HLA-A*02,HLA-A*24,HLA-B*07,HLA-B*62
+P00527	1.0	cohort_1	116136	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	61.0	HLA-A*02,HLA-A*29,HLA-B*44
+P00172	1.0	cohort_1	268723	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	42.0	HLA-A*03,HLA-A*24,HLA-B*07
+P00153	0.0	cohort_1	241253	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	42.0	
+P00367	1.0	cohort_1	57716	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	46.0	HLA-A*01,HLA-A*02,HLA-B*08,HLA-B*44
+P00100	0.0	cohort_1	146185	Female	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		
+P00643		cohort_1	220353		Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA MHC Class I,HLA-A*03,HLA-A*25,HLA-B*07,HLA-B*18
+P00237	1.0	cohort_1	95837	Female	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	61.0	HLA-A*01,HLA-A*03,HLA-B*08,HLA-B*18
+P00258	1.0	cohort_1	209949	Male	Non-Hispanic or Latino	African Race	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	39.0	HLA-A*03,HLA-A*68,HLA-B*41,HLA-B*58
+P00413	1.0	cohort_1	134846	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	58.0	HLA-A*30,HLA-A*33,HLA-B*07,HLA-B*35
+P00232	1.0	cohort_1	216523	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	45.0	HLA-A*02,HLA-B*27,HLA-B*57
+Keck0014_MC1	0.0	cohort_2	124758	Female	Non-Hispanic or Latino	Asian or Pacific Islander	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	19.0	
+P00007	1.0	cohort_1	173227	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA-A*02,HLA-A*29,HLA-B*44,HLA-B*62
+P00350	0.0	cohort_1	220693	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	41.0	HLA MHC Class I,HLA-A*02,HLA-A*03,HLA-B*07,HLA-B*44
+Keck0098_MC1	0.0	cohort_2	210546	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	20.0	
+P00231	0.0	cohort_1	239248	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	47.0	HLA-A*03,HLA-A*24,HLA-B*07,HLA-B*49
+Keck0049_MC1	0.0	cohort_2	200280	Female	Non-Hispanic or Latino	Asian or Pacific Islander	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	27.0	
+P00091	0.0	cohort_1	216654	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	14.0	HLA-A*02,HLA-A*26,HLA-B*35,HLA-B*38
+P00298	1.0	cohort_1	189681	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	49.0	HLA-A*02,HLA-A*03,HLA-B*13,HLA-B*60
+P00509	1.0	cohort_1	144916	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	47.0	HLA-A*02,HLA-A*11,HLA-B*50,HLA-B*52
+P00125	1.0	cohort_1	230946	Male	Non-Hispanic or Latino	Native American or Alaska Native	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	39.0	HLA-A*02,HLA-A*24,HLA-B*57,HLA-B*61
+Keck0108_MC1	1.0	cohort_2	145739	Female	Hispanic or Latino	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	29.0	
+P00477	0.0	cohort_1	74209	Female	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	38.0	HLA-A*02,HLA-B*14,HLA-B*57
+P00385	1.0	cohort_1	186957	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	31.0	HLA-A*02,HLA-A*31,HLA-B*60,HLA-B*62
+P00260	0.0	cohort_1	114465	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	54.0	HLA-A*01,HLA-A*02,HLA-B*08
+P00155	0.0	cohort_1	272693	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA-A*01,HLA-A*29,HLA-B*08,HLA-B*44
+P00481	1.0	cohort_1	134658	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	25.0	HLA MHC Class I,HLA-A*01,HLA-A*68,HLA-B*08,HLA-B*44
+P00465	1.0	cohort_1	128506	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	41.0	HLA-A*01,HLA-A*03,HLA-B*07,HLA-B*57
+P00137	0.0	cohort_1	129449	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	48.0	HLA MHC Class I,HLA-A*02,HLA-B*08,HLA-B*60
+P00166	1.0	cohort_1	150660	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	54.0	HLA-A*01,HLA-A*02,HLA-B*08,HLA-B*62
+P00534	0.0	cohort_1	57625	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	23.0	HLA-A*02,HLA-A*03,HLA-B*07,HLA-B*35
+P00280	1.0	cohort_1	121560	Female	Hispanic or Latino	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	22.0	HLA-A*03,HLA-A*24,HLA-B*15,HLA-B*18
+P00281	1.0	cohort_1	93818	Female	Hispanic or Latino	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	32.0	HLA-A*03,HLA-A*11,HLA-B*18,HLA-B*35
+P00276	1.0	cohort_1	269493	Female	Hispanic or Latino	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	43.0	HLA-A*02,HLA-A*28,HLA-B*35,HLA-B*53
+Keck0111_MC1		cohort_2	257736						
+P00522	0.0	cohort_1	224148	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	28.0	HLA-A*01,HLA-B*08,HLA-B*44
+P00564	0.0	cohort_1	329128	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	10.0	HLA-A*02,HLA-A*26,HLA-B*13,HLA-B*15
+P00164	1.0	cohort_1	111655	Male	Hispanic or Latino	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	49.0	HLA-A*01,HLA-A*30,HLA-B*14,HLA-B*35
+P00499	0.0	cohort_1	234277	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	53.0	HLA-A*03,HLA-A*33,HLA-B*14,HLA-B*35
+P00323	1.0	cohort_1	113136	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	35.0	HLA-A*24,HLA-B*51
+P00178	1.0	cohort_1	108398	Female	Non-Hispanic or Latino	African Race	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	48.0	HLA-A*02,HLA-A*74,HLA-B*53,HLA-B*70
+Keck0072_MC1	0.0	cohort_2	242121	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	26.0	
+P00314	0.0	cohort_1	217720	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	54.0	HLA-A*02,HLA-A*26,HLA-B*55
+Keck0033_MC1	1.0	cohort_2	112824	Female	Non-Hispanic or Latino	Asian or Pacific Islander	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	24.0	
+P00167	0.0	cohort_1	294741	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	25.0	HLA-A*02,HLA-A*24,HLA-B*07,HLA-B*51
+P00315	0.0	cohort_1	208463	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	35.0	HLA MHC Class I,HLA-A*02,HLA-A*24,HLA-B*27,HLA-B*44
+Keck0028_MC1	0.0	cohort_2	95860	Male	Non-Hispanic or Latino	Asian or Pacific Islander	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	20.0	
+P00240	1.0	cohort_1	215249	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA-A*01,HLA-B*08
+P00560	1.0	cohort_1	87513	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	45.0	HLA-A*03,HLA-A*68,HLA-B*07,HLA-B*13
+P00223	0.0	cohort_1	193357	Female	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	35.0	HLA-A*24,HLA-A*29,HLA-B*44,HLA-B*62
+P00427	1.0	cohort_1	214456	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	47.0	HLA MHC Class I,HLA-A*03,HLA-A*33,HLA-B*14,HLA-B*44
+Keck0119_MC1	1.0	cohort_2	353573	Female	Non-Hispanic or Latino	Asian or Pacific Islander	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	24.0	
+Keck0023_MC1	1.0	cohort_2	108940	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	22.0	
+P00550	0.0	cohort_1	217370	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	34.0	HLA-A*02,HLA-B*44
+P00358	0.0	cohort_1	56637	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA-A*02,HLA-A*29,HLA-B*14,HLA-B*45
+P00393	1.0	cohort_1	187929	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	44.0	HLA-A*02,HLA-B*44,HLA-B*49
+Keck0112_MC1	0.0	cohort_2	191485	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	28.0	
+P00186	1.0	cohort_1	183339	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	36.0	HLA-A*03,HLA-B*35
+P00458	0.0	cohort_1	372286	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	41.0	HLA MHC Class I,HLA-A*02,HLA-A*23,HLA-B*18,HLA-B*49
+P00461	0.0	cohort_1	127546	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	45.0	HLA-A*01,HLA-A*02,HLA-B*08,HLA-B*27
+P00241	0.0	cohort_1	159295	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA-A*02,HLA-A*32,HLA-B*14,HLA-B*27
+P00038	0.0	cohort_1	310444	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA-A*02,HLA-A*26,HLA-B*14,HLA-B*44
+P00451	0.0	cohort_1	205945	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	36.0	HLA-A*02,HLA-A*03,HLA-B*35,HLA-B*41
+P00316		cohort_1	372939		Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA MHC Class I,HLA-A*26,HLA-A*29,HLA-B*35,HLA-B*51
+Keck0027_MC1	0.0	cohort_2	60891	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	24.0	
+P00343	1.0	cohort_1	119294	Female	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	50.0	HLA MHC Class I,HLA-A*02,HLA-A*25,HLA-B*44,HLA-B*51
+P00002	0.0	cohort_1	96869	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	41.0	HLA-A*01,HLA-A*02,HLA-B*27,HLA-B*37
+P00122	0.0	cohort_1	190204	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	28.0	
+P00601		cohort_1	155624		Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA-A*01,HLA-A*03,HLA-B*08,HLA-B*40
+P00376	0.0	cohort_1	325405	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	36.0	HLA-A*11,HLA-B*08,HLA-B*14
+P00077	0.0	cohort_1	162427	Female	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA-A*02,HLA-A*03,HLA-B*14,HLA-B*44
+P00628	0.0	cohort_1	253087	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	23.0	HLA MHC Class I,HLA-A*01,HLA-B*08,HLA-B*35
+P00540	0.0	cohort_1	181274	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	12.0	HLA-A*01,HLA-A*02,HLA-B*08,HLA-B*27
+P00272	0.0	cohort_1	269846	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	52.0	HLA-A*01,HLA-A*02,HLA-B*57,HLA-B*60
+P00072	0.0	cohort_1	151474	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA-A*01,HLA-A*02,HLA-B*51,HLA-B*63
+P00132	0.0	cohort_1	141917	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	55.0	HLA-A*02,HLA-A*03,HLA-B*27,HLA-B*60
+P00457	0.0	cohort_1	186871	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	36.0	HLA-A*01,HLA-A*32,HLA-B*57,HLA-B*62
+P00255	0.0	cohort_1	336828	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	8.0	HLA-A*02,HLA-B*44,HLA-B*61
+P00645	1.0	cohort_1	57335	Female	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	44.0	HLA-A*24,HLA-A*26,HLA-B*07,HLA-B*61
+P00360	0.0	cohort_1	90265	Female	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA-A*02,HLA-A*30,HLA-B*07,HLA-B*13
+P00111	0.0	cohort_1	161262	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	34.0	HLA-A*02,HLA-A*03,HLA-B*27,HLA-B*51
+P00312	1.0	cohort_1	105222	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	26.0	HLA-A*02,HLA-A*03,HLA-B*60,HLA-B*62
+P00084	1.0	cohort_1	129291	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA-A*02,HLA-B*44
+P00656	0.0	cohort_1	206821	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	43.0	HLA-A*02,HLA-A*03,HLA-B*08,HLA-B*44
+Keck0008_MC1	0.0	cohort_2	140563	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	24.0	
+P00650	0.0	cohort_1	273763	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	51.0	HLA-A*03,HLA-A*68,HLA-B*35,HLA-B*51
+P00520	1.0	cohort_1	296160	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	24.0	HLA-A*01,HLA-A*03,HLA-B*08,HLA-B*35
+P00022	0.0	cohort_1	136916	Female	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	38.0	HLA-A*03,HLA-A*30,HLA-B*07,HLA-B*18
+P00390	0.0	cohort_1	202584	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	36.0	HLA-A*23,HLA-A*29,HLA-B*07,HLA-B*38
+P00482	0.0	cohort_1	166914	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	41.0	HLA MHC Class I,HLA-A*02,HLA-A*32,HLA-B*37,HLA-B*62
+P00005	0.0	cohort_1	105597	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	27.0	HLA-A*03,HLA-A*29,HLA-B*07
+P00647	0.0	cohort_1	272583	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	45.0	HLA-A*11,HLA-A*26,HLA-B*07,HLA-B*38
+P00324	1.0	cohort_1	124436	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	71.0	HLA-A*02,HLA-B*48,HLA-B*54
+P00503	1.0	cohort_1	117693	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	48.0	HLA-A*02,HLA-A*29,HLA-B*45,HLA-B*50
+P00014	0.0	cohort_1	325650	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	35.0	HLA-A*02,HLA-A*29,HLA-B*07,HLA-B*44
+P00599	1.0	cohort_1	269638	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	59.0	HLA-A*01,HLA-A*68,HLA-B*18,HLA-B*56
+P00638	1.0	cohort_1	275688	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	30.0	HLA MHC Class I,HLA-A*02,HLA-A*23,HLA-B*07,HLA-B*58
+P00318	1.0	cohort_1	260601	Female	Non-Hispanic or Latino	Asian or Pacific Islander	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	9.0	HLA-A*24,HLA-A*34,HLA-B*15,HLA-B*40
+P00245	0.0	cohort_1	430945	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	3.0	HLA-A*68,HLA-B*07,HLA-B*35
+P00024	0.0	cohort_1	175004	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	38.0	HLA-A*02,HLA-A*23,HLA-B*49,HLA-B*62
+P00485	1.0	cohort_1	202620	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	49.0	HLA-A*03,HLA-A*30,HLA-B*18,HLA-B*35
+P00158	1.0	cohort_1	154576	Female	Hispanic or Latino	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	17.0	HLA-A*26,HLA-A*28,HLA-B*38,HLA-B*61
+P00490	1.0	cohort_1	191330	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	56.0	HLA-A*03,HLA-A*26,HLA-B*35,HLA-B*56
+P00635		cohort_1	94948		Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA-A*01,HLA-A*24,HLA-B*44,HLA-B*57
+P00535	1.0	cohort_1	159552	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	71.0	HLA-A*23,HLA-A*26,HLA-B*18,HLA-B*44
+P00456	1.0	cohort_1	177042	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	46.0	
+P00206	0.0	cohort_1	90906	Female	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	42.0	HLA-A*01,HLA-A*34,HLA-B*08,HLA-B*14
+P00613	0.0	cohort_1	192863	Female	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	23.0	HLA-A*03,HLA-A*33,HLA-B*07,HLA-B*14
+P00423	0.0	cohort_1	300753	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	3.0	HLA-A*02,HLA-A*26,HLA-B*50,HLA-B*63
+Keck0046_MC1	0.0	cohort_2	102491	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	27.0	
+P00663		cohort_1	196456		Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA-A*02,HLA-A*29,HLA-B*07,HLA-B*44
+P00337	1.0	cohort_1	191764	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	40.0	HLA-A*02,HLA-A*31,HLA-B*37,HLA-B*44
+P00061		cohort_1	227254	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	36.0	HLA-A*02,HLA-A*30,HLA-B*13,HLA-B*62
+P00609	0.0	cohort_1	147244	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	22.0	HLA-A*02,HLA-A*03,HLA-B*07
+P00305	0.0	cohort_1	189407	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	25.0	HLA-A*02,HLA-A*03,HLA-B*44,HLA-B*52
+P00565	0.0	cohort_1	86539	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	28.0	HLA-A*02,HLA-B*07,HLA-B*51
+P00453	1.0	cohort_1	73642	Male	Non-Hispanic or Latino	Asian or Pacific Islander	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	62.0	HLA-A*02,HLA-A*24,HLA-B*38,HLA-B*61
+P00062	0.0	cohort_1	201783	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	32.0	HLA MHC Class I,HLA-A*01,HLA-A*24,HLA-B*07,HLA-B*08
+P00405	0.0	cohort_1	57648	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	40.0	HLA-A*02,HLA-B*44,HLA-B*62
+P00211	0.0	cohort_1	270369	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	36.0	HLA-A*01,HLA-A*02,HLA-B*08,HLA-B*44
+P00201	0.0	cohort_1	250863	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	9.0	HLA-A*02,HLA-A*23,HLA-B*07
+P00221	0.0	cohort_1	145768	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	47.0	HLA-A*02,HLA-A*03,HLA-B*44,HLA-B*62
+P00251	0.0	cohort_1	162920	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	51.0	HLA-A*02,HLA-A*03,HLA-B*51,HLA-B*56
+P00568	1.0	cohort_1	207470	Female	Non-Hispanic or Latino	Native American or Alaska Native	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	27.0	HLA-A*02,HLA-B*15,HLA-B*40
+Keck0029_MC1	0.0	cohort_2	116185	Female	Non-Hispanic or Latino	Asian or Pacific Islander	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	20.0	
+P00130	1.0	cohort_1	150427	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	42.0	HLA-A*02,HLA-A*24,HLA-B*44,HLA-B*51
+P00569	0.0	cohort_1	298088	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	55.0	HLA-A*02,HLA-A*68,HLA-B*07,HLA-B*14
+P00525	1.0	cohort_1	168436	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	53.0	HLA-A*02,HLA-A*03,HLA-B*07,HLA-B*51
+Keck0037_MC1	0.0	cohort_2	202448	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	24.0	
+P00425	0.0	cohort_1	282557	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	18.0	
+P00295	0.0	cohort_1	255082	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	34.0	HLA-A*02,HLA-A*68,HLA-B*35,HLA-B*60
+P00273	0.0	cohort_1	199493	Female	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA MHC Class I,HLA-A*01,HLA-A*03,HLA-B*07,HLA-B*51
+Keck0060_MC1	1.0	cohort_2	200105	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	22.0	
+P00197	0.0	cohort_1	254868	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	53.0	HLA-A*24,HLA-A*68,HLA-B*08,HLA-B*44
+P00136	0.0	cohort_1	309814	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	42.0	HLA-A*24,HLA-A*30,HLA-B*38
+Keck0086_MC1	0.0	cohort_2	202860	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	27.0	
+P00374	0.0	cohort_1	155363	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	40.0	HLA-A*03,HLA-A*31,HLA-B*07,HLA-B*27
+P00640		cohort_1	72532		Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA-A*01,HLA-A*68,HLA-B*14,HLA-B*57
+P00029	1.0	cohort_1	265181	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	37.0	HLA-A*02,HLA-A*30,HLA-B*18,HLA-B*39
+P00291	0.0	cohort_1	188038	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	49.0	HLA-A*02,HLA-A*23,HLA-B*51,HLA-B*63
+P00168	0.0	cohort_1	169648	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	44.0	HLA-A*01,HLA-A*11,HLA-B*08,HLA-B*35
+P00606	0.0	cohort_1	270536	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	49.0	HLA-A*02,HLA-A*31,HLA-B*07,HLA-B*15
+P00138	1.0	cohort_1	209027	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	48.0	HLA-A*02,HLA-A*23,HLA-B*07,HLA-B*27
+P00531	1.0	cohort_1	222735	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	44.0	HLA-A*01,HLA-A*26,HLA-B*08,HLA-B*39
+P00515	1.0	cohort_1	56089	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	42.0	HLA-A*03,HLA-A*23,HLA-B*07,HLA-B*08
+Keck0011_MC1	0.0	cohort_2	95815	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	24.0	
+P00633		cohort_1	229728		Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA-A*02,HLA-A*11,HLA-B*35
+Keck0084_MC1	1.0	cohort_2	284016	Female	Non-Hispanic or Latino	Asian or Pacific Islander	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	34.0	
+P00389	1.0	cohort_1	344301	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	42.0	HLA MHC Class I,HLA-A*01,HLA-A*02,HLA-B*08,HLA-B*62
+P00296	0.0	cohort_1	75186	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	33.0	HLA-A*02,HLA-A*31,HLA-B*35,HLA-B*62
+Keck0051_MC1	0.0	cohort_2	79159	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	31.0	
+P00434	0.0	cohort_1	228176	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA-A*01,HLA-A*11,HLA-B*07,HLA-B*35
+Keck0081_MC1	0.0	cohort_2	287811	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	28.0	
+P00507	0.0	cohort_1	68659	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	51.0	HLA-A*01,HLA-A*02,HLA-B*08,HLA-B*51
+P00586	0.0	cohort_1	165779	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	34.0	HLA-A*03,HLA-A*26,HLA-B*18,HLA-B*55
+P00649	0.0	cohort_1	237233	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	45.0	
+P00612	0.0	cohort_1	136005	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	60.0	HLA-A*11,HLA-A*26,HLA-B*38,HLA-B*40
+P00065	0.0	cohort_1	163600	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	43.0	HLA-A*02,HLA-A*33,HLA-B*14,HLA-B*44
+Keck0002_MC1	0.0	cohort_2	92186	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	21.0	
+P00016	1.0	cohort_1	248002	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	39.0	HLA-A*01,HLA-A*66,HLA-B*44,HLA-B*57
+P00666		cohort_1	66657		Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA-A*01,HLA-A*80,HLA-B*13,HLA-B*44
+P00192	0.0	cohort_1	71064	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	36.0	HLA-A*01,HLA-A*30,HLA-B*08,HLA-B*13
+P00517	0.0	cohort_1	221468	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	48.0	HLA-A*01,HLA-A*25,HLA-B*44,HLA-B*49
+P00075	0.0	cohort_1	208919	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	27.0	
+P00184	1.0	cohort_1	253999	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	40.0	HLA-A*24,HLA-A*30,HLA-B*18
+P00537	0.0	cohort_1	135491	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	60.0	HLA-A*02,HLA-A*03,HLA-B*07,HLA-B*44
+Keck0059_MC1	1.0	cohort_2	226728	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	33.0	
+P00200	1.0	cohort_1	126553	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	66.0	HLA-A*02,HLA-A*31,HLA-B*60,HLA-B*62
+P00283	1.0	cohort_1	314034	Female	Non-Hispanic or Latino	Asian or Pacific Islander	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	32.0	HLA-A*01,HLA-A*11,HLA-B*13,HLA-B*37
+P00162	0.0	cohort_1	263899	Female	Hispanic or Latino	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	42.0	HLA-A*03,HLA-A*24,HLA-B*14,HLA-B*41
+Keck0100_MC1	0.0	cohort_2	185486	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	21.0	
+P00265	0.0	cohort_1	285496	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA-A*01,HLA-A*24,HLA-B*07,HLA-B*62
+P00263	1.0	cohort_1	297756	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	27.0	HLA-A*01,HLA-A*11,HLA-B*27,HLA-B*57
+P00079	0.0	cohort_1	218256	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA-A*02,HLA-A*26,HLA-B*07,HLA-B*49
+Keck0089_MC1	1.0	cohort_2	219347	Female	Non-Hispanic or Latino	African Race	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	34.0	
+P00338	0.0	cohort_1	142746	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	34.0	HLA-A*01,HLA-A*24,HLA-B*35,HLA-B*39
+P00202	0.0	cohort_1	256665	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	29.0	HLA-A*03,HLA-A*30,HLA-B*14,HLA-B*51
+P00489	1.0	cohort_1	135446	Female	Non-Hispanic or Latino	Asian or Pacific Islander	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	51.0	HLA-A*11,HLA-A*31,HLA-B*13,HLA-B*51
+Keck0003_MC1	0.0	cohort_2	195801	Female		Native American or Alaska Native	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	25.0	
+P00554	1.0	cohort_1	327667	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	36.0	HLA-A*01,HLA-A*02,HLA-B*08,HLA-B*39
+P00286	1.0	cohort_1	364256	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	61.0	HLA-A*01,HLA-A*03,HLA-B*08,HLA-B*35
+P00010	0.0	cohort_1	93132	Female	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA-A*02,HLA-B*27,HLA-B*51
+P00133	0.0	cohort_1	127105	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	46.0	HLA-A*02,HLA-B*07,HLA-B*58
+P00530	1.0	cohort_1	162639	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	64.0	HLA-A*02,HLA-B*07,HLA-B*44
+P00303	0.0	cohort_1	63011	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	42.0	HLA-A*24,HLA-A*26,HLA-B*08,HLA-B*57
+Keck0061_MC1	0.0	cohort_2	195278	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	22.0	
+P00463	0.0	cohort_1	60194	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	39.0	
+P00624		cohort_1	157561		Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA-A*03,HLA-A*29,HLA-B*07,HLA-B*44
+Keck0066_MC1	0.0	cohort_2	125961	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	35.0	
+P00622	0.0	cohort_1	170392	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	62.0	HLA-A*03,HLA-A*33,HLA-B*15,HLA-B*35
+P00018	0.0	cohort_1	136444	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	30.0	HLA-A*01,HLA-B*08
+P00516	1.0	cohort_1	221796	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA-A*02,HLA-A*11,HLA-B*44,HLA-B*51
+P00030	0.0	cohort_1	182434	Female	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	39.0	HLA-A*02,HLA-B*27,HLA-B*61
+P00547	0.0	cohort_1	178472	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA MHC Class I,HLA-A*24,HLA-A*32,HLA-B*08,HLA-B*44
+P00042	1.0	cohort_1	191424	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	55.0	
+P00598	0.0	cohort_1	291520	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	60.0	HLA-A*02,HLA-A*03,HLA-B*07,HLA-B*27
+Keck0009_MC1	1.0	cohort_2	125191	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	23.0	
+Keck0097_MC1	0.0	cohort_2	369772	Female	Non-Hispanic or Latino	Asian or Pacific Islander	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	22.0	
+P00626	0.0	cohort_1	93006	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	39.0	HLA-A*02,HLA-B*35,HLA-B*44
+P00433	0.0	cohort_1	285036	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA-A*02,HLA-A*26,HLA-B*50,HLA-B*52
+P00335	1.0	cohort_1	208290	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA-A*29,HLA-A*68,HLA-B*14,HLA-B*44
+P00630		cohort_1	280620		Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA-A*02,HLA-A*31,HLA-B*07,HLA-B*35
+P00422	1.0	cohort_1	262180	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	21.0	HLA-A*02,HLA-B*44,HLA-B*57
+P00056	1.0	cohort_1	155407	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	54.0	HLA-A*01,HLA-A*02,HLA-B*39,HLA-B*57
+P00275	1.0	cohort_1	158009	Male	Non-Hispanic or Latino	African Race	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	15.0	HLA-A*02,HLA-A*32,HLA-B*18,HLA-B*53
+P00556	0.0	cohort_1	280187	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	50.0	HLA-A*01,HLA-A*24,HLA-B*08,HLA-B*27
+Keck0048_MC1	0.0	cohort_2	138590	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	30.0	
+P00104	0.0	cohort_1	319549	Female	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	29.0	HLA-A*01,HLA-A*26,HLA-B*38,HLA-B*58
+Keck0017_MC1	0.0	cohort_2	104432	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	21.0	
+P00597		cohort_1	258624		Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA-A*02,HLA-A*26,HLA-B*27,HLA-B*44
+P00006	0.0	cohort_1	205475	Female	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	37.0	HLA-A*02,HLA-A*68,HLA-B*27,HLA-B*44
+P00145	0.0	cohort_1	241274	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	38.0	HLA MHC Class I,HLA-A*03,HLA-A*24,HLA-B*07,HLA-B*44
+P00373	0.0	cohort_1	180683	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	65.0	HLA-A*01,HLA-B*08,HLA-B*57
+P00412	1.0	cohort_1	270511	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	56.0	HLA-A*02,HLA-A*24,HLA-B*07,HLA-B*35
+P00336	1.0	cohort_1	205679	Male	Non-Hispanic or Latino	Native American or Alaska Native	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	18.0	HLA-A*02,HLA-A*68,HLA-B*44,HLA-B*60
+P00542	1.0	cohort_1	50857	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	58.0	HLA-A*01,HLA-A*11,HLA-B*08,HLA-B*27
+P00105	0.0	cohort_1	41943	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA-A*01,HLA-A*03,HLA-B*08,HLA-B*60
+P00139	0.0	cohort_1	77619	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	36.0	HLA-A*01,HLA-A*24,HLA-B*08,HLA-B*35
+P00479	0.0	cohort_1	176123	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	35.0	HLA-A*03,HLA-A*68,HLA-B*44
+P00027	1.0	cohort_1	313297	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	34.0	HLA-A*24,HLA-A*26,HLA-B*07,HLA-B*44
+P00060	0.0	cohort_1	275902	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	32.0	HLA-A*11,HLA-B*35,HLA-B*55
+P00615	0.0	cohort_1	235237	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	60.0	HLA-A*01,HLA-A*24,HLA-B*07,HLA-B*37
+Keck0030_MC1	1.0	cohort_2	116067	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	23.0	
+P00293	1.0	cohort_1	279107	Female	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	11.0	HLA-A*03,HLA-B*50,HLA-B*55
+P00475	0.0	cohort_1	50339	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	34.0	
+P00106	0.0	cohort_1	462189	Female	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA-A*02,HLA-B*07,HLA-B*60
+P00435	0.0	cohort_1	132316	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	31.0	HLA-A*02,HLA-A*30,HLA-B*07,HLA-B*41
+P00437	0.0	cohort_1	315990	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	39.0	
+P00625	1.0	cohort_1	104822	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	56.0	HLA-A*03,HLA-A*24,HLA-B*07,HLA-B*15
+P00480	1.0	cohort_1	102668	Female	Hispanic or Latino	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	43.0	HLA-A*01,HLA-A*24,HLA-B*35,HLA-B*44
+Keck0050_MC1	1.0	cohort_2	104208	Male	Non-Hispanic or Latino	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	25.0	
+Keck0085_MC1	0.0	cohort_2	211521	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	30.0	
+P00128	1.0	cohort_1	308030	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	41.0	HLA-A*01,HLA-A*02,HLA-B*07,HLA-B*52
+P00378	0.0	cohort_1	113641	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	11.0	HLA-A*01,HLA-A*68,HLA-B*08,HLA-B*55
+P00226	1.0	cohort_1	133179	Female	Hispanic or Latino	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	50.0	HLA-A*03,HLA-A*68,HLA-B*49,HLA-B*63
+P00588		cohort_1	71012		Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA-A*01,HLA-A*32,HLA-B*08,HLA-B*35
+Keck0038_MC1	0.0	cohort_2	113974	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	21.0	
+P00394	1.0	cohort_1	173652	Female	Hispanic or Latino	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	20.0	HLA-A*23,HLA-A*68,HLA-B*48,HLA-B*49
+P00047	0.0	cohort_1	209869	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA-A*03,HLA-B*07,HLA-B*08
+P00019	0.0	cohort_1	324293	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	55.0	HLA-A*02,HLA-A*03,HLA-B*07,HLA-B*44
+P00012	1.0	cohort_1	151886	Female	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	33.0	HLA-A*29,HLA-B*44,HLA-B*58
+Keck0065_MC1	1.0	cohort_2	177873	Female	Non-Hispanic or Latino	Asian or Pacific Islander	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	27.0	
+P00603	1.0	cohort_1	65093	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	57.0	HLA-A*01,HLA-A*03,HLA-B*07,HLA-B*08
+P00538	1.0	cohort_1	203395	Female	Hispanic or Latino	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	45.0	HLA-A*01,HLA-A*31,HLA-B*14,HLA-B*73
+P00195	0.0	cohort_1	203002	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	21.0	HLA-A*03,HLA-A*24,HLA-B*07
+P00096	1.0	cohort_1	144222	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA-A*24,HLA-A*29,HLA-B*07,HLA-B*44
+P00064	1.0	cohort_1	114971	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA MHC Class I,HLA-A*29,HLA-A*30,HLA-B*13,HLA-B*45
+P00627		cohort_1	288287		Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA-A*24,HLA-B*40,HLA-B*44
+P00279	0.0	cohort_1	308064	Female	Non-Hispanic or Latino	Asian or Pacific Islander	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	27.0	HLA-A*11,HLA-A*33,HLA-B*35,HLA-B*58
+P00416	0.0	cohort_1	207472	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	50.0	HLA-A*01,HLA-A*02,HLA-B*08,HLA-B*35
+P00033	0.0	cohort_1	229845	Female	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA-A*03,HLA-A*11,HLA-B*07,HLA-B*35
+P00555	0.0	cohort_1	174671	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	57.0	HLA-A*11,HLA-A*24,HLA-B*40,HLA-B*51
+P00271	1.0	cohort_1	229287	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	51.0	HLA-A*02,HLA-B*35,HLA-B*44
+P00021	0.0	cohort_1	155185	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	29.0	HLA-A*02,HLA-A*11,HLA-B*27,HLA-B*44
+P00488	1.0	cohort_1	60551	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	46.0	HLA-A*01,HLA-A*02,HLA-B*08,HLA-B*44
+Keck0117_MC1	1.0	cohort_2	272565	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	34.0	
+P00051	0.0	cohort_1	97106	Female	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	40.0	HLA-A*03,HLA-A*24,HLA-B*39,HLA-B*51
+P00116	0.0	cohort_1	206546	Female	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	38.0	HLA-A*02,HLA-A*24,HLA-B*44,HLA-B*62
+P00604	0.0	cohort_1	127871	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	53.0	HLA-A*02,HLA-A*32,HLA-B*15,HLA-B*35
+P00204	1.0	cohort_1	81856	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	32.0	HLA-A*23,HLA-A*68,HLA-B*13,HLA-B*51
+P00013	0.0	cohort_1	203018	Female	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	23.0	HLA-A*01,HLA-A*32,HLA-B*08,HLA-B*44
+Keck0118_MC1	1.0	cohort_2	315296	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	28.0	
+P00652	1.0	cohort_1	279028	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	55.0	HLA-A*01,HLA-A*02,HLA-B*08,HLA-B*15
+P00081	0.0	cohort_1	207727	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	27.0	HLA-A*01,HLA-A*30,HLA-B*13,HLA-B*44
+P00025	0.0	cohort_1	218728	Female	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA-A*01,HLA-A*11,HLA-B*08,HLA-B*27
+P00431	1.0	cohort_1	83440	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	49.0	HLA-A*11,HLA-A*29,HLA-B*07,HLA-B*44
+P00326	1.0	cohort_1	118794	Female	Non-Hispanic or Latino	Asian or Pacific Islander	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	66.0	HLA-A*26,HLA-A*33,HLA-B*35,HLA-B*51
+P00297	0.0	cohort_1	232966	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	45.0	HLA-A*24,HLA-A*26,HLA-B*38,HLA-B*48
+P00198	1.0	cohort_1	283769	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	21.0	HLA-A*02,HLA-A*03,HLA-B*05,HLA-B*07
+P00227	0.0	cohort_1	206227	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	19.0	HLA-A*01,HLA-A*03,HLA-B*07,HLA-B*08
+P00524	0.0	cohort_1	183522	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	49.0	HLA-A*01,HLA-A*24,HLA-B*37,HLA-B*39
+P00189	1.0	cohort_1	145929	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	31.0	HLA-A*24,HLA-A*33,HLA-B*05,HLA-B*14
+P00401	1.0	cohort_1	157559	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	48.0	HLA-A*03,HLA-A*24,HLA-B*35
+P00299	0.0	cohort_1	146910	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	27.0	
+P00595	1.0	cohort_1	246676	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	34.0	HLA-A*68,HLA-B*14,HLA-B*44
+P00302	1.0	cohort_1	244989	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	32.0	HLA-A*01,HLA-A*30,HLA-B*08,HLA-B*13
+P00040	0.0	cohort_1	200801	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	51.0	HLA-A*02,HLA-A*26,HLA-B*07,HLA-B*39
+P00668	1.0	cohort_1	281474	Male	Hispanic or Latino	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	48.0	HLA-A*01,HLA-B*18,HLA-B*35
+Keck0031_MC1	0.0	cohort_2	178087	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	25.0	
+Keck0113_MC1	0.0	cohort_2	471115	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	20.0	
+Keck0001_MC1	1.0	cohort_2	105015	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	22.0	
+Keck0099_MC1	1.0	cohort_2	265038	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	22.0	
+P00383	1.0	cohort_1	184068	Male	Hispanic or Latino	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	30.0	HLA-A*02,HLA-A*68,HLA-B*14,HLA-B*49
+P00504	1.0	cohort_1	217049	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	44.0	HLA-A*02,HLA-A*68,HLA-B*14,HLA-B*15
+P00161	0.0	cohort_1	188687	Female	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	33.0	HLA-A*01,HLA-A*02,HLA-B*08,HLA-B*27
+P00566	0.0	cohort_1	192302	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	36.0	HLA-A*01,HLA-A*23,HLA-B*49,HLA-B*58
+P00093	0.0	cohort_1	450806	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	6.0	HLA-A*02,HLA-B*07,HLA-B*15
+P00623	1.0	cohort_1	208954	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	45.0	HLA-A*03,HLA-A*24,HLA-B*15,HLA-B*35
+P00386	1.0	cohort_1	132397	Female	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA-A*03,HLA-B*14
+Keck0042_MC1	0.0	cohort_2	95049	Male	Non-Hispanic or Latino	Asian or Pacific Islander	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	19.0	
+P00203	1.0	cohort_1	64832	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	49.0	HLA-A*02,HLA-A*23,HLA-B*07,HLA-B*44
+P00584	1.0	cohort_1	209296	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	42.0	HLA-A*01,HLA-A*03,HLA-B*07,HLA-B*14
+Keck0114_MC1	0.0	cohort_2	423992	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	19.0	
+P00377	0.0	cohort_1	196436	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	53.0	HLA-A*01,HLA-A*02,HLA-B*07,HLA-B*08
+Keck0074_MC1	0.0	cohort_2	231387	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	24.0	
+P00368	1.0	cohort_1	219815	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	29.0	HLA-A*01,HLA-A*02,HLA-B*08,HLA-B*51
+P00404	0.0	cohort_1	288100	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	17.0	HLA-A*01,HLA-A*31,HLA-B*60,HLA-B*70
+P00657	1.0	cohort_1	202934	Female	Hispanic or Latino	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	39.0	HLA-A*02,HLA-B*18,HLA-B*39
+Keck0013_MC1	1.0	cohort_2	222345	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	23.0	
+P00587	1.0	cohort_1	170088	Female	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	22.0	HLA-A*24,HLA-A*32,HLA-B*35,HLA-B*44
+P00484	0.0	cohort_1	211911	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	8.0	HLA-A*32,HLA-A*69,HLA-B*35,HLA-B*60
+P00396	0.0	cohort_1	234476	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	65.0	HLA-A*03,HLA-A*26,HLA-B*07
+P00429	0.0	cohort_1	99007	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	46.0	HLA-A*03,HLA-A*29,HLA-B*60,HLA-B*62
+Keck0083_MC1	0.0	cohort_2	338056	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	35.0	
+P00443	0.0	cohort_1	271132	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	34.0	HLA MHC Class I,HLA-A*02,HLA-A*24,HLA-B*07,HLA-B*60
+P00278	1.0	cohort_1	193872	Female	Non-Hispanic or Latino	Asian or Pacific Islander	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	23.0	HLA-A*02,HLA-A*26,HLA-B*08,HLA-B*40
+Keck0090_MC1	1.0	cohort_2	224070	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	22.0	
+P00058	1.0	cohort_1	336675	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA-A*02,HLA-A*24,HLA-B*35,HLA-B*39
+P00252	0.0	cohort_1	296814	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	24.0	HLA-A*01,HLA-A*02,HLA-B*18,HLA-B*57
+P00242	0.0	cohort_1	236103	Female	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA-A*23,HLA-A*24,HLA-B*07
+Keck0034_MC1	0.0	cohort_2	171442	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	21.0	
+Keck0040_MC1	1.0	cohort_2	154653	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	32.0	
+P00313	0.0	cohort_1	223401	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	32.0	HLA-A*02,HLA-A*24,HLA-B*35
+Keck0016_MC1	0.0	cohort_2	122231	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	22.0	
+P00218	0.0	cohort_1	185328	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	30.0	HLA-A*01,HLA-A*24,HLA-B*35,HLA-B*57
+P00420	1.0	cohort_1	178540	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	53.0	HLA-A*24,HLA-A*25,HLA-B*08,HLA-B*18
+P00243	1.0	cohort_1	168793	Female	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	26.0	HLA-A*01,HLA-A*11,HLA-B*07,HLA-B*08
+P00519	0.0	cohort_1	101441	Male	Non-Hispanic or Latino	Native American or Alaska Native	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	28.0	HLA-A*02,HLA-B*27,HLA-B*39
+P00053	1.0	cohort_1	198330	Female	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	44.0	
+Keck0005_MC1	0.0	cohort_2	143222	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	24.0	
+Keck0079_MC1	0.0	cohort_2	201686	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	33.0	
+P00407	1.0	cohort_1	137215	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	66.0	HLA-A*02,HLA-A*26,HLA-B*27,HLA-B*35
+P00141	0.0	cohort_1	264205	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	39.0	HLA-A*01,HLA-A*02,HLA-B*08,HLA-B*51
+P00097	0.0	cohort_1	86706	Female	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	24.0	HLA MHC Class I,HLA-A*03,HLA-A*26,HLA-B*56,HLA-B*62
+P00439	0.0	cohort_1	233834	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	22.0	HLA-A*03,HLA-A*31,HLA-B*15,HLA-B*35
+P00049	1.0	cohort_1	82209	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA-A*01,HLA-A*26,HLA-B*08,HLA-B*61
+P00182	0.0	cohort_1	267445	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	45.0	HLA-A*02,HLA-A*25,HLA-B*07,HLA-B*70
+Keck0070_MC1	0.0	cohort_2	563590	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	23.0	
+P00179	1.0	cohort_1	127509	Female	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	42.0	HLA-A*24,HLA-A*68,HLA-B*18,HLA-B*44
+P00506		cohort_1	31931		Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA MHC Class I,HLA-A*02,HLA-A*03,HLA-B*18,HLA-B*44
+P00284	0.0	cohort_1	251080	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	32.0	HLA-A*01,HLA-A*02,HLA-B*08,HLA-B*50
+P00285	0.0	cohort_1	114342	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	35.0	HLA-A*03,HLA-A*23,HLA-B*35,HLA-B*44
+P00381	1.0	cohort_1	115952	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	34.0	HLA-A*02,HLA-A*32,HLA-B*44,HLA-B*49
+P00086	0.0	cohort_1	247056	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA-A*02,HLA-A*29,HLA-B*51,HLA-B*55
+P00213	0.0	cohort_1	74495	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	33.0	HLA-A*24,HLA-A*32,HLA-B*08,HLA-B*39
+P00574	0.0	cohort_1	327921	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	54.0	HLA-A*02,HLA-A*03,HLA-B*07,HLA-B*57
+P00261	0.0	cohort_1	220672	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	43.0	HLA MHC Class I,HLA-A*11,HLA-A*26,HLA-B*35,HLA-B*38
+P00398	0.0	cohort_1	209852	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	44.0	HLA-A*03,HLA-A*24,HLA-B*35,HLA-B*44
+P00068	1.0	cohort_1	172536	Female	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA-A*23,HLA-B*44,HLA-B*49
+P00369	0.0	cohort_1	192940	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	39.0	HLA-A*01,HLA-A*24,HLA-B*08,HLA-B*44
+P00641	1.0	cohort_1	135148	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	55.0	HLA-A*25,HLA-A*29,HLA-B*44,HLA-B*58
+P00205	0.0	cohort_1	106076	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	33.0	HLA-A*02,HLA-A*03,HLA-B*07,HLA-B*57
+P00631	1.0	cohort_1	152274	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	9.0	HLA-A*02,HLA-A*32,HLA-B*15,HLA-B*42
+P00567	0.0	cohort_1	91427	Male	Hispanic or Latino	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	59.0	HLA-A*02,HLA-A*30,HLA-B*07,HLA-B*44
+P00238	1.0	cohort_1	309719	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	40.0	HLA-A*03,HLA-A*31,HLA-B*07,HLA-B*08
+P00428	0.0	cohort_1	169337	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	52.0	HLA-A*11,HLA-A*29,HLA-B*13,HLA-B*35
+P00185	0.0	cohort_1	310720	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	16.0	HLA-A*03,HLA-B*35
+P00008	0.0	cohort_1	76461	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	32.0	HLA-A*02,HLA-A*03,HLA-B*07,HLA-B*27
+P00032	0.0	cohort_1	327300	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	26.0	HLA-A*02,HLA-A*03,HLA-B*35,HLA-B*51
+P00559	0.0	cohort_1	140995	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	26.0	HLA-A*01,HLA-A*03,HLA-B*07,HLA-B*08
+P00230	0.0	cohort_1	337545	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	29.0	HLA-A*01,HLA-A*02,HLA-B*35,HLA-B*60
+P00546	0.0	cohort_1	210341	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	46.0	HLA-A*01,HLA-A*03,HLA-B*15,HLA-B*44
+P00395	0.0	cohort_1	206216	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	32.0	HLA-A*01,HLA-A*32,HLA-B*08,HLA-B*18
+P00654	0.0	cohort_1	316695	Female	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	58.0	HLA-A*24,HLA-A*29,HLA-B*44,HLA-B*57
+P00089	1.0	cohort_1	286828	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	51.0	HLA-A*24,HLA-A*68,HLA-B*51,HLA-B*55
+P00364	1.0	cohort_1	107819	Male	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA		HLA-A*26,HLA-A*30,HLA-B*13,HLA-B*35
+P00066	0.0	cohort_1	176729	Female	Unknown Ethnicity	Unknown racial group	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	45.0	HLA-A*02,HLA-A*29,HLA-B*18,HLA-B*44
+Keck0094_MC1	0.0	cohort_2	416728	Male	Non-Hispanic or Latino	Caucasian	PBMC,Peripheral blood lymphocytes (PBL),T cells,gDNA	29.0	

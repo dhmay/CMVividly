@@ -19,9 +19,7 @@ _freeze/
 # Data policy: keep directories, avoid accidental large commits
 # Remove these lines if you intentionally want to version data files.
 data/raw/*
-data/processed/*
 !data/raw/.gitkeep
-!data/processed/.gitkeep
 
 /.quarto/
 **/*.quarto_ipynb*

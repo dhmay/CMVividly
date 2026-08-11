@@ -1,0 +1,325 @@
+---
+title: Predict CMV status and HLA type
+date: "2026-08-10"
+description: "Intersect CMV ECOcluster TCRs with repertoires to predict CMV status and HLA type."
+jupyter: python3
+---
+
+## Takeaways from this post
+
+* The CMV ECOcluster is a very good predictor of CMV status, even without accounting for donor HLA type
+* But donor HLA type does matter! Asian or Pacific Islander donors have fewer CMV ECOcluster TCRs.
+* Among CMV+ donors, the CMV ECOcluster can be used to predict HLA allele status for many alleles with high sensitivity and specificity
+
+```{python}
+# useful imports
+import pandas as pd
+from matplotlib import pyplot as plt
+
+import itables
+import seaborn as sns
+from cmvividly.plots.style import set_style
+set_style()
+
+import itables
+itables.init_notebook_mode()
+
+#stats
+from scipy.stats import mannwhitneyu
+```
+
+## Load previously saved files related to the "Emerson" datasets
+
+The TCR repertoires from the two ["Emerson"](https://www.nature.com/articles/ng.3822) cohorts are available through Adaptive's ImmuneAccess portal. I downloaded the data, extracted the sample metadata and intersected the repertoire TCRs with the CMV ECOcluster, in [this notebook](https://github.com/dhmay/CMVividly/blob/main/notebooks/download_emerson.ipynb).
+This intersection makes no attempt to account for donor HLA type.
+
+Let's load those processed files and prepare them for analysis.
+
+```{python}
+metadata_filepath = "/Users/damonmay/CMVividly/data/processed/emerson_cohorts_sample_metadata.tsv"
+pdf_sample_metadata = pd.read_csv(metadata_filepath, sep="\t")
+print("'Emerson' cohort breakdown by CMV status:")
+pd.crosstab(pdf_sample_metadata.cohort,
+            pdf_sample_metadata.cmv_status)
+```
+
+A sample of the TCR intersection of the CMV ECOcluster with the 'Emerson' repertoires:
+
+```{python}
+file_path_inters_2026 = "/Users/damonmay/CMVividly/data/processed/emerson_cmveco_2026_intersection_cdr3_exact.parquet"
+pdf_tcr_matches_2026 = pd.read_parquet(file_path_inters_2026)
+pdf_tcr_matches_2026
+```
+
+## Summarize the intersection per sample
+
+Let's evaluate three metrics on their ability to separate CMV+ from CMV- donors:
+
+* match count (n_matches): the number of TCRs in the sample that match the CMV ECOcluster
+* breadth: the fraction of TCRs in the sample that match the CMV ECOcluster
+* depth: the sum of productive frequencies of TCRs in the sample that match the CMV ECOcluster
+
+```{python}
+# count matches per row
+import numpy as np
+pdf_tcrmatch_rowcounts = pdf_tcr_matches_2026.groupby("sample_name").agg({
+    "tcr_repertoire": "count",
+    "productive_frequency": "sum"
+}).reset_index()
+pdf_tcrmatch_rowcounts.columns = ["sample_name", "n_matches", "depth"]
+pdf_exactmatch_rowcounts_withmeta = pdf_sample_metadata.merge(pdf_tcrmatch_rowcounts, how="left", on="sample_name").fillna(0)
+pdf_exactmatch_rowcounts_withmeta["breadth"] = pdf_exactmatch_rowcounts_withmeta["n_matches"] / pdf_exactmatch_rowcounts_withmeta["productive_rearrangements"]
+
+# add log10-transformed columns for plotting
+# add an epsilon to breadth/depth for log10 transformation
+EPS = 1e-4
+pdf_exactmatch_rowcounts_withmeta["log10_breadth"] = np.log10(pdf_exactmatch_rowcounts_withmeta["breadth"] + EPS)
+pdf_exactmatch_rowcounts_withmeta["log10_depth"] = np.log10(pdf_exactmatch_rowcounts_withmeta["depth"] + EPS)
+pdf_exactmatch_rowcounts_withmeta
+```
+
+### Visualize the intersection by cohort and CMV status
+
+Visualize the difference in this intersection between CMV+ and CMV- donors. Three metrics:
+* match count (n_matches): the number of TCRs in the sample that match the CMV ECOcluster
+* breadth: the fraction of TCRs in the sample that match the CMV ECOcluster
+* depth: the sum of productive frequencies of TCRs in the sample that match the CMV ECOcluster
+
+```{python}
+# boxplot of matches by CMV status
+f, (ax1, ax2, ax3) = plt.subplots(1, 3, figsize=(10, 4))
+
+sns.boxplot(data=pdf_exactmatch_rowcounts_withmeta, x="cohort", y="n_matches", hue="cmv_status", ax=ax1)
+ax1.set_title("Matched TCRs")
+sns.boxplot(data=pdf_exactmatch_rowcounts_withmeta, x="cohort", y="log10_breadth", hue="cmv_status", ax=ax2)
+ax2.set_title("Breadth (log10)")
+# hide ax2's legend
+ax2.get_legend().remove()
+sns.boxplot(data=pdf_exactmatch_rowcounts_withmeta, x="cohort", y="log10_depth", hue="cmv_status", ax=ax3)
+ax3.set_title("Depth (log10)")
+ax3.get_legend().remove()
+
+f.suptitle("ECOcluster matched TCRs / breadth / depth\nby cohort and CMV status")
+f.tight_layout()
+```
+
+All three metrics show separation, but breadth and depth, which account for sequencing depth, show far better separation than match count.
+
+## Assess diagnostic performance
+
+Build ROC curves using match count, breadth and depth.
+
+```{python}
+from cmvividly.plots.roc_utils import plot_roc, calc_auroc
+f, ax = plt.subplots(figsize=(5, 5))
+
+auroc_matches = calc_auroc(pdf_exactmatch_rowcounts_withmeta, "n_matches", "cmv_status")
+auroc_breadth = calc_auroc(pdf_exactmatch_rowcounts_withmeta, "breadth", "cmv_status")
+auroc_depth = calc_auroc(pdf_exactmatch_rowcounts_withmeta, "depth", "cmv_status")
+
+plot_roc(pdf_exactmatch_rowcounts_withmeta, "n_matches", label_col="cmv_status", ax=ax, label=f"matches (AUC={auroc_matches:.2f})")
+plot_roc(pdf_exactmatch_rowcounts_withmeta, "breadth", label_col="cmv_status", ax=ax, label=f"breadth (AUC={auroc_breadth:.2f})")
+plot_roc(pdf_exactmatch_rowcounts_withmeta, "depth", label_col="cmv_status", ax=ax, label=f"depth (AUC={auroc_depth:.2f})")
+ax.set_title("ROC curves predicting CMV status\nusing raw match count, breadth and depth")
+pass
+```
+
+So, after accounting for repertoire depth in one of two ways, the ECOcluster is a *very good* predictor of CMV status, even though we haven't accounted for donor HLA type at all. 
+
+### Break down performance by race
+
+But that doesn't mean HLA doesn't matter, even for CMV diagnosis! Race is a loose but useful proxy for HLA type. The CMV ECOcluster was built on repertoires from a wide variety of donors, some explicitly sourced to increase donor diversity. Nevertheless, well over half were Caucasian. Let's see how these donors break down by the race reported in the metadata:
+
+```{python}
+pdf_exactmatch_rowcounts_withmeta.race.value_counts()
+```
+
+Those values are straight from the ImmuneAccess file. I'm not sure what race "0" means, so I'll leave that out. I'll also leave out the groups with very few donors.
+
+We might expect to see the classifier do better on Caucasians than on other groups, because they share more alleles with the repertoires ECOclusters were built on. Let's take a look.
+
+```{python}
+pdf_withrace_withenough = pdf_exactmatch_rowcounts_withmeta[
+    (pdf_exactmatch_rowcounts_withmeta.race != 0)
+    & (~pdf_exactmatch_rowcounts_withmeta.race.isin(["African Race", "Native American or Alaska Native"]))
+]
+   
+f, (ax1, ax2, ax3) = plt.subplots(1, 3, figsize=(12, 4))
+
+sns.boxplot(y="race", x="n_matches", hue="cmv_status", data=pdf_withrace_withenough, ax=ax1)
+ax1.set_title("Matched TCRs")
+sns.boxplot(y="race", x="log10_breadth", hue="cmv_status", data=pdf_withrace_withenough, ax=ax2)
+ax2.set_yticks([])
+ax2.set_title("Breadth (log10)")
+ax2.get_legend().remove()
+sns.boxplot(y="race", x="log10_depth", hue="cmv_status", data=pdf_withrace_withenough, ax=ax3)
+ax3.set_yticks([])
+ax3.set_title("Depth (log10)")
+ax3.get_legend().remove()
+
+f.tight_layout()
+```
+
+Visually, it looks like, among CMV+ donors, breadth, depth and # matches are all lower in the Asian or Pacific Islander group than in the other groups. Let's test for significance with a two-sided Mann-Whitney U test.
+
+```{python}
+pdf_api = pdf_withrace_withenough[pdf_withrace_withenough.race == "Asian or Pacific Islander"]
+pdf_notapi = pdf_withrace_withenough[pdf_withrace_withenough.race != "Asian or Pacific Islander"]
+pdf_api_cmvpos = pdf_api[pdf_api.cmv_status == 1]
+pdf_notapi_cmvpos = pdf_notapi[pdf_notapi.cmv_status == 1]
+
+mwu_p_matches = mannwhitneyu(pdf_api_cmvpos.n_matches, pdf_notapi_cmvpos.n_matches).pvalue
+mwu_p_breadth = mannwhitneyu(pdf_api_cmvpos.breadth, pdf_notapi_cmvpos.breadth).pvalue
+mwu_p_depth = mannwhitneyu(pdf_api_cmvpos.depth, pdf_notapi_cmvpos.depth).pvalue
+
+print(f"Two-sided MWU p-values:")
+print(f"# matches: {mwu_p_matches:.1e}")
+print(f"breadth: {mwu_p_breadth:.1e}")
+print(f"depth: {mwu_p_depth:.1e}")
+    
+```
+
+Yes, these differences are highly significant, particularly for match count and breadth.
+In the preprint, we took great pains to account for those differences, using inferred HLA types
+on all the donors and comparing breadths against reference distributions for donors with the associated allele.
+
+Let's take a look at ROC curves *within* each group:
+
+```{python}
+f, ax = plt.subplots(figsize=(5, 5))
+for race in sorted(pdf_withrace_withenough.race.unique().tolist()):
+    pdf_race = pdf_withrace_withenough[pdf_withrace_withenough.race == race]
+    auroc_matches = calc_auroc(pdf_race, "breadth", "cmv_status")
+    plot_roc(pdf_race, "breadth", label_col="cmv_status", label=f"{race} (AUC={auroc_matches:.2f})", ax=ax)
+ax.legend(bbox_to_anchor=(0.2, 0.5), loc='upper left')
+ax.set_title("ROC curves predicting CMV status\nusing breadth, by race")
+```
+
+We do markedly worse for the Unknown racial group due to a number of CMV- donors with very high breadth. There are a lot of people in that group, so the difference isn't likely due to chance. More likely, those donors have HLA alleles whose CMV-COclusters aren't as well differentiated w.r.t. CMV status and lack other alleles that are better differentiated.
+
+Also, from the boxplots and MWU tests above, we also know that, if we throw all those donors together, API CMV+ donors will be less well-separated from CMV- donors of other races.
+
+## Infer donor CMV+ donor HLA type from the TCR repertoire
+
+Can we get something *useful* out of the HLA-bound nature of the CMV TCRs? Can we use it to infer the status of CMV+ donors with respect to the HLA alleles present in the CMV ECOcluster?
+
+If we consider two CMV+ donors, one with HLA allele `A*02:01` and one without, only the first donor should have `A*02:01`-associated TCRs responding to CMV. Since the CMV ECOcluster records the HLA allele associated with each TCR, we can use the `A*02:01`-associated CMV ECOcluster TCRs in a CMV+ donor's repertoire to predict whether that donor has `A*02:01`.
+
+**Limitations:**
+
+* All we've got is Class I HLA type, for a subset of donors, so we're entirely blind to Class II
+    * (I think the full HLA types for these donors might be floating around somewhere? If you know how to get them, let me know and I'll redo all this!)
+* The HLA metadata has values like `HLA-A*01`, while the HLA-COclusters in the CMV ECOcluster are associated with alleles like `A*01:01`. My workaround here will be to add `:01` to the end of the HLA metadata values and see if any HLA-COclusters match. That's a bit of a hack, and I might be missing some modelable alleles this way, but it demonstrates the idea.
+
+```{python}
+pdf_sample_metadata_withhla = pdf_sample_metadata[pdf_sample_metadata.hla_class_i.notnull()]
+pdf_sample_metadata_withhla_cmvpos = pdf_sample_metadata_withhla[pdf_sample_metadata_withhla.cmv_status == 1]
+print(f"Number of CMV+ donors with HLA Class I data: {len(pdf_sample_metadata_withhla_cmvpos)}")
+
+all_alleles = set()
+for hla_str in pdf_sample_metadata_withhla_cmvpos.hla_class_i:
+    alleles = hla_str.split(",")
+    all_alleles.update([x for x in alleles if x != "HLA MHC Class I"])  # there's some malformed metadata in there.
+print(f"HLA Class I alleles present among CMV+ donors: {len(all_alleles)}")
+
+alleles = sorted(all_alleles)
+pos_counts = []
+neg_counts = []
+for allele in sorted(all_alleles):
+    pdf_sample_metadata_withhla[allele] = pdf_sample_metadata_withhla.hla_class_i.apply(lambda x: 1 if allele in str(x).split(",") else 0)
+    pos_counts.append(pdf_sample_metadata_withhla[(pdf_sample_metadata_withhla[allele] == 1) & (pdf_sample_metadata_withhla.cmv_status == 1)].shape[0])
+    neg_counts.append(pdf_sample_metadata_withhla[(pdf_sample_metadata_withhla[allele] == 1) & (pdf_sample_metadata_withhla.cmv_status == 0)].shape[0])
+
+pdf_pos_neg_counts = pd.DataFrame({
+    "allele": sorted(all_alleles),
+    "pos_count": pos_counts,
+    "neg_count": neg_counts
+})
+
+f, ax = plt.subplots()    
+sns.histplot(data=pdf_pos_neg_counts, x="pos_count", ax=ax, bins=20)
+ax.set_title("CMV+ donor counts per Class I allele")
+pass
+```
+
+A lot of those alleles have very few allele+ donors among the CMV+ donors. Luckily, we don't really need to train a model! We just need enough donors to *assess* breadth as a predictor of allele status. 
+
+Let's require at least 10 CMV+ donors with that allele to assess breadth as a predictor of allele status.
+
+```{python}
+alleles_enough_cmvpos = pdf_pos_neg_counts[pdf_pos_neg_counts.pos_count >= 10].allele.tolist()
+print(f"Class I alleles with at least 10 CMV+ donors: {len(alleles_enough_cmvpos)}")
+# eliminate alleles with no associated HLA-COcluster
+alleles_enough_cmvpos_with_hlacocluster = [
+    allele for allele in alleles_enough_cmvpos if allele[len("HLA-"):] + ":01" in pdf_tcr_matches_2026.hla.unique().tolist()
+]
+print(f"...and an associated HLA-COcluster: {len(alleles_enough_cmvpos_with_hlacocluster)}")
+```
+
+So, there are 12 or so alleles we can reasonably evaluate.
+
+Let's evaluate breadth on the associated HLA-COcluster as a predictor for having each allele.
+
+```{python}
+from cmvividly.plots.roc_utils import calc_roc_summary
+
+pdf_tcr_matches_2026["hla_for_join"] = pdf_tcr_matches_2026.hla.apply(
+    lambda x: x.split("*")[0])
+# Join the HLA metadata with the breadth metric and assess breath as a predictor
+pdf_sample_metadata_withhla_cmvpos = pdf_sample_metadata_withhla[pdf_sample_metadata_withhla.cmv_status == 1]
+
+rows = []
+f, ax = plt.subplots()
+
+for allele in alleles_enough_cmvpos_with_hlacocluster:    
+    allele_for_join = allele[len("HLA-"):] + ":01"
+    pdf_matches_this_allele = pdf_tcr_matches_2026[pdf_tcr_matches_2026.hla == allele_for_join]
+    pdf_rowcounts_this_allele = pdf_matches_this_allele.groupby("sample_name").agg({
+        "tcr_repertoire": "count",
+        "productive_frequency": "sum"
+    }).reset_index()
+    pdf_rowcounts_this_allele_withmeta = pdf_sample_metadata_withhla_cmvpos.merge(
+        pdf_rowcounts_this_allele, how="left", on="sample_name").fillna(0)
+    pdf_rowcounts_this_allele_withmeta["breadth"] = pdf_rowcounts_this_allele_withmeta["tcr_repertoire"] / pdf_rowcounts_this_allele_withmeta["productive_rearrangements"]
+    pdf_rowcounts_this_allele_withmeta["depth"] = pdf_rowcounts_this_allele_withmeta["productive_frequency"]
+    auroc_breadth = calc_auroc(pdf_rowcounts_this_allele_withmeta, "breadth", label_col=allele)
+    sens_98_spec_breadth = calc_roc_summary(pdf_rowcounts_this_allele_withmeta, "breadth", label_col=allele,
+                                            specificities=[0.98])["senses_at_specs"][0]
+    auroc_depth = calc_auroc(pdf_rowcounts_this_allele_withmeta, "depth", label_col=allele)
+    rows.append({
+        "allele": allele,
+        "n_cmvpos": sum(pdf_rowcounts_this_allele_withmeta[allele] == 1),
+        "auroc_breadth": auroc_breadth,
+        "auroc_depth": auroc_depth,
+        "sens_98_spec_breadth": sens_98_spec_breadth
+    })
+    plot_roc(pdf_rowcounts_this_allele_withmeta, 
+             "breadth", label_col=allele, ax=ax, label=allele)
+ax.set_title("ROC curves predicting HLA allele status\nusing breadth, by allele")
+ax.legend(bbox_to_anchor=(1.01, 1.05), loc='upper left')
+f.set_size_inches(6,6)
+
+pdf_allele_aurocs = pd.DataFrame(rows).sort_values("auroc_breadth", ascending=False)
+```
+
+Let's take a look at the AUROCs and sensitivities at 98% specificity for those models.
+
+```{python}
+f, ax = plt.subplots()
+sns.scatterplot(data=pdf_allele_aurocs, y="auroc_depth", x="auroc_breadth")
+ax.set_title("AUROC for breadth vs depth predicting\nHLA allele status among CMV+ donors")
+sns.lineplot(x=[0, 1], y=[0, 1], color="gray", linestyle="--", ax=ax)
+f.set_size_inches(5, 5)
+pdf_allele_aurocs
+```
+
+AUROCs based on breadth and on depth are strikingly similar, with a slight advantage to breadth-based models.
+
+## Applications of HLA allele models usable on CMV+ donors
+
+So, all but one of those "models" (HLA-B*35) has notable sensitivity at essentially perfect specificity, and they all have AUROC > 0.77. The best 6 models have >70% sensitivity at 98% specificity.
+
+Quite likely, a number of the other alleles represented in the CMV ECOcluster have similar performance, but we don't have enough CMV+ donors with those alleles in this dataset to assess performance. And of course we haven't even been able to look at Class II alleles, since we didn't have any data there.
+
+I think the best HLA allele models, combined with the CMV ECOcluster's ability to predict CMV status and enough public repertoires, could allow us to "pseudolabel" inferred CMV+ donors with status on those HLAs, learn signal from exposures other than CMV, and build HLA allele models that could be used on both CMV+ and CMV- donors.
+

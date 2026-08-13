@@ -88,7 +88,7 @@ Visualize the difference in this intersection between CMV+ and CMV- donors. Thre
 
 ```{python}
 # boxplot of matches by CMV status
-f, (ax1, ax2, ax3) = plt.subplots(1, 3, figsize=(10, 4))
+f, (ax1, ax2, ax3) = plt.subplots(1, 3, figsize=(12, 6))
 
 sns.boxplot(data=pdf_exactmatch_rowcounts_withmeta, x="cohort", y="n_matches", hue="cmv_status", ax=ax1)
 ax1.set_title("Matched TCRs")

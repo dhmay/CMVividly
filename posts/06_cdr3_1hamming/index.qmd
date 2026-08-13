@@ -1,7 +1,7 @@
 ---
 title: Single CDR3 amino acid swaps
 date: "2026-08-12"
-description: "Look at pairs of CMV ECOcluster TCRs that differ by one amino acid swap."
+description: "Look at pairs of CMV ECOcluster TCRs that differ by one amino acid swap. They're strongly position-dependent!"
 jupyter: python3
 ---
 
@@ -26,7 +26,7 @@ I'm making a **big assumption** here: in this rarified context in which I know t
 
 That is, I don't know how to perfectly cluster TCRs to identify groups that bind the same antigen in the general case (and I'd argue that no one does), but *in this context* in which both TCRs are CMV ECOcluster members I think this "smallest possible"* change to a CDR3 doesn't affect *which* CMV pMHC complex the TCR binds. I'll explore that assumption a little bit here, and more in a later post where I look at public TCR databases.
 
-\* *All single AA swaps aren't actually the smallest possible change to a CDR3. Not all single AA swaps are created equal, as we'll see.*
+\* *All single AA swaps aren't actually the smallest possible changes to a CDR3. Not all single AA swaps are created equal, as we'll see.*
 
 ## Load the 2026 CMV ECOcluster and find Hamming-1 CDR3 pairs
 

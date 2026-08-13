@@ -9,13 +9,11 @@ jupyter: python3
 
 * There are many pairs of CMV ECOcluster TCRs that differ by a single amino acid substitution in the CDR3 sequence
     * *A priori*, I expect those pairs overwhelmingly to represent TCRs binding the same CMV antigen presented by the same HLA allele
-* Most of those pairs share a V and J gene, and an HLA association
-    * When they don't, the patterns of the differences look very much like the patterns from TCRs with identical CDR3 sequences (from [Post 4](https://cmvividly.com/posts/04-v-j-gene-groups/))
-    * That suggests that these single amino acid substitutions generally don't change which CMV peptide the TCR binds
-* Amino acid swaps are strongly concentrated in **position 4** of the CDR3 sequence (counting from the V gene end, 0-based)
-    * It doesn't appear to be artefactual in an obvious way
-    * Position 4 appears to be a "hotspot" for tolerated substitutions
-    * **This is very surprising!**
+    * They seem to behave like they do
+* Amino acid swaps are strongly concentrated in a single CDR3 position relative to the V gene
+    * The specific position varies strongly by V family
+    * For most V families, it's position 4 (0-based)
+    * Interpretation: AA swaps right after the V gene end are more tolerated in TCR-pMHC binding solutions
 * Some amino acid pairs are swapped far more or less often than we'd expect by chance
     * We could use this data to build a BLOSUM-like matrix for CDR3 sequences with respect to pMHC binding
 
@@ -147,7 +145,7 @@ print(f"Proportion of Hamming-1 pairs differing at position 4: {proportion_pos4:
 
 I could do some statistics around that, but there's no point: that's far more than expected by chance.
 
-Maybe this is some kind of artifact.
+Let's try to eliminate the possibility that this is some kind of artifact.
 
 Let's look at the distribution of differing positions for all Hamming-1 pairs, broken down by whether the two TCRs have the same V and J genes, and whether they have the same HLA allele association. Maybe this only happens when the two TCRs have different V/J genes or allele associations.
 
@@ -201,7 +199,7 @@ Let's see if there's a trend if we index the position from the J gene end instea
 hist_differing_positions(pdf_all_ham1_pairs, "differing_position_fromj", "J")
 ```
 
-Nope. If we index from the J gene side, there's no big outlier position that stands out like position 4 when indexed from the V gene side. Indexed from the J side, the distribution looks more like what I expected to see: more substitutions in the middle of the CDR3 than at either end.
+Nope. If we index from the J gene side, there's no big outlier position that stands out like position 4 when indexed from the V gene side. Indexed from the J side, the distribution looks more like what I would naively expect to see: more substitutions in the middle of the CDR3 than at either end.
 
 Let's make sure that this trend isn't dominated by a single huge sequence cluster, or something like that: let's look at the distribution of CDR3 lengths of the Hamming-1 pairs that differ at position 4. If there's an artefactual explanation, it should be dominated by a single length.
 
@@ -244,37 +242,115 @@ print(f"Class II: {proportion_cii_pos4:.2%}")
 
 Nope! It's nearly identical.
 
-Does V gene usage vary by whether the pair differs at position 4? 
+## Does the distribution of differing positions differ by V gene?
+
+The most-differing position is fixed relative to the V gene but not the J gene. This suggests that it's defined by the V-D boundary.
+That should vary by V gene, since different V genes extend different lengths past the CDR3 start. 
+
+If I recall correctly, those differences are consistent within V family, so let's look at the distribution by V family.
 
 ```{python}
-pdf_vgene_counts_pos4 = pdf_pos4_ham1_pairs_samehla_samevj.groupby("vgene_lower").size().reset_index(name="count")
-pdf_vgene_counts_pos4["proportion"] = pdf_vgene_counts_pos4["count"] / pdf_vgene_counts_pos4["count"].sum()
+pdf_ham1_pairs_samehla_samevj["vfamily"] = pdf_ham1_pairs_samehla_samevj["vgene_lower"].apply(
+    lambda x: x.split("-")[0])
+vfamilies = sorted(list(set(pdf_ham1_pairs_samehla_samevj.vfamily)))
+f, axes = plt.subplots(len(vfamilies), 1, figsize=(8, 12))
 
-pdf_vgene_counts_notpos4 = pdf_notpos4_ham1_pairs_samehla_samevj.groupby("vgene_lower").size().reset_index(name="count")
-pdf_vgene_counts_notpos4["proportion"] = pdf_vgene_counts_notpos4["count"] / pdf_vgene_counts_notpos4["count"].sum()
+rows = []
+for i, vfamily in enumerate(vfamilies):
+    pdf_vfamily = pdf_ham1_pairs_samehla_samevj[pdf_ham1_pairs_samehla_samevj.vfamily == vfamily]
+    pdf_pos_counts = pdf_vfamily.differing_position.value_counts().reset_index()
+    pdf_pos_counts.columns = ["differing_position", "count"]
+    pdf_pos_counts = pdf_pos_counts.sort_values("count", ascending=False)
+    n_max_pos = pdf_pos_counts["count"].iloc[0]
+    prop_max_pos = n_max_pos / len(pdf_vfamily)
+    max_pos = pdf_pos_counts["differing_position"].iloc[0]
+    row = {
+        "vfamily": vfamily,
+        "n_pairs": len(pdf_vfamily),
+        "max_pos": max_pos,
+        "n_max_pos": n_max_pos,
+        "prop_max_pos": prop_max_pos
+    }
+    rows.append(row)
+    ax = axes[i]
+    ax.set_xlim(0, max(pdf_ham1_pairs_samehla_samevj.differing_position) + 1)
+    sns.histplot(pdf_vfamily.differing_position, discrete=True, ax=ax)
+    ax.set_yticks([])
+    if i < len(vfamilies) - 1:
+        ax.set_xticks([])
+    else:
+        ax.set_xlabel("Differing position")
 
-pdf_merged = pdf_vgene_counts_pos4.merge(pdf_vgene_counts_notpos4, on="vgene_lower", how="outer", suffixes=("_pos4", "_notpos4")).fillna(0)
+    ax.set_ylabel(vfamily, rotation=0, labelpad=45, y=0.1)
+pdf_vfamily_maxpos_summary = pd.DataFrame(rows).sort_values("prop_max_pos", ascending=False)
 
-f, ax = plt.subplots()
-sns.scatterplot(data=pdf_merged, x="proportion_pos4", y="proportion_notpos4")
-sns.lineplot(x=[0, .1], y=[0, .1], color="grey", linestyle="--")
-ax.set_title("V gene prevalence in Hamming-1 pairs differing\nat other positions vs. position 4")
-ax.set_ylabel("Other positions")
-ax.set_xlabel("Position 4")
+f.suptitle("Distribution of differing positions by V family", y=0.91)
 pass
 ```
 
-There's some variation in V gene usage between the pairs differing at position 4 and the pairs differing at other positions. 
-Some of those V genes are even significantly over- or under-represented in postion 4 vs. other swaps. 
-But there's no smoking-gun V gene that explains the outsized proportion of pairs differing at position 4. 
+Sure enough, most V families have the most swaps at position 4, but a few don't:
 
-I'm going to tentatively classify this excess amino acid swap tolerance at position
-4 as "real", at least for the public TCRs binding the peptides represented by the
-CMV ECOcluster.
+```{python}
+pdf_vfamily_maxpos_summary[pdf_vfamily_maxpos_summary.max_pos != 4]
+```
 
-## Amino acids substituted at position 4
+TCRBV04 is dominated similarly by position 6. The rest are more spread out.
 
-So, position 4 (counting from the V gene side, 0-based) is some kind of hotspot... maybe it's a position where more substitutions are tolerated, across many binding solutions? Let's look at the amino acids that are substituted at position 4, and see if there are any patterns.
+Is there a similar effect looking at J gene? Let's see.
+
+```{python}
+
+jgenes = sorted(list(set(pdf_ham1_pairs_samehla_samevj.jgene_i)))
+f, axes = plt.subplots(len(jgenes), 1, figsize=(8, 10))
+
+rows = []
+for i, jgene in enumerate(jgenes):
+    pdf_jgene = pdf_ham1_pairs_samehla_samevj[pdf_ham1_pairs_samehla_samevj.jgene_i == jgene]
+    pdf_pos_counts = pdf_jgene.differing_position_fromj.value_counts().reset_index()
+    pdf_pos_counts.columns = ["differing_position_fromj", "count"]
+    pdf_pos_counts = pdf_pos_counts.sort_values("count", ascending=False)
+    n_max_pos = pdf_pos_counts["count"].iloc[0]
+    prop_max_pos = n_max_pos / len(pdf_jgene)
+    max_pos = pdf_pos_counts["differing_position_fromj"].iloc[0]
+    row = {
+        "jgene": jgene,
+        "n_pairs": len(pdf_jgene),
+        "max_pos": max_pos,
+        "n_max_pos": n_max_pos,
+        "prop_max_pos": prop_max_pos
+    }
+    rows.append(row)
+    ax = axes[i]
+    ax.set_xlim(0, max(pdf_ham1_pairs_samehla_samevj.differing_position) + 1)
+    sns.histplot(pdf_jgene.differing_position_fromj, discrete=True, ax=ax)
+    ax.set_yticks([])
+    if i < len(jgenes) - 1:
+        ax.set_xticks([])
+        ax.set_xlabel("")
+    else:
+        ax.set_xlabel("Differing position")
+    ax.set_title("")
+    ax.set_ylabel(jgene, rotation=0, labelpad=55, y=0.1)
+pdf_gene_maxpos_summary = pd.DataFrame(rows).sort_values("prop_max_pos", ascending=False)
+
+f.suptitle("Differing positions (from J) by J gene", y=0.91)
+pass
+```
+
+Not really... no J gene has a single dominating position the way position 4 dominates for most V genes.
+
+### How to interpret/use this?
+
+My working theory is that the position immediately after the V gene end is a "hotspot" for tolerated substitutions. That position is defined by the V gene and is usually position 4, but not always.
+
+These observations could be incorporated into any function assessing distance between CDR3 sequences, for clustering or other purposes.
+
+## Amino acid pairs that tend to be swapped
+
+Let's look at the amino acids that are substituted and see if there are any patterns.
+
+Since so many of the swaps are at position 4, and since amino acid prevalence varies
+dramatically by position, let's just look at position 4 for demonstration.
 
 Just to take V/J and HLA out of it, let's look at just pairs with the same V, J and HLA association.
 
@@ -297,7 +373,6 @@ def heatmap_aa_pairs(pdf_ham1_pairs, title_suffix=""):
     ax.set_ylabel("'lower' AA")
 
 pdf_pos4_aapair_valuecounts = pdf_pos4_ham1_pairs_samehla_samevj["aa_pair"].value_counts().reset_index()
-
 
 heatmap_aa_pairs(pdf_pos4_ham1_pairs_samehla_samevj, title_suffix="\n(same V+J+HLA, swap at position 4)")
 pdf_pos4_aapair_valuecounts

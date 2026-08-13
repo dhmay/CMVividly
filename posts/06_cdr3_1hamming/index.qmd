@@ -7,15 +7,16 @@ jupyter: python3
 
 ## Takeaways from this post
 
-* There are many pairs of CMV ECOcluster TCRs that differ by a single amino acid substitution in the CDR3 sequence
+* There are >50,000 pairs of CMV ECOcluster TCRs that differ by a single amino acid substitution in the CDR3 sequence
     * *A priori*, I expect those pairs overwhelmingly to represent TCRs binding the same CMV antigen presented by the same HLA allele
-    * They seem to behave like they do
+    * They behave like they do
 * Amino acid swaps are strongly concentrated in a single CDR3 position relative to the V gene
     * The specific position varies strongly by V family
     * For most V families, it's position 4 (0-based)
-    * Interpretation: AA swaps right after the V gene end are more tolerated in TCR-pMHC binding solutions
+    * Interpretation: AA swaps immediately after the V gene end are more tolerated in TCR-pMHC binding solutions
 * Some amino acid pairs are swapped far more or less often than we'd expect by chance
     * We could use this data to build a BLOSUM-like matrix for CDR3 sequences with respect to pMHC binding
+* Both those kinds of restrictions could be used to inform distance metrics and clustering algorithms on TCRs
 
 ## Background
 

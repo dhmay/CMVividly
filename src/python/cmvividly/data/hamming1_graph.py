@@ -10,7 +10,7 @@ from matplotlib.colors import Colormap  # type: ignore
 from matplotlib.patches import Patch  # type: ignore
 from networkx.classes.graph import Graph as NxGraph
 
-from cmvividly.data.hamming1_pairs import find_cdr3_hamming1_pairs  # type: ignore
+from cmvividly.data.hamming1_pairs import find_cdr3_hamming1_pairs, find_hamming1_pairs_same_vj  # type: ignore
 
 
 def build_and_plot_seq_ham1_graph(
@@ -74,6 +74,7 @@ def build_seq_ham1_graph_and_extract_ccs(
     pdf_tcrs: pd.DataFrame,
     min_seqs: int = 1,
     seq_column: str = "cdr3",
+    same_vj: bool = False,
 ) -> pd.DataFrame:
     """Builds a networkx graph of hamming-1 connections between sequences and extracts connected
     components with at least `min_seqs` sequences.
@@ -92,7 +93,8 @@ def build_seq_ham1_graph_and_extract_ccs(
     """
     if len(set(pdf_tcrs[seq_column])) != len(pdf_tcrs):
         raise ValueError(f"pdf_tcrs has duplicate sequences in column '{seq_column}'")
-    G = build_seq_ham1_graph(pdf_tcrs, seq_column=seq_column)
+    else:
+        G = build_seq_ham1_graph(pdf_tcrs, seq_column=seq_column, same_vj=same_vj)
     pdf_ccs = extract_connected_components(G, min_seqs, seq_column=seq_column)
     pdf_tcrs_with_ccs = pdf_tcrs.merge(pdf_ccs, on=seq_column)
     return pdf_tcrs_with_ccs
@@ -101,6 +103,7 @@ def build_seq_ham1_graph(
     pdf_tcrs: pd.DataFrame,  # type: ignore
     seq_column: str = "cdr3",
     attribute_columns: Optional[List[str]] = None,
+    same_vj: bool = False,
 ) -> NxGraph:
     """Builds a networkx graph from a DataFrame of TCRs, where nodes are seqs and edges are
     hamming-1 connections between sequences.
@@ -122,7 +125,10 @@ def build_seq_ham1_graph(
     seq_column_i = seq_column + "_i"
     seq_column_j = seq_column + "_j"
 
-    pdf_ham1pairs = find_cdr3_hamming1_pairs(pdf_tcrs_forham1)
+    if same_vj:
+        pdf_ham1pairs = find_hamming1_pairs_same_vj(pdf_tcrs_forham1)
+    else:
+        pdf_ham1pairs = find_cdr3_hamming1_pairs(pdf_tcrs_forham1)
 
     all_seqs = set(pdf_tcrs[seq_column])
 
@@ -170,6 +176,7 @@ def plot_seq_ham1_graph(
     legend_bbox_to_anchor: Tuple[float, float] = (1.03, 1.0),
     legend_loc: str = "upper left",
     title: str = "Hamming-1 connection graph",
+    legend_title: str = None
 ) -> Tuple[plt.Figure, plt.Axes]:
     """Plots a networkx graph of hamming-1 connections between sequences.
 
@@ -217,7 +224,8 @@ def plot_seq_ham1_graph(
                 Patch(facecolor=colors_inorder[i], label=ordered_unique_color_vals[i])
                 for i in range(len(colors_inorder))
             ]
-        ax.legend(handles=legend_elements, bbox_to_anchor=legend_bbox_to_anchor, loc=legend_loc)  # type: ignore
+        ax.legend(handles=legend_elements, bbox_to_anchor=legend_bbox_to_anchor, loc=legend_loc,
+                  title=legend_title)  # type: ignore
 
     return f, ax
 

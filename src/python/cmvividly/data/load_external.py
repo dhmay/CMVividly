@@ -38,6 +38,11 @@ CMV_ECOCLUSTER_2024_ZIP_URL = (
     "2024.05.08.593237/DC1/embed/media-1.zip?download=true"
 )
 
+CMV_ECOCLUSTER_2024_ZIP_URL_FALLBACK = (
+    "https://github.com/dhmay/CMVividly/releases/download/"
+    "data-mirror-v1/cmv_ecocluster_2024.tsv.zip"
+)
+
 EMERSON_REPERTOIRES_ZIP_URL = (
     "https://adaptivepublic.blob.core.windows.net/publishedproject-supplements"
     "/emerson-2017-natgen/emerson-2017-natgen.zip"
@@ -100,6 +105,7 @@ def download_cmv_ecocluster_2024(overwrite: bool = False,
         tsv_path=CMV_ECOCLUSTER_2024_TSV_PATH,
         overwrite=overwrite,
         timeout_seconds=timeout_seconds,
+        fallback_zip_url=CMV_ECOCLUSTER_2024_ZIP_URL_FALLBACK,
     )
 
 

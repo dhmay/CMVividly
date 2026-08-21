@@ -25,6 +25,14 @@ CMV_ECOCLUSTER_2026_ZIP_URL = (
     "2024.03.26.583354/DC2/embed/media-2.zip?download=true"
 )
 
+# bioRxiv has been known to block requests from GitHub Actions' shared runner IP
+# ranges (distinct from per-request rate limiting, so retries don't help). This is
+# a mirror of the same zip, hosted as a GitHub release asset, used as a fallback.
+CMV_ECOCLUSTER_2026_ZIP_URL_FALLBACK = (
+    "https://github.com/dhmay/CMVividly/releases/download/"
+    "data-mirror-v1/cmv_ecocluster_2026.tsv.zip"
+)
+
 CMV_ECOCLUSTER_2024_ZIP_URL = (
     "https://www.biorxiv.org/content/biorxiv/early/2024/05/10/"
     "2024.05.08.593237/DC1/embed/media-1.zip?download=true"
@@ -54,6 +62,7 @@ def download_cmv_ecocluster_2026(overwrite: bool = False,
         tsv_path=CMV_ECOCLUSTER_2026_TSV_PATH,
         overwrite=overwrite,
         timeout_seconds=timeout_seconds,
+        fallback_zip_url=CMV_ECOCLUSTER_2026_ZIP_URL_FALLBACK,
     )
 
 def load_all_external_datasets(overwrite: bool = False,
@@ -100,6 +109,7 @@ def download_cmv_ecocluster_oneversion(
     tsv_path: Path,
     overwrite: bool = False,
     timeout_seconds: int = 60,
+    fallback_zip_url: str = None,
 ) -> Path:
     """
     Download the zipped CMV ECOcluster TSV from bioRxiv,
@@ -109,6 +119,9 @@ def download_cmv_ecocluster_oneversion(
     Args:
         overwrite: If True, re-download the file even if it already exists.
         timeout_seconds: Timeout for the download request in seconds.
+        fallback_zip_url: If the primary download fails (e.g. bioRxiv blocking the
+            requesting IP, rather than a transient error), retry once against this
+            mirror URL instead of raising.
     Returns:
         Path to the downloaded TSV file.
     """
@@ -120,7 +133,16 @@ def download_cmv_ecocluster_oneversion(
 
     zip_path = zip_path
 
-    download_zipfile(zip_url, zip_path, timeout_seconds=timeout_seconds)
+    try:
+        download_zipfile(zip_url, zip_path, timeout_seconds=timeout_seconds)
+    except Exception as e:
+        if fallback_zip_url is None:
+            raise
+        logger.warning(
+            "Download from primary source %s failed (%s); retrying from fallback mirror %s...",
+            zip_url, e, fallback_zip_url,
+        )
+        download_zipfile(fallback_zip_url, zip_path, timeout_seconds=timeout_seconds)
 
     # unzip it
     cmv_ecocluster_zip = ZipFile(zip_path, "r")

@@ -1,0 +1,7 @@
+dataset	sample_id	donor_group	n_cells_total	n_cells_with_tcr	n_clonotypes
+Dataset2	A02	control	799	799	590
+Dataset2	A06	control	1026	1026	960
+Dataset2	B01	centenarian	416	416	310
+Dataset2	B04	centenarian	1171	1171	866
+Dataset2	C03	supercentenarian	1606	1606	843
+Dataset2	C04	supercentenarian	1382	1382	646

@@ -1,0 +1,144 @@
+---
+title: "Making practical use of the 2024 and 2026 CMV ECOclusters"
+date: "2026-09-05"
+description: "Tools and tips for using the CMV ECOclusters to diagnose CMV, annotate TCRs and more"
+jupyter: python3
+---
+
+Over the posts in this series, I've explored the 2026 CMV ECOcluster and, to some extent, the 2024 version. I've pointed out some interesting quirks and given some examples of how to bring these ECOclusters to bear on TCR repertoires.
+
+This post wraps up all those observations with practical tools and advice for combining the two ECOclusters and using them to analyze TCR repertoires.
+
+## Diagnose CMV ([Post 5](https://cmvividly.com/posts/05-predict-cmv-hla-emerson/))
+
+You can use the 2026 CMV ECOcluster to predict CMV status from a repertoire just by dividing the number of matched TCRs
+in a repertoire by the total number of repertoire TCRs. I built a simple
+classifier into the CMVividly codebase, using simple repertoire breadth on the 2026 CMV ECOcluster.
+Here's the ROC curve on both Emerson 2026 cohorts combined:
+
+```{python}
+from cmvividly.dx.cmv_dx import BREADTH_ROC_FPR, BREADTH_ROC_TPR
+from matplotlib import pyplot as plt
+import seaborn as sns
+from cmvividly.plots.style import set_style
+set_style()
+
+f, ax = plt.subplots()
+sns.lineplot(x=BREADTH_ROC_FPR, y=BREADTH_ROC_TPR, ax=ax)
+ax.set_title("CMV breadth ROC on both Emerson cohorts")
+ax.set_ylabel("TPR")
+ax.set_xlabel("FPR")
+f.set_size_inches(5,5)
+```
+
+*Note: the folks who built [CMVerify](https://github.com/UcarLab/CMVerify)
+essentially turned the 2024 CMV ECOcluster into a CMV classifier, too. It should perform
+very similarly.*
+
+Here's an example of running it on breadth derived from one of the Emerson repertoires.
+The classifier can also run on the repertoire itself (with `breadth_cmv_classifier.classify_repertoire`).
+That requires a pandas dataframe containing the repertoire with a "tcr" column
+containing `CDR3AA+VGENE+JGENE` in the Adaptive style.
+
+```{python}
+from cmvividly.dx.cmv_dx import BreadthCmvClassifier
+
+# instantiate a classifier
+breadth_cmv_classifier = BreadthCmvClassifier()
+
+# Here I'm just calculating a breadth to diagnose; I've saved down the intersection of
+# the 2026 ECOcluster with repertoire P00089, so I'm loading that and counting
+# the rows, and UPR_P00089 is the number of non-header rows in that repertoire
+from cmvividly.data.access import load_cmv_ecocluster_intersect_emerson
+pdf_tcr_matches_2026 = load_cmv_ecocluster_intersect_emerson()
+UPR_P00089 = 347237
+sample_name = "P00089"
+breadth_P00089 = sum(pdf_tcr_matches_2026.sample_name == sample_name) / UPR_P00089
+
+cmv_status, confidence = breadth_cmv_classifier.classify_breadth(breadth_P00089)
+print(f"CMV status prediction for {sample_name}: {cmv_status}. Confidence: {confidence:.2f}")
+```
+
+The `confidence` returned by the classifier is the PPV (for positive predictions) or NPV (for negative predictions)
+associated with the sample's breadth. The threshold is the maximum-F1 point ("upper-left-most point")
+of the ROC curve.
+
+As noted in Post 5, the performance of the classifier varies somewhat by donor HLA type,
+creating observable differences by donor race.
+
+## Predict HLA type ([Post 5](https://cmvividly.com/posts/05-predict-cmv-hla-emerson/))
+
+Individual HLA-COclusters in the CMV ECOcluster can be used to predict donor HLA allele status
+within (predicted) CMV+ donors for several alleles with high sensitivity and specificity. I've left those
+models as an exercise for the reader, since they're not all near-perfect and a multi-feature
+model might work much better than a simple breadth-based model.
+
+## Combining the 2024 and 2026 ECOclusters into one dataset
+
+As I explored in [Post 3](https://cmvividly.com/posts/03-compare-2024-2026/),
+the 2026 CMV ECOcluster has twice as many TCRs as 2024. It's much more Class II-dominated, and
+it's clearly missing many valuable TCRs from the 2024 version. So, to bring these ECOclusters to bear on TCR repertoires, I recommend combining them.
+
+I wrote a wrapper function to load the 2024 version, load the 2026 version, and combine them: `load_combined_2024_2026_cmv_ecoclusters`. That function:
+
+* Drops TCR duplicates from the 2024 version (the 2026 version doesn't have duplicates)
+* Adds columns describing which ECOcluster version(s) each TCR came from and what HLA allele it was associated with
+* Accepts the 2026 HLA association when the two disagree
+* Writes the combined ECOcluster to `data/processed/cmv_ecocluster_combined_2024_2026.tsv`
+
+```{python}
+# useful imports
+import numpy as np
+import pandas as pd
+from matplotlib import pyplot as plt
+
+import itables
+import seaborn as sns
+from cmvividly.plots.style import set_style
+set_style()
+
+import itables
+itables.init_notebook_mode()
+
+from cmvividly.data.access import load_combined_2024_2026_cmv_ecoclusters
+
+pdf_cmv_ecocluster_merged = load_combined_2024_2026_cmv_ecoclusters()
+
+print(f"TCRs in merged ECOcluster: {len(pdf_cmv_ecocluster_merged)}")
+print("Columns: ")
+print(", ".join(pdf_cmv_ecocluster_merged.columns))
+print("TCR breakdown by HLA class and ECOcluster version:")
+pd.crosstab(pdf_cmv_ecocluster_merged.ecocluster_source, pdf_cmv_ecocluster_merged.hla_class)
+```
+
+## Match repertoire TCRs on V family and CDR3 amino acid sequence ([Post 4](https://cmvividly.com/posts/04-v-j-gene-groups/))
+
+In the CMV ECOcluster, we sometimes see
+the same CDR3 with different V or J genes. Those mismatches are highly concentrated in a small
+number of groups of V genes and a single pair of J genes, nearly always in the same V or J family.
+That strongly suggests that TCRs in the CMV ECOcluster with the same V family and CDR3 are doing
+basically the same thing.
+
+I made a library method (`combine_indistinguishable_genes`) to make it easy to match the CMV ECOcluster
+to a repertoire that way: just run `combine_indistinguishable_genes` on both the ECOcluster dataframe
+and the repertoire dataframe, then match on the new `tcr` column in both dataframes.
+
+## Annotate the CMV ECOcluster TCRs with IEDB ([Post 7](https://cmvividly.com/posts/07_iedb/))
+
+I demonstrated that the CMV ECOcluster TCR intersection with IEDB is strongly enriched for CMV-annotated TCRs.
+Given the two orthogonal associations of those TCRs with CMV (experimental and statistical), 
+I consider these to be highly confident annotations.
+
+Those annotations could be propagated among sequence clusters, but of course you'd need
+some notion of sequence neighbors....
+
+## Make "fuzzy" matches between ECOcluster TCRs and repertoire TCRs ([Post 6](https://cmvividly.com/posts/06_cdr3_1hamming/))
+
+A single CDR3 amino acid swap, with the same V and J gene, is often thought of as the
+"smallest possible" change to a TCR, unlikely to change TCR binding. I explored
+those single swaps and showed that they seem to be most tolerated at 0-based position 4.
+Or, more accurately, the first position after the positions determined by the TCR's V gene.
+
+Limiting "fuzzy" matches to that position, and to the pairs of amino acids most often observed
+to be swapped in the CMV ECOcluster, could cut down on the rate of false matching while
+retaining most "real" matches.

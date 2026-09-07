@@ -7,7 +7,9 @@ jupyter: python3
 
 Over the posts in this series, I've explored the 2026 CMV ECOcluster and, to some extent, the 2024 version. I've pointed out some interesting quirks and given some examples of how to bring these ECOclusters to bear on TCR repertoires.
 
-This post wraps up all those observations with practical tools and advice for combining the two ECOclusters and using them to analyze TCR repertoires.
+This post wraps up all those observations with practical tools and advice for combining
+the two ECOclusters and using them to analyze TCR repertoires. Follow the links to the
+original posts for more details.
 
 ## Diagnose CMV ([Post 5](https://cmvividly.com/posts/05-predict-cmv-hla-emerson/))
 
@@ -17,14 +19,15 @@ classifier into the CMVividly codebase, using simple repertoire breadth on the 2
 Here's the ROC curve on both Emerson 2026 cohorts combined:
 
 ```{python}
-from cmvividly.dx.cmv_dx import BREADTH_ROC_FPR, BREADTH_ROC_TPR
+import pandas as pd
+from cmvividly.dx.cmv_dx import CMV_BREADTH_ROC_FPR, CMV_BREADTH_ROC_TPR
 from matplotlib import pyplot as plt
 import seaborn as sns
 from cmvividly.plots.style import set_style
 set_style()
 
 f, ax = plt.subplots()
-sns.lineplot(x=BREADTH_ROC_FPR, y=BREADTH_ROC_TPR, ax=ax)
+sns.lineplot(x=CMV_BREADTH_ROC_FPR, y=CMV_BREADTH_ROC_TPR, ax=ax)
 ax.set_title("CMV breadth ROC on both Emerson cohorts")
 ax.set_ylabel("TPR")
 ax.set_xlabel("FPR")
@@ -32,13 +35,13 @@ f.set_size_inches(5,5)
 ```
 
 *Note: the folks who built [CMVerify](https://github.com/UcarLab/CMVerify)
-essentially turned the 2024 CMV ECOcluster into a CMV classifier, too. It should perform
-very similarly.*
+essentially turned the 2024 CMV ECOcluster into a CMV classifier, too. It's a lot
+better characterized than this one here is.*
 
-Here's an example of running it on breadth derived from one of the Emerson repertoires.
-The classifier can also run on the repertoire itself (with `breadth_cmv_classifier.classify_repertoire`).
-That requires a pandas dataframe containing the repertoire with a "tcr" column
-containing `CDR3AA+VGENE+JGENE` in the Adaptive style.
+The classifier takes a pandas dataframe that must have a column called `tcr` with
+the TCRB sequence in the Adaptive format (`CDR3AA+Vgene+Jgene`, and the genes
+must be in Adaptive format, too). Here's an example of running it on one of the Emerson
+repertoires.
 
 ```{python}
 from cmvividly.dx.cmv_dx import BreadthCmvClassifier
@@ -46,17 +49,27 @@ from cmvividly.dx.cmv_dx import BreadthCmvClassifier
 # instantiate a classifier
 breadth_cmv_classifier = BreadthCmvClassifier()
 
-# Here I'm just calculating a breadth to diagnose; I've saved down the intersection of
-# the 2026 ECOcluster with repertoire P00089, so I'm loading that and counting
-# the rows, and UPR_P00089 is the number of non-header rows in that repertoire
+# Here I'm dummying up a fake repertoire for donor P00089.
+# I've saved down the intersection of
+# the 2026 ECOcluster with repertoire P00089.
+# UPR_P00089 is the number of rows in that repertoire, so I'm dummying
+# up the missing rows, which don't affect the classifier
 from cmvividly.data.access import load_cmv_ecocluster_intersect_emerson
 pdf_tcr_matches_2026 = load_cmv_ecocluster_intersect_emerson()
 UPR_P00089 = 347237
 sample_name = "P00089"
-breadth_P00089 = sum(pdf_tcr_matches_2026.sample_name == sample_name) / UPR_P00089
+pdf_fake_P00089 = pdf_tcr_matches_2026[pdf_tcr_matches_2026.sample_name == sample_name]
+pdf_fake_P00089["tcr"] = pdf_fake_P00089.tcr_ecocluster
+n_rows_to_dummy = UPR_P00089 - len(pdf_fake_P00089)
+pdf_fake_P00089 = pd.concat([pdf_fake_P00089, pd.DataFrame({"sample_name": [sample_name] * n_rows_to_dummy})])
 
-cmv_status, confidence = breadth_cmv_classifier.classify_breadth(breadth_P00089)
-print(f"CMV status prediction for {sample_name}: {cmv_status}. Confidence: {confidence:.2f}")
+cmv_breadth_P00089 = sum(pdf_tcr_matches_2026.sample_name == sample_name) / UPR_P00089
+
+result = breadth_cmv_classifier.classify_repertoire(pdf_fake_P00089)
+print(f"CMV prediction for {sample_name}:")
+
+import json
+print(json.dumps(result, indent=4))
 ```
 
 The `confidence` returned by the classifier is the PPV (for positive predictions) or NPV (for negative predictions)
@@ -66,12 +79,29 @@ of the ROC curve.
 As noted in Post 5, the performance of the classifier varies somewhat by donor HLA type,
 creating observable differences by donor race.
 
-## Predict HLA type ([Post 5](https://cmvividly.com/posts/05-predict-cmv-hla-emerson/))
+## Predict HLA type for CMV+ donors ([Post 5](https://cmvividly.com/posts/05-predict-cmv-hla-emerson/))
 
 Individual HLA-COclusters in the CMV ECOcluster can be used to predict donor HLA allele status
-within (predicted) CMV+ donors for several alleles with high sensitivity and specificity. I've left those
-models as an exercise for the reader, since they're not all near-perfect and a multi-feature
-model might work much better than a simple breadth-based model.
+within (predicted) CMV+ donors for 12 alleles with high sensitivity and specificity. I've
+built simple breadth-based models (just like the CMV classifier I built) using the ROC curves
+derived in Post 5. Here's and example of running them all on one donor:
+
+```{python}
+from cmvividly.dx.hla_dx import AllHlaAlleleClassifierCmvPos
+
+all_hla_classifier = AllHlaAlleleClassifierCmvPos()
+
+pdf_fake_P00089 = pdf_tcr_matches_2026[pdf_tcr_matches_2026.sample_name == sample_name]
+pdf_fake_P00089["tcr"] = pdf_fake_P00089.tcr_ecocluster
+n_rows_to_dummy = UPR_P00089 - len(pdf_fake_P00089)
+pdf_fake_P00089 = pd.concat([pdf_fake_P00089, pd.DataFrame({"sample_name": [sample_name] * n_rows_to_dummy})])
+
+print("HLA allele predictions for CMV+ donor P00089:")
+all_hla_classifier.classify_cmvpos_repertoire(pdf_fake_P00089)
+```
+
+Never run those classifiers on CMV- donors! They'll behave unpredictably (likely
+give almost all negative calls).
 
 ## Combining the 2024 and 2026 ECOclusters into one dataset
 

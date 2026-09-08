@@ -61,3 +61,73 @@ def postprocess_cmv_ecocluster(df: pd.DataFrame) -> pd.DataFrame:
     # rearrange the columns: tcr, cdr3, vgene, jgene, hla, hla_class, tcr_pgen, log10_tcr_pgen_eps and the rest
     cols = first_cols + [c for c in df.columns if c not in first_cols]
     return df[cols]
+
+
+def combine_2024_2026_cmv_ecoclusters(pdf_cmv_ecocluster_2024: pd.DataFrame,
+                                      pdf_cmv_ecocluster_2026: pd.DataFrame) -> pd.DataFrame:
+    """
+    Combine the 2024 and 2026 CMV ECOclusters into one dataframe, deduplicating
+    on TCR (cdr3 + vgene + jgene) and annotating where each TCR came from
+    (2024 only, 2026 only, or shared). When HLA disagrees, use the 2026
+    one.
+
+    Args:
+        pdf_cmv_ecocluster_2024: 2024 CMV ECOcluster dataframe.
+        pdf_cmv_ecocluster_2026: 2026 CMV ECOcluster dataframe.
+    Returns:
+        Combined dataframe with one row per TCR, annotated with
+        which version(s) it came from and whether HLA class agrees.
+    """
+    # the 2024 ECOcluster has some duplicate TCRs, so dedup on TCR first.
+    # I'm essentially grabbing one row at random. This could probably be improved upon,
+    # but I'd have to figure out some way of deciding which row to keep. 
+    pdf_cmv_ecocluster_2024_dedup = pdf_cmv_ecocluster_2024.sort_values("hla_cocluster").drop_duplicates(subset=["tcr"])
+ 
+    # outer join on tcr, to build a dataframe that contains all TCRs in both ECOcluster versions
+    pdf_2024_merge = pdf_cmv_ecocluster_2024_dedup.copy()
+    pdf_2024_merge["source_2024"] = True
+    pdf_2026_merge = pdf_cmv_ecocluster_2026.copy()
+    pdf_2026_merge["source_2026"] = True
+    
+    pdf_cmv_ecocluster_merged = pdf_2024_merge.merge(
+        pdf_2026_merge,
+        on=["tcr", "cdr3", "vgene", "jgene"],
+        how="outer",
+        suffixes=("_2024", "_2026"),
+        indicator=True,
+    )
+
+    # annotate each row with whether HLA class agrees and which version(s) the TCR came from
+    pdf_cmv_ecocluster_merged["hla_agree_2024_2026"] = (
+        pdf_cmv_ecocluster_merged["hla_2024"] == pdf_cmv_ecocluster_merged["hla_2026"]
+    )
+    pdf_cmv_ecocluster_merged["hla_class_agree_2024_2026"] = (
+        pdf_cmv_ecocluster_merged["hla_class_2024"] == pdf_cmv_ecocluster_merged["hla_class_2026"]
+    )
+    pdf_cmv_ecocluster_merged["ecocluster_source"] = pdf_cmv_ecocluster_merged["_merge"].map(
+        {"left_only": "2024_only", "right_only": "2026_only", "both": "2024_and_2026"})
+
+    # assign the "hla" column" as hla_2024 if only hla_2024 is present, otherwise hla_2026.
+    # I.e., 2026 wins ties. That's pretty arbitrary.
+    pdf_cmv_ecocluster_merged["hla"] = pdf_cmv_ecocluster_merged.apply(
+        lambda row: row["hla_2024"] if row["ecocluster_source"] == "2024_only"
+        else row["hla_2026"],
+        axis=1
+    )
+    pdf_cmv_ecocluster_merged["hla_class"] = pdf_cmv_ecocluster_merged.hla.apply(
+        lambda x: "cii" if x.startswith("D") else "ci")
+
+    # assign hla_cocluster analogously to hla
+    pdf_cmv_ecocluster_merged["hla_cocluster"] = pdf_cmv_ecocluster_merged.apply(
+        lambda row: row["hla_cocluster_2024"] if row["ecocluster_source"] == "2024_only"
+        else row["hla_cocluster_2026"],
+        axis=1
+    )
+    
+    pdf_cmv_ecocluster_merged["source_2026"] = pdf_cmv_ecocluster_merged.source_2026.fillna(False).astype(bool)
+    pdf_cmv_ecocluster_merged["source_2024"] = pdf_cmv_ecocluster_merged.source_2024.fillna(False).astype(bool)
+
+    drop_cols = ["_merge", "source_2024", "source_2026"]
+    pdf_cmv_ecocluster_merged = pdf_cmv_ecocluster_merged.drop(columns=drop_cols)
+    first_cols = ["tcr", "cdr3", "vgene", "jgene", "hla", "hla_class", "hla_cocluster", "ecocluster_source"]
+    return pdf_cmv_ecocluster_merged[first_cols + [col for col in pdf_cmv_ecocluster_merged.columns if col not in first_cols]]

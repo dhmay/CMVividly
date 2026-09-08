@@ -3,7 +3,7 @@ from pathlib import Path
 import pandas as pd
 
 from cmvividly.data.hamming1_pairs import find_cdr3_hamming1_pairs
-from cmvividly.data.manipulation import postprocess_cmv_ecocluster
+from cmvividly.data.manipulation import combine_2024_2026_cmv_ecoclusters, postprocess_cmv_ecocluster
 
 # Walk up the directory tree to find the project root
 PROJECT_ROOT = Path(__file__).resolve().parents[4]
@@ -24,6 +24,9 @@ CMV_ECOCLUSTER_2024_TSV_PATH = RAW_DIR / CMV_ECOCLUSTER_2024_TSV_FILENAME
 
 CMV_ECOCLUSTER_2026_CDR3_HAMMING1_PAIRS_TSV_FILENAME = "cmv_ecocluster_2026_cdr3_hamming1_pairs.tsv"
 CMV_ECOCLUSTER_2026_CDR3_HAMMING1_PAIRS_TSV_PATH = PROCESSED_DIR / CMV_ECOCLUSTER_2026_CDR3_HAMMING1_PAIRS_TSV_FILENAME
+
+CMV_ECOCLUSTER_COMBINED_2024_2026_TSV_FILENAME = "cmv_ecocluster_combined_2024_2026.tsv"
+CMV_ECOCLUSTER_COMBINED_2024_2026_TSV_PATH = PROCESSED_DIR / CMV_ECOCLUSTER_COMBINED_2024_2026_TSV_FILENAME
 
 EMERSON_REPERTOIRES_ZIP_FILENAME = "emerson-2017-natgen.zip"
 EMERSON_REPERTOIRES_ZIP_PATH = RAW_DIR / EMERSON_REPERTOIRES_ZIP_FILENAME
@@ -131,3 +134,26 @@ def load_cmv_ecocluster_intersect_emerson() -> pd.DataFrame:
     if not parquet_path.exists():
         raise FileNotFoundError(f"CMV ECOcluster intersect Emerson file not found at {parquet_path}.")
     return pd.read_parquet(parquet_path)
+
+
+def load_combined_2024_2026_cmv_ecoclusters(overwrite: bool = False,
+                                            timeout_seconds: int = 60) -> pd.DataFrame:
+    """
+    Load the combined 2024 and 2026 CMV ECOcluster datasets into a pandas DataFrame.
+    Downloads the datasets if they do not exist locally.
+
+    Args:
+        overwrite: If True, re-download the files even if they already exist.
+        timeout_seconds: Timeout for the download request in seconds.
+    Returns:
+        A pandas DataFrame containing the combined 2024 and 2026 CMV ECOcluster datasets.
+    """
+    tsv_path = CMV_ECOCLUSTER_COMBINED_2024_2026_TSV_PATH
+    if not overwrite and tsv_path.exists():
+        return load_tsv_pandas(tsv_path)
+    pdf_combined = combine_2024_2026_cmv_ecoclusters(
+        load_cmv_ecocluster_2024(overwrite=overwrite, timeout_seconds=timeout_seconds),
+        load_cmv_ecocluster_2026(overwrite=overwrite, timeout_seconds=timeout_seconds)
+    )
+    pdf_combined.to_csv(tsv_path, sep="\t", index=False, mode="w", header=True)
+    return pdf_combined

@@ -147,7 +147,13 @@ print("TCR breakdown by HLA class and ECOcluster version:")
 pd.crosstab(pdf_cmv_ecocluster_merged.ecocluster_source, pdf_cmv_ecocluster_merged.hla_class)
 ```
 
-I also just saved the combined TSV [here](https://github.com/dhmay/CMVividly/blob/main/data/processed/cmv_ecocluster_combined_2024_2026.tsv).
+I also just saved the combined TSV [here](https://github.com/dhmay/CMVividly/blob/main/data/processed/cmv_ecocluster_combined_2024_2026.tsv)
+so you can download it directly.
+
+When using this TSV to annotate repertoires, if possible you should do the match in an
+"HLA-aware" fashion: filter the matches
+to just the TCRs associated with HLA alleles the donor is known (or predicted) to have.
+That will remove what tends to be just a smattering of "HLA-mismatched" TCR matches.
 
 ## Several groups of V genes (and one pair of J genes) should be treated as one when matching TCRs ([Post 4](https://cmvividly.com/posts/04-v-j-gene-groups/))
 

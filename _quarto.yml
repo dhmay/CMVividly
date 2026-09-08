@@ -1,6 +1,10 @@
 project:
   type: website
   output-dir: _site
+  render:
+    - "*.qmd"
+    - "posts/"
+    - "!notebooks/"
 
 website:
   title: "CMVividly: Exploring the public T-cell response to Cytomegalovirus"

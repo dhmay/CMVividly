@@ -147,6 +147,8 @@ print("TCR breakdown by HLA class and ECOcluster version:")
 pd.crosstab(pdf_cmv_ecocluster_merged.ecocluster_source, pdf_cmv_ecocluster_merged.hla_class)
 ```
 
+I also just saved the combined TSV [here](https://github.com/dhmay/CMVividly/blob/main/data/processed/cmv_ecocluster_combined_2024_2026.tsv).
+
 ## Several groups of V genes (and one pair of J genes) should be treated as one when matching TCRs ([Post 4](https://cmvividly.com/posts/04-v-j-gene-groups/))
 
 In the CMV ECOcluster, we often see

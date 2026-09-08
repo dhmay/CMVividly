@@ -40,7 +40,8 @@ f.set_size_inches(5,5)
 
 The classifier takes a pandas dataframe that must have a column called `tcr` with
 the TCRB sequence in the Adaptive format (`CDR3AA+Vgene+Jgene`, and the genes
-must be in Adaptive format, too). Here's an example of running it on one of the Emerson
+must be in Adaptive format, too... [tcrconvert](https://github.com/seshadrilab/tcrconvert) is a 
+handy utility for converting between formats). Here's an example of running it on one of the Emerson
 repertoires.
 
 ```{python}

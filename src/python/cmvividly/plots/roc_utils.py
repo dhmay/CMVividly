@@ -231,10 +231,6 @@ def sensitivity_at_specificity(spec_req: float, labels: List[Any], scores: List[
     bisect_left is conservative in that it'll return the smallest index where fpr >= fpr_req.
     I.e., it may return a sensitivity slightly higher than the exact value.
 
-    I'm implementing this 20251114, having noted that
-    immunopipeline.stats.metrics.sensitivity_at_specificity
-    does returns an anti-conservative result.
-
     Args:
         spec_req (float): required specificity
         labels (List[Any]): true binary labels

@@ -31,7 +31,6 @@ dependencies = [
     "jupyter-copilot==0.1.5",
     "matplotlib-venn>=1.1.2",
     "networkx>=3.6.1",
-    "torch>=2.14.0",
 ]
 
 [tool.uv]

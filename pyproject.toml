@@ -32,10 +32,11 @@ dependencies = [
     "matplotlib-venn>=1.1.2",
     "networkx>=3.6.1",
     # Hamming-distance sequence pairs and graphs live in portmanteau; this package used
-    # to carry its own copy. Pinned to a commit rather than a tag because no portmanteau
-    # tag yet contains `portmanteau.sequence.hamming_n_graph` (v0.8.1 predates it), and
-    # unpinned `git+` means "whatever main is at install time".
-    "portmanteau[sequence] @ git+https://github.com/dhmay/portmanteau.git@2095b17766fe7ae881a96dd615bb7894570befe9",
+    # to carry its own copy. Pinned to a release tag: v0.10.0 is the first that contains
+    # `portmanteau.sequence.hamming_n_graph`, which is why this was a bare commit before.
+    # An unpinned `git+` would mean "whatever main is at install time"; uv.lock records the
+    # exact commit the tag resolved to, so the tag is for readers and the lock is the pin.
+    "portmanteau[sequence] @ git+https://github.com/dhmay/portmanteau.git@v0.10.0",
 ]
 
 [tool.uv]

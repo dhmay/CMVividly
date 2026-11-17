@@ -379,34 +379,41 @@ Define TCR sequence neighbors as pairs of TCRs in the same HLA-cocluster with th
 Then, build a graph on those neighbor pairs. Find the connected components with at least 3 TCRs, and see which of those connected components contain at least one TCR that is annotated in IEDB as CMV. Those are candidates for propagating IEDB TCR annotations to the rest of the sequence cluster.
 
 ```{python}
-from cmvividly.data.hamming1_pairs import find_hamming1_pairs_same_vj
-from cmvividly.data.hamming1_graph import build_seq_ham1_graph, extract_connected_components
+from portmanteau.sequence.hamming_pairs import find_hamming1_pairs
+from portmanteau.sequence.hamming_n_graph import build_seq_hamming_graph, extract_connected_components
 
 pdf_cmveco_annotiedb = pdf_cmv_ecocluster_2026_formerge_dedup.merge(pdf_iedb_cmv_tcrs, on="tcr_vfamcdr3", how="left")
 pdf_cmveco_annotiedb["tcr"] = pdf_cmveco_annotiedb["tcr_vfamcdr3"] + "+" + pdf_cmveco_annotiedb.hla_cocluster
 
-pdf_cmveco_hamming1 = find_hamming1_pairs_same_vj(pdf_cmveco_annotiedb)
+pdf_cmveco_hamming1 = find_hamming1_pairs(pdf_cmveco_annotiedb, "tcr", group_cols=["vgene", "jgene"])
 
-G = build_seq_ham1_graph(pdf_cmveco_annotiedb, seq_column="tcr", same_vj=True)
+G = build_seq_hamming_graph(pdf_cmveco_annotiedb, seq_column="tcr", same_vj=True)
 pdf_ccs = extract_connected_components(G, min_seqs=3, seq_column="tcr")
 
 tcrs_cmv_iedb = set(pdf_cmveco_annotiedb[pdf_cmveco_annotiedb.epitope_gene.notnull()].tcr)
 pdf_ccs["is_cmv_iedb"] = pdf_ccs.tcr.isin(tcrs_cmv_iedb)
 ccs_with_cmv_iedb = set(pdf_ccs[pdf_ccs.is_cmv_iedb].connected_component)
-tcrs_in_ccs_with_cmv_iedb = set(pdf_ccs[pdf_ccs.connected_component.isin(ccs_with_cmv_iedb)].tcr)
+pdf_ccs_with_cmv_iedb = pdf_ccs[pdf_ccs.connected_component.isin(ccs_with_cmv_iedb)]
+tcrs_in_ccs_with_cmv_iedb = set(pdf_ccs_with_cmv_iedb.tcr)
+# A grouped portmanteau graph keys its nodes by (sequence, *group values), not by the bare
+# sequence, so subgraph/node lookups below need the tuple. extract_connected_components unpacks
+# the tuple back into columns, which is where vgene and jgene come from here.
+nodes_in_ccs_with_cmv_iedb = set(
+    map(tuple, pdf_ccs_with_cmv_iedb[["tcr", "vgene", "jgene"]].to_numpy()))
 
-from cmvividly.data.hamming1_graph import plot_seq_ham1_graph
+from portmanteau.sequence.hamming_n_graph import plot_seq_graph
 
 # restrict G to just the nodes in tcrs_in_ccs
-G_restricted = G.subgraph(tcrs_in_ccs_with_cmv_iedb)
+G_restricted = G.subgraph(nodes_in_ccs_with_cmv_iedb)
+assert len(G_restricted.nodes) == len(nodes_in_ccs_with_cmv_iedb), "node keys did not match the graph"
 # set an attribute on each node in G_restricted indicating whether it's in tcrs_cmv_iedb
 for node in G_restricted.nodes:
-    G_restricted.nodes[node]["CMV IEDB"] = node in tcrs_cmv_iedb
+    G_restricted.nodes[node]["CMV IEDB"] = node[0] in tcrs_cmv_iedb
 
 print(f"{len(G_restricted.nodes)} TCRs are in sequence clusters of size 3+ in which at least one member is in IEDB annotated as CMV")
 
-plot_seq_ham1_graph(G_restricted, node_color_attribute="CMV IEDB", show_legend=True,
-                   legend_title="In IEDB as CMV")
+plot_seq_graph(G_restricted, node_color_attribute="CMV IEDB", show_legend=True,
+               legend_title="In IEDB as CMV")
 ```
 
 To have faith in such propagated peptide assignments, we'd want to

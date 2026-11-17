@@ -2,7 +2,7 @@
 from pathlib import Path
 import pandas as pd
 
-from cmvividly.data.hamming1_pairs import find_cdr3_hamming1_pairs
+from portmanteau.sequence.hamming_pairs import find_hamming1_pairs
 from cmvividly.data.manipulation import combine_2024_2026_cmv_ecoclusters, postprocess_cmv_ecocluster
 
 # Walk up the directory tree to find the project root
@@ -94,7 +94,7 @@ def load_cmv_ecocluster_2026_cdr3_hamming1_pairs(
     if not overwrite and CMV_ECOCLUSTER_2026_CDR3_HAMMING1_PAIRS_TSV_PATH.exists():
         return load_tsv_pandas(CMV_ECOCLUSTER_2026_CDR3_HAMMING1_PAIRS_TSV_PATH)
     pdf_cmv_ecocluster = load_cmv_ecocluster_2026(overwrite=overwrite, timeout_seconds=timeout_seconds)
-    pdf_hamming1_pairs = find_cdr3_hamming1_pairs(pdf_cmv_ecocluster)
+    pdf_hamming1_pairs = find_hamming1_pairs(pdf_cmv_ecocluster, "cdr3")
     pdf_hamming1_pairs.to_csv(CMV_ECOCLUSTER_2026_CDR3_HAMMING1_PAIRS_TSV_PATH, sep="\t", index=False,
                             mode="w", header=True)
     return pdf_hamming1_pairs

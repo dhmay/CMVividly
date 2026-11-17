@@ -31,6 +31,11 @@ dependencies = [
     "jupyter-copilot==0.1.5",
     "matplotlib-venn>=1.1.2",
     "networkx>=3.6.1",
+    # Hamming-distance sequence pairs and graphs live in portmanteau; this package used
+    # to carry its own copy. Pinned to a commit rather than a tag because no portmanteau
+    # tag yet contains `portmanteau.sequence.hamming_n_graph` (v0.8.1 predates it), and
+    # unpinned `git+` means "whatever main is at install time".
+    "portmanteau[sequence] @ git+https://github.com/dhmay/portmanteau.git@2095b17766fe7ae881a96dd615bb7894570befe9",
 ]
 
 [tool.uv]

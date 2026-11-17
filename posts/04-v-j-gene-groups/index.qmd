@@ -443,7 +443,7 @@ That makes me nervous about combining those V genes: it could be that this one b
 Let's check all the other V gene pairs that survive Bonferroni correction: for each surviving V gene pair, build a graph on single edit distances and see how many connected components there are.
 
 ```{python}
-from cmvividly.data.hamming1_graph import build_seq_ham1_graph_and_extract_ccs
+from portmanteau.sequence.hamming_n_graph import build_seq_hamming_graph_and_extract_ccs
 
 rows = []
 for _, row in pdf_vgenepair_pvalues_signif.iterrows():
@@ -456,7 +456,7 @@ for _, row in pdf_vgenepair_pvalues_signif.iterrows():
     unique_cdr3_lengths = set(pdf_pairs_this_pair.cdr3.apply(len))
     
     # find connected components in a graph defined Hamming-1 distances between those CDR3s
-    pdf_ccs = build_seq_ham1_graph_and_extract_ccs(pdf_pairs_this_pair)
+    pdf_ccs = build_seq_hamming_graph_and_extract_ccs(pdf_pairs_this_pair)
     n_ccs = len(set(pdf_ccs.connected_component))
 
     rows.append({

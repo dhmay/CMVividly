@@ -121,7 +121,8 @@ I wrote a wrapper function to load the 2024 version, load the 2026 version, and 
 * Drops TCR duplicates from the 2024 version (the 2026 version doesn't have duplicates)
 * Adds columns describing which ECOcluster version(s) each TCR came from and what HLA allele it was associated with
 * Accepts the 2026 HLA association when the two disagree
-* Writes the combined ECOcluster to `data/processed/cmv_ecocluster_combined_2024_2026.tsv`
+* Collapses the 2024 version's HLA alleles onto the [p groups](https://hla.alleles.org/pages/p&g_groups/p_groups/) the 2026 version models them as, so the two can be compared allele by allele (pass `apply_p_groups=False` to keep each version's own names)
+* Writes the combined ECOcluster to `data/processed/cmv_ecocluster_combined_2024_2026_pgroups.tsv`
 
 ```{python}
 # useful imports
@@ -149,7 +150,8 @@ pd.crosstab(pdf_cmv_ecocluster_merged.ecocluster_source, pdf_cmv_ecocluster_merg
 ```
 
 I also just saved the combined TSV [here](https://github.com/dhmay/CMVividly/blob/main/data/processed/cmv_ecocluster_combined_2024_2026.tsv)
-so you can download it directly.
+so you can download it directly. That saved copy is the `apply_p_groups=False` version, with each
+ECOcluster version's own HLA allele names.
 
 When using this TSV to annotate repertoires, if possible you should do the match in an
 "HLA-aware" fashion: filter the matches

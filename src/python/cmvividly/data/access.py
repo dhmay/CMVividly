@@ -25,8 +25,15 @@ CMV_ECOCLUSTER_2024_TSV_PATH = RAW_DIR / CMV_ECOCLUSTER_2024_TSV_FILENAME
 CMV_ECOCLUSTER_2026_CDR3_HAMMING1_PAIRS_TSV_FILENAME = "cmv_ecocluster_2026_cdr3_hamming1_pairs.tsv"
 CMV_ECOCLUSTER_2026_CDR3_HAMMING1_PAIRS_TSV_PATH = PROCESSED_DIR / CMV_ECOCLUSTER_2026_CDR3_HAMMING1_PAIRS_TSV_FILENAME
 
+# ⚠️ Two cache files, one per `apply_p_groups` setting. The unsuffixed name keeps its original
+# meaning -- the combined frame with each release's own allele names -- so a cache written before
+# P-group collapsing existed is still valid for `apply_p_groups=False` and can never be served
+# for True.
 CMV_ECOCLUSTER_COMBINED_2024_2026_TSV_FILENAME = "cmv_ecocluster_combined_2024_2026.tsv"
 CMV_ECOCLUSTER_COMBINED_2024_2026_TSV_PATH = PROCESSED_DIR / CMV_ECOCLUSTER_COMBINED_2024_2026_TSV_FILENAME
+CMV_ECOCLUSTER_COMBINED_2024_2026_P_GROUPS_TSV_FILENAME = "cmv_ecocluster_combined_2024_2026_pgroups.tsv"
+CMV_ECOCLUSTER_COMBINED_2024_2026_P_GROUPS_TSV_PATH = (
+    PROCESSED_DIR / CMV_ECOCLUSTER_COMBINED_2024_2026_P_GROUPS_TSV_FILENAME)
 
 EMERSON_REPERTOIRES_ZIP_FILENAME = "emerson-2017-natgen.zip"
 EMERSON_REPERTOIRES_ZIP_PATH = RAW_DIR / EMERSON_REPERTOIRES_ZIP_FILENAME
@@ -137,7 +144,8 @@ def load_cmv_ecocluster_intersect_emerson() -> pd.DataFrame:
 
 
 def load_combined_2024_2026_cmv_ecoclusters(overwrite: bool = False,
-                                            timeout_seconds: int = 60) -> pd.DataFrame:
+                                            timeout_seconds: int = 60,
+                                            apply_p_groups: bool = True) -> pd.DataFrame:
     """
     Load the combined 2024 and 2026 CMV ECOcluster datasets into a pandas DataFrame.
     Downloads the datasets if they do not exist locally.
@@ -145,15 +153,22 @@ def load_combined_2024_2026_cmv_ecoclusters(overwrite: bool = False,
     Args:
         overwrite: If True, re-download the files even if they already exist.
         timeout_seconds: Timeout for the download request in seconds.
+        apply_p_groups: see `combine_2024_2026_cmv_ecoclusters`. Pass False to keep the allele
+            names each release actually used, which is what a comparison of the two releases
+            wants.
     Returns:
         A pandas DataFrame containing the combined 2024 and 2026 CMV ECOcluster datasets.
     """
-    tsv_path = CMV_ECOCLUSTER_COMBINED_2024_2026_TSV_PATH
+    # ⚠️ The two settings get different cache files. Sharing one would silently serve whichever
+    # was built first, and the difference between them is exactly the thing a caller chose.
+    tsv_path = (CMV_ECOCLUSTER_COMBINED_2024_2026_P_GROUPS_TSV_PATH if apply_p_groups
+                else CMV_ECOCLUSTER_COMBINED_2024_2026_TSV_PATH)
     if not overwrite and tsv_path.exists():
         return load_tsv_pandas(tsv_path)
     pdf_combined = combine_2024_2026_cmv_ecoclusters(
         load_cmv_ecocluster_2024(overwrite=overwrite, timeout_seconds=timeout_seconds),
-        load_cmv_ecocluster_2026(overwrite=overwrite, timeout_seconds=timeout_seconds)
+        load_cmv_ecocluster_2026(overwrite=overwrite, timeout_seconds=timeout_seconds),
+        apply_p_groups=apply_p_groups,
     )
     pdf_combined.to_csv(tsv_path, sep="\t", index=False, mode="w", header=True)
     return pdf_combined

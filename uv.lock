@@ -400,7 +400,7 @@ dependencies = [
     { name = "pip" },
     { name = "plotly" },
     { name = "polars" },
-    { name = "portmanteau", extra = ["sequence"] },
+    { name = "portmanteau", extra = ["publicdb", "sequence"] },
     { name = "pyarrow" },
     { name = "pyright" },
     { name = "python-dotenv" },
@@ -437,7 +437,7 @@ requires-dist = [
     { name = "pip", specifier = "==25.0.1" },
     { name = "plotly", specifier = ">=6.9.0" },
     { name = "polars", specifier = ">=1.42.1" },
-    { name = "portmanteau", extras = ["sequence"], git = "https://github.com/dhmay/portmanteau.git?rev=v0.10.0" },
+    { name = "portmanteau", extras = ["sequence", "publicdb"], git = "https://github.com/dhmay/portmanteau.git?rev=v0.10.0" },
     { name = "pyarrow", specifier = ">=25.0.0" },
     { name = "pyright", specifier = "==1.1.411" },
     { name = "python-dotenv", specifier = ">=1.2.2" },
@@ -2144,6 +2144,20 @@ wheels = [
 ]
 
 [[package]]
+name = "pooch"
+version = "1.9.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "packaging" },
+    { name = "platformdirs" },
+    { name = "requests" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/83/43/85ef45e8b36c6a48546af7b266592dc32d7f67837a6514d111bced6d7d75/pooch-1.9.0.tar.gz", hash = "sha256:de46729579b9857ffd3e741987a2f6d5e0e03219892c167c6578c0091fb511ed", size = 61788, upload-time = "2026-01-30T19:15:09.649Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/2a/2d/d4bf65e47cea8ff2c794a600c4fd1273a7902f268757c531e0ee9f18aa58/pooch-1.9.0-py3-none-any.whl", hash = "sha256:f265597baa9f760d25ceb29d0beb8186c243d6607b0f60b83ecf14078dbc703b", size = 67175, upload-time = "2026-01-30T19:15:08.36Z" },
+]
+
+[[package]]
 name = "portmanteau"
 version = "0.10.0"
 source = { git = "https://github.com/dhmay/portmanteau.git?rev=v0.10.0#b7e5f90aa23387c9e016e04b89c75910e0cb5b7a" }
@@ -2152,6 +2166,11 @@ dependencies = [
 ]
 
 [package.optional-dependencies]
+publicdb = [
+    { name = "pooch" },
+    { name = "pyarrow" },
+    { name = "tidytcells" },
+]
 sequence = [
     { name = "matplotlib" },
     { name = "networkx" },
@@ -2983,6 +3002,15 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/b7/4d/08c89e34946fce2aec4fbb45c9016efd5f4d7f24af8e5d93296e935631d8/threadpoolctl-3.6.0.tar.gz", hash = "sha256:8ab8b4aa3491d812b623328249fab5302a68d2d71745c8a4c719a2fcaba9f44e", size = 21274, upload-time = "2025-03-13T13:49:23.031Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/32/d5/f9a850d79b0851d1d4ef6456097579a9005b31fea68726a4ae5f2d82ddd9/threadpoolctl-3.6.0-py3-none-any.whl", hash = "sha256:43a0b8fd5a2928500110039e43a5eed8480b918967083ea48dc3ab9f13c4a7fb", size = 18638, upload-time = "2025-03-13T13:49:21.846Z" },
+]
+
+[[package]]
+name = "tidytcells"
+version = "2.2.1"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/94/b3/0a35839dae286989f88c3b356e3ae3cb4266ddf8cec2c94126c9c20dadc2/tidytcells-2.2.1.tar.gz", hash = "sha256:a65e8a827e0cfa05ca1fa612fc4e2e6200255e8e9c965026247c7e3bf9ebd6f9", size = 108485, upload-time = "2026-05-07T01:51:08.703Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/e5/db/f7add444d61506fcd5ac55e13c00a70b14f3f6510fdfe6d1943db0ac4798/tidytcells-2.2.1-py3-none-any.whl", hash = "sha256:27a672ba07af306b2be5e8fcc307cf0a9ea7dcf603b1e33868d041b90d0f44c4", size = 127828, upload-time = "2026-05-07T01:51:06.916Z" },
 ]
 
 [[package]]

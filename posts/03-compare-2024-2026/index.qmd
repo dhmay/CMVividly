@@ -471,12 +471,12 @@ but the additional evidence that it was CMV-associated in the 2024 version
 makes it pretty compelling.
 
 ```{python}
-from cmvividly.data.hamming1_pairs import find_hamming1_pairs_same_vj
+from portmanteau.sequence.hamming_pairs import find_hamming1_pairs
 
 # find all Hamming-1 pairs with the same v and j gene in the outer join between 2024 and 2026.
 # That's overkill, but that's the tooling I've built so far.
-pdf_ham1_pairs_all = find_hamming1_pairs_same_vj(
-    pdf_merged_tcr_outer)
+pdf_ham1_pairs_all = find_hamming1_pairs(
+    pdf_merged_tcr_outer, "tcr", group_cols=["vgene", "jgene"])
 pdf_ham1_pairs_all = (
     pdf_ham1_pairs_all
     .drop(columns=["row_i", "row_j"])

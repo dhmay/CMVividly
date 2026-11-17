@@ -25,3 +25,6 @@ data/raw/*
 **/*.quarto_ipynb*
 
 **/*.quarto_ipynb
+
+# setuptools build metadata, regenerated on every editable install
+*.egg-info/

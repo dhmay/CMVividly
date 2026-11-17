@@ -36,7 +36,7 @@ dependencies = [
     # `portmanteau.sequence.hamming_n_graph`, which is why this was a bare commit before.
     # An unpinned `git+` would mean "whatever main is at install time"; uv.lock records the
     # exact commit the tag resolved to, so the tag is for readers and the lock is the pin.
-    "portmanteau[sequence] @ git+https://github.com/dhmay/portmanteau.git@v0.10.0",
+    "portmanteau[sequence,publicdb] @ git+https://github.com/dhmay/portmanteau.git@v0.10.0",
 ]
 
 [tool.uv]
